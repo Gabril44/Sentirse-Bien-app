@@ -15,17 +15,26 @@ namespace SentirseBien
             cargarTurnos();
             centerDataGrid();
             this.usuario = usuario;
+            getRol(usuario);
         }
 
-        private void centerDataGrid() 
+        private void getRol(Usuario usuario) 
         {
-            dataGridView1.Left = (this.ClientSize.Width - dataGridView1.Width)/2;
+            if (usuario.correo == "test@gmail.com") 
+            {
+                pedir_turno_cliente.Visible = true;
+            }
+        }
+
+        private void centerDataGrid()
+        {
+            dataGridView1.Left = (this.ClientSize.Width - dataGridView1.Width) / 2;
             dataGridView1.Top = (this.ClientSize.Height - dataGridView1.Height) / 2;
         }
 
-        private void Form1_Resize(object sender, EventArgs e) 
+        private void Form1_Resize(object sender, EventArgs e)
         {
-            centerDataGrid();  
+            centerDataGrid();
         }
 
         private void cargarTurnos(string filtro = "")
@@ -35,7 +44,7 @@ namespace SentirseBien
             turnos.Clear();
             turnos = turnoConsultas.getTurno(filtro);
 
-            for(int i = 0; i < turnos.Count; i++) 
+            for (int i = 0; i < turnos.Count; i++)
             {
                 dataGridView1.RowTemplate.Height = 50;
                 dataGridView1.Rows.Add(
@@ -44,7 +53,7 @@ namespace SentirseBien
                     turnos[i].fecha,
                     turnos[i].servicio,
                     turnos[i].profesional
-                    ) ;
+                    );
             }
 
         }
@@ -69,6 +78,12 @@ namespace SentirseBien
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void pedir_turno_cliente_Click(object sender, EventArgs e)
+        {
+            pedirTurno pedirTurno = new pedirTurno();
+            pedirTurno.ShowDialog();
         }
     }
 }

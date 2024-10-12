@@ -119,6 +119,7 @@
             pedir_turno_cliente.Text = "Pedir turno";
             pedir_turno_cliente.UseVisualStyleBackColor = true;
             pedir_turno_cliente.Visible = false;
+            pedir_turno_cliente.Click += pedir_turno_cliente_Click;
             // 
             // tableLayoutPanel1
             // 

@@ -18,7 +18,8 @@ C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\Se
 C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\bin\Debug\net8.0-windows\Google.Protobuf.dll
 C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\bin\Debug\net8.0-windows\MySql.Data.dll
 C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.csproj.AssemblyReference.cache
-C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.csproj.CopyComplete
 C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.LoginForm.resources
 C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.Index.resources
 C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.Clientes.resources
+C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.pedirTurno.resources
+C:\Users\ASUS\source\repos\SentirseBien\SentirseBien\obj\Debug\net8.0-windows\Sentirse.25E5CBFB.Up2Date
