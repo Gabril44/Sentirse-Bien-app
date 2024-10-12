@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\source\\repos\\SentirseBien\\SentirseBien\\SentirseBien.csproj": {}
+    "D:\\MDS-app\\Sentirse-Bien-app\\SentirseBien\\SentirseBien.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\source\\repos\\SentirseBien\\SentirseBien\\SentirseBien.csproj": {
+    "D:\\MDS-app\\Sentirse-Bien-app\\SentirseBien\\SentirseBien.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\SentirseBien\\SentirseBien\\SentirseBien.csproj",
+        "projectUniqueName": "D:\\MDS-app\\Sentirse-Bien-app\\SentirseBien\\SentirseBien.csproj",
         "projectName": "SentirseBien",
-        "projectPath": "C:\\Users\\ASUS\\source\\repos\\SentirseBien\\SentirseBien\\SentirseBien.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\source\\repos\\SentirseBien\\SentirseBien\\obj\\",
+        "projectPath": "D:\\MDS-app\\Sentirse-Bien-app\\SentirseBien\\SentirseBien.csproj",
+        "packagesPath": "C:\\Users\\MegaTecnologia\\.nuget\\packages\\",
+        "outputPath": "D:\\MDS-app\\Sentirse-Bien-app\\SentirseBien\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MegaTecnologia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -73,7 +73,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
