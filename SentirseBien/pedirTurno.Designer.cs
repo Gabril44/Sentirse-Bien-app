@@ -35,16 +35,11 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            servicios = new MenuStrip();
-            seleccioneUnServicioToolStripMenuItem = new ToolStripMenuItem();
-            masajeToolStripMenuItem = new ToolStripMenuItem();
-            opcion2ToolStripMenuItem = new ToolStripMenuItem();
-            opcion3ToolStripMenuItem = new ToolStripMenuItem();
-            opcion4ToolStripMenuItem = new ToolStripMenuItem();
-            comboBox1 = new ComboBox();
-            monthCalendar1 = new MonthCalendar();
+            profesional_combobox = new ComboBox();
+            servicios_combobox = new ComboBox();
+            fecha_button = new Button();
+            labelfecha = new Label();
             tableLayoutPanel1.SuspendLayout();
-            servicios.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,9 +53,10 @@
             tableLayoutPanel1.Controls.Add(label1, 0, 1);
             tableLayoutPanel1.Controls.Add(label2, 0, 2);
             tableLayoutPanel1.Controls.Add(label3, 0, 3);
-            tableLayoutPanel1.Controls.Add(servicios, 1, 1);
-            tableLayoutPanel1.Controls.Add(comboBox1, 1, 2);
-            tableLayoutPanel1.Controls.Add(monthCalendar1, 1, 3);
+            tableLayoutPanel1.Controls.Add(profesional_combobox, 1, 2);
+            tableLayoutPanel1.Controls.Add(servicios_combobox, 1, 1);
+            tableLayoutPanel1.Controls.Add(fecha_button, 1, 3);
+            tableLayoutPanel1.Controls.Add(labelfecha, 1, 4);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -128,63 +124,48 @@
             label3.TabIndex = 8;
             label3.Text = "fecha";
             // 
-            // servicios
+            // profesional_combobox
             // 
-            servicios.Dock = DockStyle.Bottom;
-            servicios.ImageScalingSize = new Size(20, 20);
-            servicios.Items.AddRange(new ToolStripItem[] { seleccioneUnServicioToolStripMenuItem });
-            servicios.Location = new Point(243, 151);
-            servicios.Name = "servicios";
-            servicios.Size = new Size(328, 28);
-            servicios.TabIndex = 9;
-            servicios.Text = "menuStrip1";
+            profesional_combobox.Dock = DockStyle.Bottom;
+            profesional_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            profesional_combobox.FormattingEnabled = true;
+            profesional_combobox.Items.AddRange(new object[] { "Dr Manuel", "Dr Pablinka", "Dra Felicidad", "Dr Tristeza" });
+            profesional_combobox.Location = new Point(246, 239);
+            profesional_combobox.Name = "profesional_combobox";
+            profesional_combobox.Size = new Size(322, 28);
+            profesional_combobox.TabIndex = 10;
             // 
-            // seleccioneUnServicioToolStripMenuItem
+            // servicios_combobox
             // 
-            seleccioneUnServicioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { masajeToolStripMenuItem, opcion2ToolStripMenuItem, opcion3ToolStripMenuItem, opcion4ToolStripMenuItem });
-            seleccioneUnServicioToolStripMenuItem.Name = "seleccioneUnServicioToolStripMenuItem";
-            seleccioneUnServicioToolStripMenuItem.Size = new Size(166, 24);
-            seleccioneUnServicioToolStripMenuItem.Text = "seleccione un servicio";
+            servicios_combobox.Dock = DockStyle.Bottom;
+            servicios_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            servicios_combobox.FormattingEnabled = true;
+            servicios_combobox.Location = new Point(246, 148);
+            servicios_combobox.Name = "servicios_combobox";
+            servicios_combobox.Size = new Size(322, 28);
+            servicios_combobox.TabIndex = 12;
             // 
-            // masajeToolStripMenuItem
+            // fecha_button
             // 
-            masajeToolStripMenuItem.Name = "masajeToolStripMenuItem";
-            masajeToolStripMenuItem.Size = new Size(150, 26);
-            masajeToolStripMenuItem.Text = "masaje";
+            fecha_button.Dock = DockStyle.Bottom;
+            fecha_button.Location = new Point(246, 337);
+            fecha_button.Name = "fecha_button";
+            fecha_button.Size = new Size(322, 29);
+            fecha_button.TabIndex = 13;
+            fecha_button.Text = "Elegir Fecha";
+            fecha_button.UseVisualStyleBackColor = true;
+            fecha_button.Click += fecha_button_Click;
             // 
-            // opcion2ToolStripMenuItem
+            // labelfecha
             // 
-            opcion2ToolStripMenuItem.Name = "opcion2ToolStripMenuItem";
-            opcion2ToolStripMenuItem.Size = new Size(150, 26);
-            opcion2ToolStripMenuItem.Text = "opcion 2";
-            // 
-            // opcion3ToolStripMenuItem
-            // 
-            opcion3ToolStripMenuItem.Name = "opcion3ToolStripMenuItem";
-            opcion3ToolStripMenuItem.Size = new Size(150, 26);
-            opcion3ToolStripMenuItem.Text = "opcion 3";
-            // 
-            // opcion4ToolStripMenuItem
-            // 
-            opcion4ToolStripMenuItem.Name = "opcion4ToolStripMenuItem";
-            opcion4ToolStripMenuItem.Size = new Size(150, 26);
-            opcion4ToolStripMenuItem.Text = "opcion 4";
-            // 
-            // comboBox1
-            // 
-            comboBox1.Dock = DockStyle.Bottom;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Dr Manuel", "Dr Pablinka", "Dra Felicidad", "Dr Tristeza" });
-            comboBox1.Location = new Point(246, 239);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(322, 28);
-            comboBox1.TabIndex = 10;
-            // 
-            // monthCalendar1
-            // 
-            monthCalendar1.Location = new Point(252, 279);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 11;
+            labelfecha.AutoSize = true;
+            labelfecha.Dock = DockStyle.Bottom;
+            labelfecha.ForeColor = SystemColors.ControlLightLight;
+            labelfecha.Location = new Point(246, 430);
+            labelfecha.Name = "labelfecha";
+            labelfecha.Size = new Size(322, 20);
+            labelfecha.TabIndex = 14;
+            labelfecha.Text = "label4";
             // 
             // pedirTurno
             // 
@@ -195,11 +176,10 @@
             Controls.Add(tableLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "pedirTurno";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sentirse Bien";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
-            servicios.ResumeLayout(false);
-            servicios.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -217,7 +197,9 @@
         private ToolStripMenuItem opcion2ToolStripMenuItem;
         private ToolStripMenuItem opcion3ToolStripMenuItem;
         private ToolStripMenuItem opcion4ToolStripMenuItem;
-        private ComboBox comboBox1;
-        private MonthCalendar monthCalendar1;
+        private ComboBox profesional_combobox;
+        private ComboBox servicios_combobox;
+        private Button fecha_button;
+        private Label labelfecha;
     }
 }
