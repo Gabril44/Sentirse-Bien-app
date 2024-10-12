@@ -35,7 +35,11 @@
             user_textbox = new TextBox();
             pass_textbox = new TextBox();
             aceptar_button = new Button();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -97,12 +101,34 @@
             aceptar_button.UseVisualStyleBackColor = true;
             aceptar_button.Click += aceptar_button_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(249, 297);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(32, 27);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(249, 368);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(32, 27);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 7;
+            pictureBox3.TabStop = false;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(72, 137, 121);
             ClientSize = new Size(765, 465);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
             Controls.Add(aceptar_button);
             Controls.Add(pass_textbox);
             Controls.Add(user_textbox);
@@ -116,6 +142,8 @@
             Text = "LoginForm";
             Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,5 +156,7 @@
         private TextBox user_textbox;
         private TextBox pass_textbox;
         private Button aceptar_button;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
     }
 }
