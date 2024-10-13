@@ -50,3 +50,4 @@ C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-w
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.pdb
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.genruntimeconfig.cache
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-windows\ref\SentirseBien.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.PagoForm.resources
