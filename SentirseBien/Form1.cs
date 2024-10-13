@@ -82,8 +82,9 @@ namespace SentirseBien
 
         private void pedir_turno_cliente_Click(object sender, EventArgs e)
         {
-            pedirTurno pedirTurno = new pedirTurno();
+            pedirTurno pedirTurno = new pedirTurno(usuario);
             pedirTurno.ShowDialog();
+            cargarTurnos();
         }
     }
 }

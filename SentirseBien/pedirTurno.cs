@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,15 @@ namespace SentirseBien
     {
         private string fecha;
         private ConexionMysql conexionMysql;
-        public pedirTurno()
+        private Turno turno;
+        private Usuario usario;
+        public pedirTurno(Usuario usuario)
         {
+            this.usario = usuario;
             InitializeComponent();
             conexionMysql = new ConexionMysql();
             loadComboBoxItems();
+            test_label.Text= usuario.nombre;
         }
 
         private void loadComboBoxItems()
@@ -80,8 +85,52 @@ namespace SentirseBien
 
         }
 
+        private void crearTurno(string nombre_usuario, string fecha, string servicio, string profesional) 
+        {
+            turno = new Turno();
+            turno.nombre_usuario = nombre_usuario;
+            turno.fecha = fecha;
+            turno.profesional = profesional;
+            turno.servicio = servicio;
+        }
+
         private void aceptar_button_Click(object sender, EventArgs e)
         {
+            crearTurno(usario.nombre, labelfecha.Text, servicios_combobox.Text, profesional_combobox.Text);
+            string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
+                   "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
+            using (MySqlConnection connection = new ConexionMysql().GetConnection())
+            {
+                try
+                {
+                    // Crear el comando MySQL con parámetros
+                    MySqlCommand cmd = new MySqlCommand(QUERYCREARTURNO, connection);
+
+                    // Agregar los parámetros a la consulta
+                    cmd.Parameters.AddWithValue("@nombreUsuario", turno.nombre_usuario);
+                    cmd.Parameters.AddWithValue("@servicio", turno.servicio);
+                    cmd.Parameters.AddWithValue("@fecha", turno.fecha);
+                    cmd.Parameters.AddWithValue("@profesional", turno.profesional);
+
+                    // Ejecutar la consulta
+                    int result = cmd.ExecuteNonQuery();
+
+                    // Verificar si se insertó correctamente
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Turno creado exitosamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un problema al crear el turno.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            
             this.Close();
         }
 

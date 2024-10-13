@@ -39,6 +39,7 @@
             servicios_combobox = new ComboBox();
             fecha_button = new Button();
             labelfecha = new Label();
+            test_label = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             tableLayoutPanel1.Controls.Add(servicios_combobox, 1, 1);
             tableLayoutPanel1.Controls.Add(fecha_button, 1, 3);
             tableLayoutPanel1.Controls.Add(labelfecha, 1, 4);
+            tableLayoutPanel1.Controls.Add(test_label, 0, 4);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -167,6 +169,15 @@
             labelfecha.TabIndex = 14;
             labelfecha.Text = "label4";
             // 
+            // test_label
+            // 
+            test_label.AutoSize = true;
+            test_label.Location = new Point(3, 369);
+            test_label.Name = "test_label";
+            test_label.Size = new Size(50, 20);
+            test_label.TabIndex = 15;
+            test_label.Text = "label4";
+            // 
             // pedirTurno
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -201,5 +212,6 @@
         private ComboBox servicios_combobox;
         private Button fecha_button;
         private Label labelfecha;
+        private Label test_label;
     }
 }
