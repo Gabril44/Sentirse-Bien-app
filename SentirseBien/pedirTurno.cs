@@ -29,7 +29,7 @@ namespace SentirseBien
 
         private void loadComboBoxItems()
         {
-            servicios_combobox.Items.Clear();
+            servicios_combobox.Items.Clear(); //comboBox Servicios
             string QUERY = "SELECT nombre,numServicio  FROM servicios";
             using (MySqlConnection connection = conexionMysql.GetConnection()) 
             {
@@ -56,7 +56,7 @@ namespace SentirseBien
                 }
             }
 
-            profesional_combobox.Items.Clear();
+            profesional_combobox.Items.Clear();//comboBox profesionales
             string QUERY2 = "SELECT nombre, idusuario FROM usuarios WHERE rol = 1";
             using (MySqlConnection connection = conexionMysql.GetConnection())
             {
@@ -81,6 +81,16 @@ namespace SentirseBien
                 {
                     MessageBox.Show("Error al cargar datos: " + ex.Message);
                 }
+            }
+
+            //comboBOx minutos y horas:
+            for (int i = 0; i < 24; i++) 
+            {
+                hora_combobox.Items.Add(i.ToString("D2"));
+            }
+            for (int i = 0; i < 60; i+=30) 
+            {
+                minutoscombobox.Items.Add(i.ToString("D2"));
             }
 
         }
@@ -145,6 +155,12 @@ namespace SentirseBien
                 this.fecha = calendarioForm.fecha;
                 labelfecha.Text = calendarioForm.fecha;
             }
+        }
+
+        private void getDisponibilidad() 
+        {
+            //comparar turnos existentes con el nuevo a crear
+
         }
     }
 
