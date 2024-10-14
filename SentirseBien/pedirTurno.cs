@@ -108,12 +108,10 @@ namespace SentirseBien
         {
             fecha += " "+hora_combobox.Text+":"+minutoscombobox.Text;
             //MessageBox.Show("horario: "+fecha);
-            
-                PagoForm pagoform = new PagoForm();
+                crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
+                PagoForm pagoform = new PagoForm(usario, turno);
                 pagoform.ShowDialog();
 
-
-                crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
                 string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
                        "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
             if (getDisponibilidad())

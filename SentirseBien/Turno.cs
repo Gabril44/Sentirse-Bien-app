@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SentirseBien
 {
-    internal class Turno
+    public class Turno
     {
         public int idturnos { get; set; }
         public string nombre_usuario {  get; set; }
