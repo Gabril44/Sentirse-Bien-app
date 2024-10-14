@@ -29,6 +29,10 @@ namespace SentirseBien
             {
                 case 0:
                     rol_label.Text = "Este usuario es un Cliente " + usuario.rol;
+                    PanelButtomClientes.Visible = false;
+                    label2.Visible = false;
+                    panelPagos.Visible = false;
+                    label5.Visible = false;
                     break;
                 case 1:
                     rol_label.Text = "Este usuario es un Empleado " + usuario.rol;

@@ -20,7 +20,8 @@ namespace SentirseBien
 
         private void aceptar_button_Click(object sender, EventArgs e)
         {
-            fecha =  ""+ monthCalendar1.SelectionStart;
+            DateTime fechaseleccionada = monthCalendar1.SelectionStart;
+            fecha =  fechaseleccionada.ToString("dd/MM/yyyy");
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

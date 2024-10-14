@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pedirTurno));
             tableLayoutPanel1 = new TableLayoutPanel();
-            aceptar_button = new Button();
             titulo_label = new Label();
             label1 = new Label();
             label2 = new Label();
@@ -41,8 +40,9 @@
             labelfecha = new Label();
             test_label = new Label();
             label4 = new Label();
-            minutoscombobox = new ComboBox();
             hora_combobox = new ComboBox();
+            aceptar_button = new Button();
+            minutoscombobox = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,16 +78,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // aceptar_button
-            // 
-            aceptar_button.Location = new Point(544, 418);
-            aceptar_button.Name = "aceptar_button";
-            aceptar_button.Size = new Size(223, 29);
-            aceptar_button.TabIndex = 4;
-            aceptar_button.Text = "Aceptar";
-            aceptar_button.UseVisualStyleBackColor = true;
-            aceptar_button.Click += aceptar_button_Click;
             // 
             // titulo_label
             // 
@@ -196,23 +186,35 @@
             label4.TabIndex = 16;
             label4.Text = "horario";
             // 
-            // minutoscombobox
-            // 
-            minutoscombobox.Dock = DockStyle.Bottom;
-            minutoscombobox.FormattingEnabled = true;
-            minutoscombobox.Location = new Point(544, 384);
-            minutoscombobox.Name = "minutoscombobox";
-            minutoscombobox.Size = new Size(253, 28);
-            minutoscombobox.TabIndex = 17;
-            // 
             // hora_combobox
             // 
             hora_combobox.Dock = DockStyle.Bottom;
+            hora_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             hora_combobox.FormattingEnabled = true;
             hora_combobox.Location = new Point(233, 384);
             hora_combobox.Name = "hora_combobox";
             hora_combobox.Size = new Size(305, 28);
             hora_combobox.TabIndex = 18;
+            // 
+            // aceptar_button
+            // 
+            aceptar_button.Location = new Point(544, 418);
+            aceptar_button.Name = "aceptar_button";
+            aceptar_button.Size = new Size(223, 29);
+            aceptar_button.TabIndex = 4;
+            aceptar_button.Text = "Aceptar";
+            aceptar_button.UseVisualStyleBackColor = true;
+            aceptar_button.Click += aceptar_button_Click;
+            // 
+            // minutoscombobox
+            // 
+            minutoscombobox.Dock = DockStyle.Bottom;
+            minutoscombobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            minutoscombobox.FormattingEnabled = true;
+            minutoscombobox.Location = new Point(544, 384);
+            minutoscombobox.Name = "minutoscombobox";
+            minutoscombobox.Size = new Size(253, 28);
+            minutoscombobox.TabIndex = 17;
             // 
             // pedirTurno
             // 

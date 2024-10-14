@@ -106,13 +106,18 @@ namespace SentirseBien
 
         private void aceptar_button_Click(object sender, EventArgs e)
         {
-            PagoForm pagoform = new PagoForm();
-            pagoform.ShowDialog();
+            fecha += " "+hora_combobox.Text+":"+minutoscombobox.Text;
+            //MessageBox.Show("horario: "+fecha);
             
+                PagoForm pagoform = new PagoForm();
+                pagoform.ShowDialog();
 
-                crearTurno(usario.nombre, labelfecha.Text, servicios_combobox.Text, profesional_combobox.Text);
+
+                crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
                 string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
                        "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
+            if (getDisponibilidad())
+            {
                 using (MySqlConnection connection = new ConexionMysql().GetConnection())
                 {
                     try
@@ -144,7 +149,7 @@ namespace SentirseBien
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
-                this.Close();
+            }  this.Close();
         }
 
         private void fecha_button_Click(object sender, EventArgs e)
@@ -157,10 +162,36 @@ namespace SentirseBien
             }
         }
 
-        private void getDisponibilidad() 
+        private bool getDisponibilidad() 
         {
             //comparar turnos existentes con el nuevo a crear
+            string QUERY = "SELECT fecha,profesional  FROM turnos";
+            using (MySqlConnection connection = conexionMysql.GetConnection())
+            {
+                MySqlCommand command = new MySqlCommand(QUERY, connection);
 
+                try
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (turno.profesional == reader.GetString("profesional") && turno.fecha == reader.GetString("fecha"))
+                            {
+                                MessageBox.Show("Ese profesional ya tiene turno en ese horario!");
+                                return false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el horario: " + ex.Message);
+                    return false;
+                }
+            }
+            return true;
         }
     }
 
