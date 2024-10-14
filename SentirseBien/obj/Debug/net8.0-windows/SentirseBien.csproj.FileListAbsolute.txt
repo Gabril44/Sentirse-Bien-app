@@ -53,3 +53,4 @@ C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-w
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.PagoForm.resources
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Debug\net8.0-windows\itextsharp.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Debug\net8.0-windows\SentirseBien.BienvenidoForm.resources

@@ -37,7 +37,6 @@
             correo = new DataGridViewTextBoxColumn();
             password = new DataGridViewTextBoxColumn();
             user = new DataGridViewTextBoxColumn();
-            button1 = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -104,16 +103,6 @@
             user.MinimumWidth = 6;
             user.Name = "user";
             // 
-            // button1
-            // 
-            button1.Location = new Point(104, 618);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 2;
-            button1.Text = "Aceptar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
@@ -122,7 +111,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 85F));
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
-            tableLayoutPanel1.Controls.Add(button1, 1, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -140,6 +128,7 @@
             BackColor = Color.FromArgb(72, 137, 121);
             ClientSize = new Size(1077, 656);
             Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Clientes";
             StartPosition = FormStartPosition.CenterScreen;
@@ -155,7 +144,6 @@
 
         private Label label1;
         private DataGridView dataGridView1;
-        private Button button1;
         private DataGridViewTextBoxColumn idusuario;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn correo;

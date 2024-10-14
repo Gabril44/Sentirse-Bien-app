@@ -24,24 +24,24 @@ namespace SentirseBien
             InitializeComponent();
             conexionMysql = new ConexionMysql();
             loadComboBoxItems();
-            test_label.Text= usuario.nombre;
+            test_label.Text = usuario.nombre;
         }
 
         private void loadComboBoxItems()
         {
             servicios_combobox.Items.Clear(); //comboBox Servicios
             string QUERY = "SELECT nombre,numServicio  FROM servicios";
-            using (MySqlConnection connection = conexionMysql.GetConnection()) 
+            using (MySqlConnection connection = conexionMysql.GetConnection())
             {
                 MySqlCommand command = new MySqlCommand(QUERY, connection);
 
                 try
                 {
-                    using (MySqlDataReader reader = command.ExecuteReader()) 
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read()) 
+                        while (reader.Read())
                         {
-                            ComboBoxItem item = new ComboBoxItem 
+                            ComboBoxItem item = new ComboBoxItem
                             {
                                 id = reader.GetInt32("numServicio"),
                                 nombre = reader.GetString("nombre")
@@ -50,9 +50,9 @@ namespace SentirseBien
                         }
                     }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error al cargar datos: "+ex.Message);
+                    MessageBox.Show("Error al cargar datos: " + ex.Message);
                 }
             }
 
@@ -84,18 +84,18 @@ namespace SentirseBien
             }
 
             //comboBOx minutos y horas:
-            for (int i = 0; i < 24; i++) 
+            for (int i = 0; i < 24; i++)
             {
                 hora_combobox.Items.Add(i.ToString("D2"));
             }
-            for (int i = 0; i < 60; i+=30) 
+            for (int i = 0; i < 60; i += 30)
             {
                 minutoscombobox.Items.Add(i.ToString("D2"));
             }
 
         }
 
-        private void crearTurno(string nombre_usuario, string fecha, string servicio, string profesional) 
+        private void crearTurno(string nombre_usuario, string fecha, string servicio, string profesional)
         {
             turno = new Turno();
             turno.nombre_usuario = nombre_usuario;
@@ -106,14 +106,14 @@ namespace SentirseBien
 
         private void aceptar_button_Click(object sender, EventArgs e)
         {
-            fecha += " "+hora_combobox.Text+":"+minutoscombobox.Text;
+            fecha += " " + hora_combobox.Text + ":" + minutoscombobox.Text;
             //MessageBox.Show("horario: "+fecha);
-                crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
-                PagoForm pagoform = new PagoForm(usario, turno);
-                pagoform.ShowDialog();
+            crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
+            PagoForm pagoform = new PagoForm(usario, turno);
+            pagoform.ShowDialog();
 
-                string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
-                       "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
+            string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
+                   "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
             if (getDisponibilidad())
             {
                 using (MySqlConnection connection = new ConexionMysql().GetConnection())
@@ -147,20 +147,21 @@ namespace SentirseBien
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
-            }  this.Close();
+            }
+            this.Close();
         }
 
         private void fecha_button_Click(object sender, EventArgs e)
         {
             CalendarioForm calendarioForm = new CalendarioForm();
-            if(calendarioForm.ShowDialog() == DialogResult.OK) 
+            if (calendarioForm.ShowDialog() == DialogResult.OK)
             {
                 this.fecha = calendarioForm.fecha;
                 labelfecha.Text = calendarioForm.fecha;
             }
         }
 
-        private bool getDisponibilidad() 
+        private bool getDisponibilidad()
         {
             //comparar turnos existentes con el nuevo a crear
             string QUERY = "SELECT fecha,profesional  FROM turnos";
@@ -190,6 +191,11 @@ namespace SentirseBien
                 }
             }
             return true;
+        }
+
+        private void cancelar_button_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

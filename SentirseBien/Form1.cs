@@ -9,6 +9,7 @@ namespace SentirseBien
         private TurnoConsultas turnoConsultas;
         public Form1(Usuario usuario)
         {
+            this.Size = new Size(1077, 712);
             InitializeComponent();
             turnos = new List<Turno>();
             turnoConsultas = new TurnoConsultas();
@@ -68,12 +69,7 @@ namespace SentirseBien
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Index index = new Index(usuario);
-            index.ShowDialog();
-        }
+      
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

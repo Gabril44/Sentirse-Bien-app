@@ -25,12 +25,7 @@ namespace SentirseBien
             this.usuario = usuario;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Index index = new Index(usuario);
-            this.Hide();
-            index.ShowDialog();
-        }
+       
 
         private void cargarClientes(string filtro = "")
         {

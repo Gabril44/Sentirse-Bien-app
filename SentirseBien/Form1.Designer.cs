@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label1 = new Label();
-            button1 = new Button();
             dataGridView1 = new DataGridView();
             idturno = new DataGridViewTextBoxColumn();
             nombre_usuario = new DataGridViewTextBoxColumn();
@@ -53,16 +52,6 @@
             label1.TabIndex = 0;
             label1.Text = "Turnos:";
             label1.Click += label1_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(92, 537);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 3;
-            button1.Text = "Aceptar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
@@ -131,7 +120,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(pedir_turno_cliente, 2, 2);
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
-            tableLayoutPanel1.Controls.Add(button1, 1, 2);
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
@@ -150,11 +138,11 @@
             BackColor = Color.FromArgb(72, 137, 121);
             ClientSize = new Size(1067, 574);
             Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sentirse Bien";
-            WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
@@ -165,7 +153,6 @@
         #endregion
 
         private Label label1;
-        private Button button1;
         private DataGridView dataGridView1;
         private Button pedir_turno_cliente;
         private TableLayoutPanel tableLayoutPanel1;

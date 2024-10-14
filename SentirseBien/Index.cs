@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,11 @@ namespace SentirseBien
             this.usuario = usuario;
             InitializeComponent();
             //configurarMenuStrip(usuario);
-            welcome_label.Text = usuario.nombre.ToString();
+            //panelContenedor.Visible = true;
             getRol(usuario);
             panelMenuPerfil.Visible = false;
+            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario);
+            AbrirFormularioEnPanel(bienvenidoForm);
 
         }
         private void getRol(Usuario usuario)
@@ -28,20 +31,24 @@ namespace SentirseBien
             switch (usuario.rol)
             {
                 case 0:
-                    rol_label.Text = "Este usuario es un Cliente " + usuario.rol;
                     PanelButtomClientes.Visible = false;
                     label2.Visible = false;
                     panelPagos.Visible = false;
                     label5.Visible = false;
                     break;
                 case 1:
-                    rol_label.Text = "Este usuario es un Empleado " + usuario.rol;
-                    break;
-                case 2:
-                    rol_label.Text = "Este usuario es un Secretario/a " + usuario.rol;
-                    break;
-                case 3:
-                    rol_label.Text = "Este usuario es la Dra Felicidad!!!! omg!!! y tiene rol: " + usuario.rol;
+
+                    if (usuario.correo == "test@gmail.com")
+                    {
+
+                    }
+                    else
+                    {
+                        PanelButtomClientes.Visible = false;
+                        label2.Visible = false;
+                        panelPagos.Visible = false;
+                        label5.Visible = false;
+                    }
                     break;
             }
         }
@@ -70,17 +77,21 @@ namespace SentirseBien
 
         private void turnosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("apretaste turnos");
             Form1 turnos = new Form1(usuario);
-            this.Hide();
-            turnos.ShowDialog();
+            AbrirFormularioEnPanel(turnos);
+            //this.Hide();
+            //turnos.Show();
 
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("apretaste clientes");
             Clientes clientes = new Clientes(usuario);
-            this.Hide();
-            clientes.ShowDialog();
+            AbrirFormularioEnPanel(clientes);
+            /*this.Hide();
+            clientes.ShowDialog();*/
         }
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,10 +140,77 @@ namespace SentirseBien
 
         private void index_Click(object sender, MouseEventArgs e)
         {
-           if( panelMenuPerfil.Visible)
+            if (panelMenuPerfil.Visible)
             {
                 panelMenuPerfil.Visible = false;
             };
+        }
+
+        private void AbrirFormularioEnPanel(Form formularioHijo)
+        {
+            MessageBox.Show("llegó al metodo");
+            if (panelContenedor.Controls.Count > 0)
+            {
+                MessageBox.Show("Llegó al if");
+                panelContenedor.Controls[0].Dispose();
+
+                formularioHijo.TopLevel = false;
+                formularioHijo.FormBorderStyle = FormBorderStyle.None;
+                formularioHijo.Dock = DockStyle.Fill;
+
+                panelContenedor.Controls.Add(formularioHijo);
+                panelContenedor.Tag = formularioHijo;
+                formularioHijo.Show();
+
+
+            }
+            else
+            {
+                MessageBox.Show("Llegó al Else");
+
+                panelContenedor.Controls.Clear();
+
+                formularioHijo.TopLevel = false;
+                formularioHijo.FormBorderStyle = FormBorderStyle.None;
+                formularioHijo.Dock = DockStyle.Fill;
+
+                panelContenedor.Controls.Add(formularioHijo);
+                panelContenedor.Tag = formularioHijo;
+                formularioHijo.Show();
+            }
+        }
+
+        /* private void abrirFormHijo(Form formhijo)
+         {
+             try
+             {
+                 if (this.panelContenedor.Controls.Count > 0)
+                 {
+                     this.panelContenedor.Controls.RemoveAt(0);
+                     formhijo.TopLevel = false;
+                     formhijo.Dock = DockStyle.Fill;
+                     this.panelContenedor.Controls.Add(formhijo);
+                     this.panelContenedor.Tag = formhijo;
+                     formhijo.Show();
+                     panelContenedor.Refresh();
+                     MessageBox.Show("Formulario añadido exitosamente");
+                 }
+             }
+             catch (Exception ex) 
+             {
+                 MessageBox.Show("Error :"+ex.Message);
+             }
+         }*/
+
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario);
+            AbrirFormularioEnPanel(bienvenidoForm);
         }
     }
 }

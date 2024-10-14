@@ -43,6 +43,7 @@
             hora_combobox = new ComboBox();
             aceptar_button = new Button();
             minutoscombobox = new ComboBox();
+            cancelar_button = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             tableLayoutPanel1.Controls.Add(hora_combobox, 1, 5);
             tableLayoutPanel1.Controls.Add(aceptar_button, 2, 6);
             tableLayoutPanel1.Controls.Add(minutoscombobox, 2, 5);
+            tableLayoutPanel1.Controls.Add(cancelar_button, 0, 6);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -216,6 +218,17 @@
             minutoscombobox.Size = new Size(253, 28);
             minutoscombobox.TabIndex = 17;
             // 
+            // cancelar_button
+            // 
+            cancelar_button.Dock = DockStyle.Right;
+            cancelar_button.Location = new Point(23, 418);
+            cancelar_button.Name = "cancelar_button";
+            cancelar_button.Size = new Size(204, 29);
+            cancelar_button.TabIndex = 19;
+            cancelar_button.Text = "Cancelar";
+            cancelar_button.UseVisualStyleBackColor = true;
+            cancelar_button.Click += cancelar_button_Click;
+            // 
             // pedirTurno
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -254,5 +267,6 @@
         private Label label4;
         private ComboBox minutoscombobox;
         private ComboBox hora_combobox;
+        private Button cancelar_button;
     }
 }
