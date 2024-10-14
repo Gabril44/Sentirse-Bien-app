@@ -62,7 +62,7 @@
             // 
             // PanelMenu
             // 
-            PanelMenu.BackColor = Color.FromArgb(29, 56, 49);
+            PanelMenu.BackColor = Color.FromArgb(36, 82, 71);
             PanelMenu.Controls.Add(pictureBox1);
             PanelMenu.Controls.Add(panel5);
             PanelMenu.Controls.Add(panelPerfil);
@@ -93,6 +93,7 @@
             panel5.AutoSize = true;
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(labelcerrar);
+            panel5.Cursor = Cursors.Hand;
             panel5.Dock = DockStyle.Bottom;
             panel5.Location = new Point(0, 649);
             panel5.Margin = new Padding(1, 1, 1, 20);
@@ -199,6 +200,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ControlText;
             label2.Location = new Point(34, 12);
             label2.Name = "label2";
             label2.Size = new Size(94, 30);
@@ -210,7 +212,7 @@
             // panelPerfilEditar
             // 
             panelPerfilEditar.AutoSize = true;
-            panelPerfilEditar.BackColor = Color.FromArgb(29, 56, 49);
+            panelPerfilEditar.BackColor = Color.FromArgb(36, 82, 71);
             panelPerfilEditar.BorderStyle = BorderStyle.FixedSingle;
             panelPerfilEditar.Controls.Add(labelPerfilEditar);
             panelPerfilEditar.Controls.Add(label6);
@@ -243,7 +245,7 @@
             // panelPerfilCerrar
             // 
             panelPerfilCerrar.AutoSize = true;
-            panelPerfilCerrar.BackColor = Color.FromArgb(29, 56, 49);
+            panelPerfilCerrar.BackColor = Color.FromArgb(36, 82, 71);
             panelPerfilCerrar.BorderStyle = BorderStyle.FixedSingle;
             panelPerfilCerrar.Controls.Add(labelPerfilCerrar);
             panelPerfilCerrar.Location = new Point(3, 45);
@@ -257,7 +259,7 @@
             labelPerfilCerrar.AutoSize = true;
             labelPerfilCerrar.Cursor = Cursors.Hand;
             labelPerfilCerrar.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelPerfilCerrar.Location = new Point(5, 2);
+            labelPerfilCerrar.Location = new Point(5, 0);
             labelPerfilCerrar.Name = "labelPerfilCerrar";
             labelPerfilCerrar.Size = new Size(159, 30);
             labelPerfilCerrar.TabIndex = 0;
@@ -267,7 +269,6 @@
             // panelMenuPerfil
             // 
             panelMenuPerfil.AutoSize = true;
-            panelMenuPerfil.BorderStyle = BorderStyle.FixedSingle;
             panelMenuPerfil.Controls.Add(panelPerfilEditar);
             panelMenuPerfil.Controls.Add(panelPerfilCerrar);
             panelMenuPerfil.Location = new Point(177, 267);
@@ -277,6 +278,7 @@
             // 
             // panelContenedor
             // 
+            panelContenedor.BackColor = Color.FromArgb(56, 115, 100);
             panelContenedor.Dock = DockStyle.Fill;
             panelContenedor.Location = new Point(170, 0);
             panelContenedor.Name = "panelContenedor";

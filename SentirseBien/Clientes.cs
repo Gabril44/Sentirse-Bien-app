@@ -21,8 +21,16 @@ namespace SentirseBien
             InitializeComponent();
             clientes = new List<Usuario>();
             clientesConsulta = new ClientesConsulta();
-            cargarClientes();
-            this.usuario = usuario;
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                cargarClientes();
+                this.usuario = usuario;
+            }
+            finally 
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
        

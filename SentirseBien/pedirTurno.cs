@@ -109,13 +109,13 @@ namespace SentirseBien
             fecha += " " + hora_combobox.Text + ":" + minutoscombobox.Text;
             //MessageBox.Show("horario: "+fecha);
             crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
-            PagoForm pagoform = new PagoForm(usario, turno);
-            pagoform.ShowDialog();
+            
 
             string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
                    "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
             if (getDisponibilidad())
             {
+
                 using (MySqlConnection connection = new ConexionMysql().GetConnection())
                 {
                     try
@@ -147,6 +147,8 @@ namespace SentirseBien
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
+                PagoForm pagoform = new PagoForm(usario, turno);
+                pagoform.ShowDialog();
             }
             this.Close();
         }

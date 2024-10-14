@@ -23,7 +23,7 @@ namespace SentirseBien
         {
             if (usuario.correo == "test@gmail.com") 
             {
-                pedir_turno_cliente.Visible = true;
+                cancelar_turno_button.Visible = true;
             }
         }
 
@@ -40,21 +40,31 @@ namespace SentirseBien
 
         private void cargarTurnos(string filtro = "")
         {
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
-            turnos.Clear();
-            turnos = turnoConsultas.getTurno(filtro);
-
-            for (int i = 0; i < turnos.Count; i++)
+            try
             {
-                dataGridView1.RowTemplate.Height = 50;
-                dataGridView1.Rows.Add(
-                    turnos[i].idturnos,
-                    turnos[i].nombre_usuario,
-                    turnos[i].fecha,
-                    turnos[i].servicio,
-                    turnos[i].profesional
-                    );
+                // Mostrar el cursor de espera
+                Cursor.Current = Cursors.WaitCursor;
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+                turnos.Clear();
+                turnos = turnoConsultas.getTurno(filtro);
+
+                for (int i = 0; i < turnos.Count; i++)
+                {
+                    dataGridView1.RowTemplate.Height = 50;
+                    dataGridView1.Rows.Add(
+                        turnos[i].idturnos,
+                        turnos[i].nombre_usuario,
+                        turnos[i].fecha,
+                        turnos[i].servicio,
+                        turnos[i].profesional
+                        );
+                }
+            } 
+            finally 
+            {
+                // Asegurarse de restaurar el cursor normal
+                Cursor.Current = Cursors.Default;
             }
 
         }

@@ -164,7 +164,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(72, 137, 121);
+            BackColor = Color.FromArgb(56, 115, 100);
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
             Name = "PagoForm";

@@ -63,6 +63,36 @@ namespace SentirseBien.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Couples_Escape {
+            get {
+                object obj = ResourceManager.GetObject("Couples-Escape", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Day_Spa_Facials_SkinCare_Header_1920x1080 {
+            get {
+                object obj = ResourceManager.GetObject("Day-Spa_Facials-SkinCare_Header_1920x1080", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Diseno_sin_titulo_36 {
+            get {
+                object obj = ResourceManager.GetObject("Diseno-sin-titulo-36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imagen1 {
             get {
                 object obj = ResourceManager.GetObject("imagen1", resourceCulture);
@@ -73,9 +103,40 @@ namespace SentirseBien.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imagen2 {
+            get {
+                object obj = ResourceManager.GetObject("imagen2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pileta_interior_del_azur_real_hotel_boutique_entre_los_mejores_spa_del_mundo_1628212 {
+            get {
+                object obj = ResourceManager.GetObject("pileta-interior-del-azur-real-hotel-boutique-entre-los-mejores-spa-del-mundo-1628" +
+                        "212", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Portadas {
+            get {
+                object obj = ResourceManager.GetObject("Portadas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

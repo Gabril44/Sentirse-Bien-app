@@ -52,7 +52,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(72, 137, 121);
+            BackColor = Color.FromArgb(56, 115, 100);
             ClientSize = new Size(229, 270);
             Controls.Add(aceptar_button);
             Controls.Add(monthCalendar1);

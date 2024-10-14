@@ -77,7 +77,7 @@ namespace SentirseBien
 
         private void turnosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("apretaste turnos");
+            //MessageBox.Show("apretaste turnos");
             Form1 turnos = new Form1(usuario);
             AbrirFormularioEnPanel(turnos);
             //this.Hide();
@@ -87,7 +87,7 @@ namespace SentirseBien
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("apretaste clientes");
+            //MessageBox.Show("apretaste clientes");
             Clientes clientes = new Clientes(usuario);
             AbrirFormularioEnPanel(clientes);
             /*this.Hide();
@@ -148,10 +148,10 @@ namespace SentirseBien
 
         private void AbrirFormularioEnPanel(Form formularioHijo)
         {
-            MessageBox.Show("llegó al metodo");
+            //MessageBox.Show("llegó al metodo");
             if (panelContenedor.Controls.Count > 0)
             {
-                MessageBox.Show("Llegó al if");
+                //MessageBox.Show("Llegó al if");
                 panelContenedor.Controls[0].Dispose();
 
                 formularioHijo.TopLevel = false;
@@ -166,7 +166,7 @@ namespace SentirseBien
             }
             else
             {
-                MessageBox.Show("Llegó al Else");
+                //MessageBox.Show("Llegó al Else");
 
                 panelContenedor.Controls.Clear();
 

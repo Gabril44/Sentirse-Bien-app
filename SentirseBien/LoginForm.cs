@@ -35,11 +35,20 @@ namespace SentirseBien
 
         private void aceptar_button_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            string username, password;
-            username = user_textbox.Text;
-            password = pass_textbox.Text;
-            login(username, password);
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                this.Hide();
+                string username, password;
+                username = user_textbox.Text;
+                password = pass_textbox.Text;
+                login(username, password);
+            }
+            finally 
+            { 
+                // Asegurarse de restaurar el cursor normal
+                Cursor.Current = Cursors.Default;
+            }
             
         }
 
@@ -89,7 +98,7 @@ namespace SentirseBien
                     usuario.rol = reader.GetInt32("rol");
                     usuario.nombre = reader.GetString("nombre");
                     usuario.password = reader.GetString("password");
-                    MessageBox.Show("bienvenido " + reader.GetString("nombre") + "!");
+                    //MessageBox.Show("bienvenido " + reader.GetString("nombre") + "!");
                     gotoIndex(usuario);
                 }
                 else

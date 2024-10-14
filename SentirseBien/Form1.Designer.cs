@@ -38,6 +38,7 @@
             profesional = new DataGridViewTextBoxColumn();
             pedir_turno_cliente = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            cancelar_turno_button = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -107,7 +108,6 @@
             pedir_turno_cliente.TabIndex = 5;
             pedir_turno_cliente.Text = "Pedir turno";
             pedir_turno_cliente.UseVisualStyleBackColor = true;
-            pedir_turno_cliente.Visible = false;
             pedir_turno_cliente.Click += pedir_turno_cliente_Click;
             // 
             // tableLayoutPanel1
@@ -121,6 +121,7 @@
             tableLayoutPanel1.Controls.Add(pedir_turno_cliente, 2, 2);
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
+            tableLayoutPanel1.Controls.Add(cancelar_turno_button, 1, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -130,6 +131,16 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
             tableLayoutPanel1.Size = new Size(1067, 574);
             tableLayoutPanel1.TabIndex = 6;
+            // 
+            // cancelar_turno_button
+            // 
+            cancelar_turno_button.Location = new Point(92, 537);
+            cancelar_turno_button.Name = "cancelar_turno_button";
+            cancelar_turno_button.Size = new Size(113, 29);
+            cancelar_turno_button.TabIndex = 6;
+            cancelar_turno_button.Text = "Cancelar turno";
+            cancelar_turno_button.UseVisualStyleBackColor = true;
+            cancelar_turno_button.Visible = false;
             // 
             // Form1
             // 
@@ -161,5 +172,6 @@
         private DataGridViewTextBoxColumn fecha;
         private DataGridViewTextBoxColumn servicio;
         private DataGridViewTextBoxColumn profesional;
+        private Button cancelar_turno_button;
     }
 }
