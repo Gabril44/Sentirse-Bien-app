@@ -30,113 +30,106 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             label4 = new Label();
-            aceptar_button = new Button();
+            PagoForm_Nombre = new Panel();
+            label7 = new Label();
+            label1 = new Label();
+            panel1 = new Panel();
+            label2 = new Label();
+            label8 = new Label();
+            panel2 = new Panel();
+            label3 = new Label();
+            label9 = new Label();
+            panel3 = new Panel();
+            panel5 = new Panel();
+            label5 = new Label();
+            label13 = new Label();
+            label10 = new Label();
+            panelAceptarPago = new Panel();
+            labelAceptarPago = new Label();
+            label6 = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            PagoForm_Nombre.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            panel5.SuspendLayout();
+            panelAceptarPago.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.1412621F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.8587379F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 261F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.3870964F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.6129036F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 393F));
             tableLayoutPanel1.Controls.Add(pictureBox1, 0, 0);
-            tableLayoutPanel1.Controls.Add(label1, 0, 1);
-            tableLayoutPanel1.Controls.Add(label2, 0, 2);
-            tableLayoutPanel1.Controls.Add(label3, 0, 3);
             tableLayoutPanel1.Controls.Add(textBox1, 1, 1);
             tableLayoutPanel1.Controls.Add(textBox2, 1, 2);
             tableLayoutPanel1.Controls.Add(textBox3, 1, 3);
             tableLayoutPanel1.Controls.Add(label4, 1, 0);
-            tableLayoutPanel1.Controls.Add(aceptar_button, 2, 5);
+            tableLayoutPanel1.Controls.Add(PagoForm_Nombre, 0, 1);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 2);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 3);
+            tableLayoutPanel1.Controls.Add(panel3, 1, 5);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowCount = 8;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 81.70731F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.2926826F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(800, 450);
+            tableLayoutPanel1.Size = new Size(1200, 675);
             tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.tarjeta;
-            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Location = new Point(4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(253, 195);
+            pictureBox1.Size = new Size(382, 278);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Dock = DockStyle.Bottom;
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(3, 226);
-            label1.Name = "label1";
-            label1.Size = new Size(253, 20);
-            label1.TabIndex = 1;
-            label1.Text = "Nombre";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Dock = DockStyle.Bottom;
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(3, 274);
-            label2.Name = "label2";
-            label2.Size = new Size(253, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Numero de tarjeta";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Dock = DockStyle.Bottom;
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(3, 321);
-            label3.Name = "label3";
-            label3.Size = new Size(253, 20);
-            label3.TabIndex = 3;
-            label3.Text = "Código de seguridad";
-            // 
             // textBox1
             // 
-            textBox1.Dock = DockStyle.Bottom;
-            textBox1.Location = new Point(262, 216);
+            textBox1.Dock = DockStyle.Fill;
+            textBox1.Location = new Point(398, 306);
+            textBox1.Margin = new Padding(8, 20, 4, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(273, 27);
+            textBox1.Size = new Size(404, 35);
             textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
-            textBox2.Dock = DockStyle.Bottom;
-            textBox2.Location = new Point(262, 264);
+            textBox2.Dock = DockStyle.Fill;
+            textBox2.Location = new Point(394, 370);
+            textBox2.Margin = new Padding(4, 20, 4, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(273, 27);
+            textBox2.Size = new Size(408, 35);
             textBox2.TabIndex = 5;
             // 
             // textBox3
             // 
-            textBox3.Dock = DockStyle.Bottom;
-            textBox3.Location = new Point(262, 311);
+            textBox3.Dock = DockStyle.Fill;
+            textBox3.Location = new Point(394, 442);
+            textBox3.Margin = new Padding(4, 20, 4, 4);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(273, 27);
+            textBox3.Size = new Size(408, 35);
             textBox3.TabIndex = 6;
             // 
             // label4
@@ -144,34 +137,251 @@
             label4.AutoSize = true;
             label4.Dock = DockStyle.Bottom;
             label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(262, 181);
+            label4.Location = new Point(394, 256);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(273, 20);
+            label4.Size = new Size(408, 30);
             label4.TabIndex = 7;
             label4.Text = "Por favor ingrese los datos de su tarjeta";
             // 
-            // aceptar_button
+            // PagoForm_Nombre
             // 
-            aceptar_button.Location = new Point(541, 390);
-            aceptar_button.Name = "aceptar_button";
-            aceptar_button.Size = new Size(94, 29);
-            aceptar_button.TabIndex = 8;
-            aceptar_button.Text = "Aceptar";
-            aceptar_button.UseVisualStyleBackColor = true;
-            aceptar_button.Click += aceptar_button_Click;
+            PagoForm_Nombre.AutoSize = true;
+            PagoForm_Nombre.BackColor = Color.FromArgb(36, 82, 71);
+            PagoForm_Nombre.BorderStyle = BorderStyle.FixedSingle;
+            PagoForm_Nombre.Controls.Add(label7);
+            PagoForm_Nombre.Controls.Add(label1);
+            PagoForm_Nombre.Cursor = Cursors.Hand;
+            PagoForm_Nombre.Dock = DockStyle.Fill;
+            PagoForm_Nombre.Location = new Point(4, 290);
+            PagoForm_Nombre.Margin = new Padding(4);
+            PagoForm_Nombre.Name = "PagoForm_Nombre";
+            PagoForm_Nombre.Size = new Size(382, 56);
+            PagoForm_Nombre.TabIndex = 11;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(75, 2);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(0, 43);
+            label7.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(117, 9);
+            label1.Margin = new Padding(4);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 36);
+            label1.TabIndex = 1;
+            label1.Text = "Nombre";
+            // 
+            // panel1
+            // 
+            panel1.AutoSize = true;
+            panel1.BackColor = Color.FromArgb(36, 82, 71);
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label8);
+            panel1.Cursor = Cursors.Hand;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(4, 354);
+            panel1.Margin = new Padding(4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(382, 64);
+            panel1.TabIndex = 12;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(75, 2);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 43);
+            label2.TabIndex = 0;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ControlLightLight;
+            label8.Location = new Point(117, 9);
+            label8.Margin = new Padding(4);
+            label8.Name = "label8";
+            label8.Size = new Size(145, 36);
+            label8.TabIndex = 1;
+            label8.Text = "N° Tarjeta";
+            // 
+            // panel2
+            // 
+            panel2.AutoSize = true;
+            panel2.BackColor = Color.FromArgb(36, 82, 71);
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label9);
+            panel2.Cursor = Cursors.Hand;
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(4, 426);
+            panel2.Margin = new Padding(4);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(382, 62);
+            panel2.TabIndex = 13;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(75, 2);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(0, 43);
+            label3.TabIndex = 0;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ControlLightLight;
+            label9.Location = new Point(36, 12);
+            label9.Margin = new Padding(4);
+            label9.Name = "label9";
+            label9.Size = new Size(296, 36);
+            label9.TabIndex = 1;
+            label9.Text = "Codigo de Seguridad";
+            // 
+            // panel3
+            // 
+            panel3.AutoSize = true;
+            panel3.BackColor = Color.FromArgb(56, 115, 100);
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(panel5);
+            panel3.Controls.Add(label10);
+            panel3.Controls.Add(panelAceptarPago);
+            panel3.Cursor = Cursors.Hand;
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(394, 565);
+            panel3.Margin = new Padding(4);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(408, 55);
+            panel3.TabIndex = 14;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.FromArgb(36, 82, 71);
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(label5);
+            panel5.Controls.Add(label13);
+            panel5.Cursor = Cursors.Hand;
+            panel5.Dock = DockStyle.Right;
+            panel5.Location = new Point(237, 0);
+            panel5.Margin = new Padding(4);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(169, 53);
+            panel5.TabIndex = 11;
+            panel5.Click += cancelarBoton_click;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(18, 7);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(129, 36);
+            label5.TabIndex = 1;
+            label5.Text = "Cancelar";
+            label5.Click += cancelarBoton_click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.Location = new Point(75, 2);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(0, 43);
+            label13.TabIndex = 0;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(75, 2);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(0, 43);
+            label10.TabIndex = 0;
+            // 
+            // panelAceptarPago
+            // 
+            panelAceptarPago.BackColor = Color.FromArgb(36, 82, 71);
+            panelAceptarPago.BorderStyle = BorderStyle.FixedSingle;
+            panelAceptarPago.Controls.Add(labelAceptarPago);
+            panelAceptarPago.Controls.Add(label6);
+            panelAceptarPago.Cursor = Cursors.Hand;
+            panelAceptarPago.Dock = DockStyle.Left;
+            panelAceptarPago.Location = new Point(0, 0);
+            panelAceptarPago.Margin = new Padding(4);
+            panelAceptarPago.Name = "panelAceptarPago";
+            panelAceptarPago.Size = new Size(169, 53);
+            panelAceptarPago.TabIndex = 10;
+            panelAceptarPago.Click += aceptar_button_Click;
+            // 
+            // labelAceptarPago
+            // 
+            labelAceptarPago.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            labelAceptarPago.AutoSize = true;
+            labelAceptarPago.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelAceptarPago.Location = new Point(18, 7);
+            labelAceptarPago.Margin = new Padding(4, 0, 4, 0);
+            labelAceptarPago.Name = "labelAceptarPago";
+            labelAceptarPago.Size = new Size(119, 36);
+            labelAceptarPago.TabIndex = 1;
+            labelAceptarPago.Text = "Aceptar";
+            labelAceptarPago.Click += aceptar_button_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(75, 2);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(0, 43);
+            label6.TabIndex = 0;
             // 
             // PagoForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(56, 115, 100);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1200, 675);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(4);
             Name = "PagoForm";
             Text = "PagoForm";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            PagoForm_Nombre.ResumeLayout(false);
+            PagoForm_Nombre.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            panelAceptarPago.ResumeLayout(false);
+            panelAceptarPago.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -180,12 +390,25 @@
         private TableLayoutPanel tableLayoutPanel1;
         private PictureBox pictureBox1;
         private Label label1;
-        private Label label2;
-        private Label label3;
         private TextBox textBox1;
+        private Label label4;
+        private Panel PagoForm_Nombre;
+        private Label label7;
         private TextBox textBox2;
         private TextBox textBox3;
-        private Label label4;
-        private Button aceptar_button;
+        private Panel panel1;
+        private Label label2;
+        private Label label8;
+        private Panel panel2;
+        private Label label3;
+        private Label label9;
+        private Panel panel3;
+        private Label label10;
+        private Panel panelAceptarPago;
+        private Panel panel5;
+        private Label label5;
+        private Label label13;
+        private Label labelAceptarPago;
+        private Label label6;
     }
 }

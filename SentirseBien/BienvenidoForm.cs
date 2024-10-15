@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace SentirseBien
 {
+
     public partial class BienvenidoForm : Form
     {
+        private Panel _panelMenuPerfil;
         private Usuario usuario;
         private List<Image> imagenes; // Lista de imágenes
         private int indiceActual = 0; // Índice de la imagen actual
@@ -23,6 +26,20 @@ namespace SentirseBien
             InitializeComponent();
             getBienvenida();
             IniciarCarrousel();
+        }
+        public BienvenidoForm(Usuario usuario, Panel panelMenuPerfil)
+        {
+            this.usuario = usuario;
+            _panelMenuPerfil = panelMenuPerfil;
+            InitializeComponent();
+            getBienvenida();
+            IniciarCarrousel();
+        }
+
+        private void BienvenidoForm_Click(object sender, MouseEventArgs e)
+        {
+
+            
         }
 
         private void IniciarCarrousel()
@@ -55,9 +72,18 @@ namespace SentirseBien
             indiceActual = (indiceActual + 1) % imagenes.Count;
             carrousel_pb.Image = imagenes[indiceActual];
         }
-        private void getBienvenida() 
+        private void getBienvenida()
         {
             bienvenido_label.Text += " " + usuario.nombre;
+        }
+
+        private void BienvenidoForm_Click(object sender, EventArgs e)
+        {
+            if (_panelMenuPerfil.Visible)
+            {
+                _panelMenuPerfil.Visible = false;
+            }
+
         }
     }
 }

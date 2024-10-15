@@ -20,7 +20,7 @@ namespace SentirseBien
         {
             this.usuario = usuario;
             this.turno = turno;
-            InitializeComponent();  
+            InitializeComponent();
         }
 
         private void aceptar_button_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace SentirseBien
                 pdfptable.AddCell(pdfPCellMonto);
 
                 doc.Add(pdfptable);
-                doc.Close();   
+                doc.Close();
                 pw.Close();
                 MessageBox.Show("Archivo guardado en: " + saveFileDialog.FileName);
             }
@@ -77,5 +77,28 @@ namespace SentirseBien
             DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void cancelarBoton_click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelAceptarPago_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+       
     }
 }

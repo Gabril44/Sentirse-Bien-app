@@ -22,10 +22,12 @@ namespace SentirseBien
             //panelContenedor.Visible = true;
             getRol(usuario);
             panelMenuPerfil.Visible = false;
-            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario);
+            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario,panelMenuPerfil);
             AbrirFormularioEnPanel(bienvenidoForm);
 
         }
+
+
         private void getRol(Usuario usuario)
         {
             switch (usuario.rol)
@@ -101,7 +103,7 @@ namespace SentirseBien
             loginForm.ShowDialog();
         }
 
-
+        
         private void menuStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -126,6 +128,14 @@ namespace SentirseBien
         {
 
         }
+        private void index_Click(object sender, EventArgs e)
+        {
+
+            if (panelMenuPerfil.Visible)
+            {
+                panelMenuPerfil.Visible = false;
+            }
+        }
 
         private void PanelPerfil_Click(object sender, EventArgs e)
         {
@@ -138,13 +148,6 @@ namespace SentirseBien
             Application.Exit();
         }
 
-        private void index_Click(object sender, MouseEventArgs e)
-        {
-            if (panelMenuPerfil.Visible)
-            {
-                panelMenuPerfil.Visible = false;
-            };
-        }
 
         private void AbrirFormularioEnPanel(Form formularioHijo)
         {
@@ -212,5 +215,11 @@ namespace SentirseBien
             BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario);
             AbrirFormularioEnPanel(bienvenidoForm);
         }
+
+        private void panelContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        
     }
 }
