@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SentirseBien
 {
@@ -99,6 +100,16 @@ namespace SentirseBien
 
         }
 
-       
+        private void tarjeta_combox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tarjeta_combox.SelectedItem.ToString() == "Crédito")
+            {
+                cuotas_combobox.Visible = true; // Mostramos el segundo ComboBox
+            }
+            else
+            {
+                cuotas_combobox.Visible = false; // Ocultamos el segundo ComboBox
+            }
+        }
     }
 }
