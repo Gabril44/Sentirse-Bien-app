@@ -149,6 +149,7 @@
             panelPagos.Name = "panelPagos";
             panelPagos.Size = new Size(170, 55);
             panelPagos.TabIndex = 5;
+            panelPagos.MouseClick += Pagos_Click;
             // 
             // label5
             // 
@@ -159,6 +160,7 @@
             label5.Size = new Size(77, 30);
             label5.TabIndex = 0;
             label5.Text = "Pagos";
+            label5.MouseClick += Pagos_Click;
             // 
             // panel2
             // 

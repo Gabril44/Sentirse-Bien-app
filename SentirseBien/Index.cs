@@ -225,5 +225,11 @@ namespace SentirseBien
         {
             Application.Exit();
         }
+
+        private void Pagos_Click(object sender, MouseEventArgs e)
+        {
+            PagosForm pagosForm = new PagosForm(usuario);
+            AbrirFormularioEnPanel(pagosForm);
+        }
     }
 }
