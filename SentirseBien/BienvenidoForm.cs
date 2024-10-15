@@ -19,11 +19,13 @@ namespace SentirseBien
         private List<Image> imagenes; // Lista de imágenes
         private int indiceActual = 0; // Índice de la imagen actual
         private System.Windows.Forms.Timer timer; // Temporizador para cambiar las imágenes automáticamente
+        private String[] frases = new string[6];
 
         public BienvenidoForm(Usuario usuario)
         {
             this.usuario = usuario;
             InitializeComponent();
+            RellenarFrases();
             getBienvenida();
             IniciarCarrousel();
         }
@@ -32,8 +34,19 @@ namespace SentirseBien
             this.usuario = usuario;
             _panelMenuPerfil = panelMenuPerfil;
             InitializeComponent();
+            RellenarFrases();
             getBienvenida();
             IniciarCarrousel();
+        }
+
+        private void RellenarFrases() 
+        {
+            frases[0] = "Salud y bienestar";
+            frases[1] = "Facial Hidratante";
+            frases[2] = "Hidroterapia";
+            frases[3] = "Terapia y desconexión";
+            frases[4] = "Revitalizar cuerpo y mente";
+            frases[5] = "Mima tu piel con lo mejor";
         }
 
         private void BienvenidoForm_Click(object sender, MouseEventArgs e)
@@ -58,6 +71,7 @@ namespace SentirseBien
             // Inicializar el PictureBox con la primera imagen
             carrousel_pb.Image = imagenes[indiceActual];
             carrousel_pb.SizeMode = PictureBoxSizeMode.StretchImage; // Ajustar el tamaño de la imagen
+            pie_label.Text = frases[indiceActual];
 
             // Configurar el Timer
             timer = new System.Windows.Forms.Timer();
@@ -71,6 +85,8 @@ namespace SentirseBien
             // Cambiar al siguiente índice de la lista de imágenes
             indiceActual = (indiceActual + 1) % imagenes.Count;
             carrousel_pb.Image = imagenes[indiceActual];
+            pie_label.Text = frases[indiceActual];
+
         }
         private void getBienvenida()
         {

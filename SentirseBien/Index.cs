@@ -22,7 +22,7 @@ namespace SentirseBien
             //panelContenedor.Visible = true;
             getRol(usuario);
             panelMenuPerfil.Visible = false;
-            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario,panelMenuPerfil);
+            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario, panelMenuPerfil);
             AbrirFormularioEnPanel(bienvenidoForm);
 
         }
@@ -103,7 +103,7 @@ namespace SentirseBien
             loginForm.ShowDialog();
         }
 
-        
+
         private void menuStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -220,6 +220,10 @@ namespace SentirseBien
         {
 
         }
-        
+
+        private void Index_Closing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

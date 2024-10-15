@@ -1,3 +1,4 @@
+using MySql.Data.MySqlClient;
 using System.Diagnostics.Eventing.Reader;
 
 namespace SentirseBien
@@ -7,42 +8,44 @@ namespace SentirseBien
         private Usuario usuario;
         private List<Turno> turnos;
         private TurnoConsultas turnoConsultas;
+        private ConexionMysql conexionMysql;
         public Form1(Usuario usuario)
         {
             this.Size = new Size(1077, 712);
             InitializeComponent();
             this.usuario = usuario;
+            conexionMysql = new ConexionMysql();
             turnos = new List<Turno>();
             turnoConsultas = new TurnoConsultas();
             if (usuario.rol != 1)
             {
                 CargarTurnosCliente();
             }
-            else 
+            else
             {
                 if (usuario.correo == "test@gmail.com")
                 {
                     cargarTurnos();
                 }
-                else 
+                else
                 {
                     CargarTurnosDoctor();
                 }
             }
             centerDataGrid();
-            
+
             getRol(usuario);
         }
 
-        private void getRol(Usuario usuario) 
+        private void getRol(Usuario usuario)
         {
-            if (usuario.correo == "test@gmail.com") 
+            if (usuario.correo == "test@gmail.com")
             {
                 cancelar_turno_button.Visible = true;
             }
         }
 
-        private void CargarTurnosCliente(string filtro ="") 
+        private void CargarTurnosCliente(string filtro = "")
         {
             try
             {
@@ -85,7 +88,7 @@ namespace SentirseBien
         {
             centerDataGrid();
         }
-        private void CargarTurnosDoctor(string filtro = "") 
+        private void CargarTurnosDoctor(string filtro = "")
         {
             try
             {
@@ -140,8 +143,8 @@ namespace SentirseBien
                         turnos[i].profesional
                         );
                 }
-            } 
-            finally 
+            }
+            finally
             {
                 // Asegurarse de restaurar el cursor normal
                 Cursor.Current = Cursors.Default;
@@ -159,7 +162,7 @@ namespace SentirseBien
 
         }
 
-      
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -173,6 +176,73 @@ namespace SentirseBien
             pedirTurno.ShowDialog();
             //this.Opacity = 1.0;
             cargarTurnos();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void cancelar_turno_button_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                DataGridViewRow filaseleccionada = dataGridView1.SelectedRows[0];
+
+                int idSeleccionadoUsuario = Convert.ToInt32((filaseleccionada.Cells["idturno"].Value));
+
+                DialogResult resultado = MessageBox.Show("¿Está seguro/a de eliminar este turno?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Yes)
+                {
+                    MessageBox.Show("el id seleccionado es:" + idSeleccionadoUsuario);
+                    EliminarTurno(idSeleccionadoUsuario);
+                }
+            }
+            else 
+            {
+                MessageBox.Show("Por favor selecciona un turno para eliminar");
+            }
+        }
+
+        private void EliminarTurno(int idSeleccionadoUsuario)
+        {
+            string QUERY = "DELETE FROM turnos WHERE idturnos = @idturno";
+
+            using (MySqlConnection connection = conexionMysql.GetConnection()) 
+            {
+                try
+                {
+                    if (connection.State != System.Data.ConnectionState.Open) 
+                    {
+                        connection.Open();
+                    }
+
+                    using (MySqlCommand command = new MySqlCommand(QUERY, connection)) 
+                    {
+                        command.Parameters.AddWithValue("@idturno", idSeleccionadoUsuario);
+                        int resultado = command.ExecuteNonQuery();
+
+                        if (resultado > 0)
+                        {
+                            MessageBox.Show("Turno eliminado correctamente");
+                            cargarTurnos();
+                        }
+                        else 
+                        {
+                            MessageBox.Show("No se pudo encontrar el id");
+                        }
+                    }
+
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show("Error al eliminar el turno"+ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

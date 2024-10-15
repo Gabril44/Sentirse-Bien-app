@@ -53,6 +53,9 @@
             label6 = new Label();
             tarjeta_combox = new ComboBox();
             cuotas_combobox = new ComboBox();
+            panel4 = new Panel();
+            label11 = new Label();
+            label12 = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             PagoForm_Nombre.SuspendLayout();
@@ -61,6 +64,7 @@
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             panelAceptarPago.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -80,6 +84,7 @@
             tableLayoutPanel1.Controls.Add(panel3, 1, 5);
             tableLayoutPanel1.Controls.Add(tarjeta_combox, 1, 4);
             tableLayoutPanel1.Controls.Add(cuotas_combobox, 2, 4);
+            tableLayoutPanel1.Controls.Add(panel4, 0, 4);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -369,6 +374,42 @@
             cuotas_combobox.TabIndex = 16;
             cuotas_combobox.Visible = false;
             // 
+            // panel4
+            // 
+            panel4.AutoSize = true;
+            panel4.BackColor = Color.FromArgb(36, 82, 71);
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(label11);
+            panel4.Controls.Add(label12);
+            panel4.Cursor = Cursors.Hand;
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(3, 331);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(253, 35);
+            panel4.TabIndex = 17;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(50, 1);
+            label11.Name = "label11";
+            label11.Size = new Size(0, 30);
+            label11.TabIndex = 0;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = SystemColors.ControlLightLight;
+            label12.Location = new Point(50, 3);
+            label12.Margin = new Padding(3);
+            label12.Name = "label12";
+            label12.Size = new Size(173, 25);
+            label12.TabIndex = 1;
+            label12.Text = "Tipo de Tarjeta(?)";
+            label12.Click += label12_Click;
+            // 
             // PagoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -393,6 +434,8 @@
             panel5.PerformLayout();
             panelAceptarPago.ResumeLayout(false);
             panelAceptarPago.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -423,5 +466,8 @@
         private Label label6;
         private ComboBox tarjeta_combox;
         private ComboBox cuotas_combobox;
+        private Panel panel4;
+        private Label label11;
+        private Label label12;
     }
 }

@@ -111,5 +111,10 @@ namespace SentirseBien
                 cuotas_combobox.Visible = false; // Ocultamos el segundo ComboBox
             }
         }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

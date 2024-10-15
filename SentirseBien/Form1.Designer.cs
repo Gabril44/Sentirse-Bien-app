@@ -66,8 +66,10 @@
             dataGridView1.Location = new Point(92, 48);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(865, 483);
             dataGridView1.TabIndex = 4;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // idturno
@@ -142,6 +144,7 @@
             cancelar_turno_button.Text = "Cancelar turno";
             cancelar_turno_button.UseVisualStyleBackColor = true;
             cancelar_turno_button.Visible = false;
+            cancelar_turno_button.Click += cancelar_turno_button_Click;
             // 
             // Form1
             // 
