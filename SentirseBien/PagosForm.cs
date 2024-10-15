@@ -48,7 +48,8 @@ namespace SentirseBien
                         pagos[i].nropago, 
                         pagos[i].monto,
                         pagos[i].nombre_cliente,
-                        pagos[i].fecha
+                        pagos[i].fecha,
+                        pagos[i].medio_de_pago
                         );
             }
 

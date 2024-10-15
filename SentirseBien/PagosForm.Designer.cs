@@ -34,6 +34,7 @@
             monto = new DataGridViewTextBoxColumn();
             nombre_cliente = new DataGridViewTextBoxColumn();
             fecha = new DataGridViewTextBoxColumn();
+            Medio_Pago = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -60,7 +61,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.FromArgb(30, 59, 52);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nro_Pago, monto, nombre_cliente, fecha });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nro_Pago, monto, nombre_cliente, fecha, Medio_Pago });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(121, 65);
             dataGridView1.Name = "dataGridView1";
@@ -92,6 +93,12 @@
             fecha.MinimumWidth = 6;
             fecha.Name = "fecha";
             // 
+            // Medio_Pago
+            // 
+            Medio_Pago.HeaderText = "Medio de Pago";
+            Medio_Pago.MinimumWidth = 6;
+            Medio_Pago.Name = "Medio_Pago";
+            // 
             // PagosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -114,5 +121,6 @@
         private DataGridViewTextBoxColumn monto;
         private DataGridViewTextBoxColumn nombre_cliente;
         private DataGridViewTextBoxColumn fecha;
+        private DataGridViewTextBoxColumn Medio_Pago;
     }
 }

@@ -31,7 +31,8 @@ namespace SentirseBien
                         "numeropago LIKE '%" + filtro + "%' OR " +
                         "monto LIKE '%" + filtro + "%' OR " +
                         "nombrecliente LIKE '%" + filtro + "%' OR " +
-                        "fecha LIKE '%" + filtro + "%';";
+                        "fecha LIKE '%" + filtro + "%' OR " +
+                        "mediodepago LIKE '%" + filtro + "%';";
                 }
 
                 MySqlCommand comando = new MySqlCommand(QUERY);
@@ -46,6 +47,7 @@ namespace SentirseBien
                     pago.monto = reader.GetInt16("monto");
                     pago.nombre_cliente = reader.GetString("nombrecliente");
                     pago.fecha = reader.GetString("fecha");
+                    pago.medio_de_pago = reader.GetString("mediodepago");
                     pagos.Add(pago);
                 }
                 reader.Close();
