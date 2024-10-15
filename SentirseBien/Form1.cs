@@ -11,11 +11,26 @@ namespace SentirseBien
         {
             this.Size = new Size(1077, 712);
             InitializeComponent();
+            this.usuario = usuario;
             turnos = new List<Turno>();
             turnoConsultas = new TurnoConsultas();
-            cargarTurnos();
+            if (usuario.rol != 1)
+            {
+                CargarTurnosCliente();
+            }
+            else 
+            {
+                if (usuario.correo == "test@gmail.com")
+                {
+                    cargarTurnos();
+                }
+                else 
+                {
+                    CargarTurnosDoctor();
+                }
+            }
             centerDataGrid();
-            this.usuario = usuario;
+            
             getRol(usuario);
         }
 
@@ -24,6 +39,39 @@ namespace SentirseBien
             if (usuario.correo == "test@gmail.com") 
             {
                 cancelar_turno_button.Visible = true;
+            }
+        }
+
+        private void CargarTurnosCliente(string filtro ="") 
+        {
+            try
+            {
+                // Mostrar el cursor de espera
+                Cursor.Current = Cursors.WaitCursor;
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+                turnos.Clear();
+                turnos = turnoConsultas.getTurno(filtro);
+
+                for (int i = 0; i < turnos.Count; i++)
+                {
+                    if (turnos[i].nombre_usuario == usuario.nombre)
+                    {
+                        dataGridView1.RowTemplate.Height = 50;
+                        dataGridView1.Rows.Add(
+                            turnos[i].idturnos,
+                            turnos[i].nombre_usuario,
+                            turnos[i].fecha,
+                            turnos[i].servicio,
+                            turnos[i].profesional
+                            );
+                    }
+                }
+            }
+            finally
+            {
+                // Asegurarse de restaurar el cursor normal
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -36,6 +84,38 @@ namespace SentirseBien
         private void Form1_Resize(object sender, EventArgs e)
         {
             centerDataGrid();
+        }
+        private void CargarTurnosDoctor(string filtro = "") 
+        {
+            try
+            {
+                // Mostrar el cursor de espera
+                Cursor.Current = Cursors.WaitCursor;
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+                turnos.Clear();
+                turnos = turnoConsultas.getTurno(filtro);
+
+                for (int i = 0; i < turnos.Count; i++)
+                {
+                    if (turnos[i].profesional == usuario.nombre)
+                    {
+                        dataGridView1.RowTemplate.Height = 50;
+                        dataGridView1.Rows.Add(
+                            turnos[i].idturnos,
+                            turnos[i].nombre_usuario,
+                            turnos[i].fecha,
+                            turnos[i].servicio,
+                            turnos[i].profesional
+                            );
+                    }
+                }
+            }
+            finally
+            {
+                // Asegurarse de restaurar el cursor normal
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void cargarTurnos(string filtro = "")

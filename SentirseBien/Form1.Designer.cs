@@ -46,10 +46,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.ForeColor = Color.FromArgb(232, 235, 233);
+            label1.Font = new Font("Segoe UI", 15F);
+            label1.ForeColor = Color.FromArgb(29, 56, 49);
             label1.Location = new Point(92, 0);
             label1.Name = "label1";
-            label1.Size = new Size(56, 20);
+            label1.Size = new Size(96, 35);
             label1.TabIndex = 0;
             label1.Text = "Turnos:";
             label1.Click += label1_Click;
