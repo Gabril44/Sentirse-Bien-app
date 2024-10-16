@@ -58,6 +58,7 @@
             panelPerfilEditar.SuspendLayout();
             panelPerfilCerrar.SuspendLayout();
             panelMenuPerfil.SuspendLayout();
+            panelContenedor.SuspendLayout();
             SuspendLayout();
             // 
             // PanelMenu
@@ -121,7 +122,7 @@
             panelPerfil.BorderStyle = BorderStyle.FixedSingle;
             panelPerfil.Controls.Add(labelPerfil);
             panelPerfil.Cursor = Cursors.Hand;
-            panelPerfil.Location = new Point(1, 279);
+            panelPerfil.Location = new Point(0, 281);
             panelPerfil.Name = "panelPerfil";
             panelPerfil.Size = new Size(170, 56);
             panelPerfil.TabIndex = 6;
@@ -132,7 +133,7 @@
             // 
             labelPerfil.AutoSize = true;
             labelPerfil.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelPerfil.Location = new Point(46, 11);
+            labelPerfil.Location = new Point(45, 9);
             labelPerfil.Name = "labelPerfil";
             labelPerfil.Size = new Size(65, 30);
             labelPerfil.TabIndex = 0;
@@ -275,7 +276,7 @@
             panelMenuPerfil.BackColor = Color.FromArgb(56, 115, 100);
             panelMenuPerfil.Controls.Add(panelPerfilEditar);
             panelMenuPerfil.Controls.Add(panelPerfilCerrar);
-            panelMenuPerfil.Location = new Point(177, 269);
+            panelMenuPerfil.Location = new Point(3, 270);
             panelMenuPerfil.Name = "panelMenuPerfil";
             panelMenuPerfil.Size = new Size(178, 86);
             panelMenuPerfil.TabIndex = 9;
@@ -283,6 +284,7 @@
             // panelContenedor
             // 
             panelContenedor.BackColor = Color.FromArgb(56, 115, 100);
+            panelContenedor.Controls.Add(panelMenuPerfil);
             panelContenedor.Dock = DockStyle.Fill;
             panelContenedor.Location = new Point(170, 0);
             panelContenedor.Name = "panelContenedor";
@@ -295,7 +297,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(72, 137, 121);
             ClientSize = new Size(1258, 712);
-            Controls.Add(panelMenuPerfil);
             Controls.Add(panelContenedor);
             Controls.Add(PanelMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -325,8 +326,9 @@
             panelPerfilCerrar.PerformLayout();
             panelMenuPerfil.ResumeLayout(false);
             panelMenuPerfil.PerformLayout();
+            panelContenedor.ResumeLayout(false);
+            panelContenedor.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

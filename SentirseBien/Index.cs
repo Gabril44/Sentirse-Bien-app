@@ -231,5 +231,6 @@ namespace SentirseBien
             PagosForm pagosForm = new PagosForm(usuario);
             AbrirFormularioEnPanel(pagosForm);
         }
+
     }
 }
