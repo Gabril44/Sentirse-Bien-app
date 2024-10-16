@@ -18,10 +18,10 @@ namespace SentirseBien
         {
             this.usuario = usuario;
             InitializeComponent();
-            //configurarMenuStrip(usuario);
             //panelContenedor.Visible = true;
             getRol(usuario);
-            panelMenuPerfil.Visible = false;
+            panelMenuPerfil.Visible = true;
+            panelMenuPerfil.BringToFront();
             BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario, panelMenuPerfil);
             AbrirFormularioEnPanel(bienvenidoForm);
 
@@ -131,10 +131,7 @@ namespace SentirseBien
         private void index_Click(object sender, EventArgs e)
         {
 
-            if (panelMenuPerfil.Visible)
-            {
-                panelMenuPerfil.Visible = false;
-            }
+
         }
 
         private void PanelPerfil_Click(object sender, EventArgs e)
@@ -232,5 +229,10 @@ namespace SentirseBien
             AbrirFormularioEnPanel(pagosForm);
         }
 
+        private void Servicio_Click(object sender, MouseEventArgs e)
+        {
+            ServiciosForm servicio = new ServiciosForm(usuario);
+            AbrirFormularioEnPanel(servicio);
+        }
     }
 }
