@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SentirseBien
 {
 
-    internal class Servicio
+    public class Servicio
     {
         public string nombre {  get; set; }
         public int precio { get; set; }

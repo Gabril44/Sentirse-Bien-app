@@ -18,8 +18,10 @@ namespace SentirseBien
         private ConexionMysql conexionMysql;
         private Turno turno;
         private Usuario usario;
+        private Servicio servicio;
         public pedirTurno(Usuario usuario)
         {
+            servicio = new Servicio();
             this.usario = usuario;
             InitializeComponent();
             conexionMysql = new ConexionMysql();
@@ -104,53 +106,69 @@ namespace SentirseBien
             turno.servicio = servicio;
         }
 
+        private void CrearServicio(string nombre, int precio, int numServicio) 
+        {
+            this.servicio.nombre = nombre;
+            this.servicio.precio = precio;
+            this.servicio.num_servicio = numServicio;
+        }
+
         private void aceptar_button_Click(object sender, EventArgs e)
         {
             fecha += " " + hora_combobox.Text + ":" + minutoscombobox.Text;
             //MessageBox.Show("horario: "+fecha);
-            crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
-            
-
-            string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
-                   "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
-            if (getDisponibilidad())
+            if ((usario.nombre == null || fecha == null || servicios_combobox.Text == null || profesional_combobox.Text == null) ||
+                (usario.nombre == "" || fecha == "" || servicios_combobox.Text == "" || profesional_combobox.Text == ""))
             {
-
-                using (MySqlConnection connection = new ConexionMysql().GetConnection())
-                {
-                    try
-                    {
-                        // Crear el comando MySQL con parámetros
-                        MySqlCommand cmd = new MySqlCommand(QUERYCREARTURNO, connection);
-
-                        // Agregar los parámetros a la consulta
-                        cmd.Parameters.AddWithValue("@nombreUsuario", turno.nombre_usuario);
-                        cmd.Parameters.AddWithValue("@servicio", turno.servicio);
-                        cmd.Parameters.AddWithValue("@fecha", turno.fecha);
-                        cmd.Parameters.AddWithValue("@profesional", turno.profesional);
-
-                        // Ejecutar la consulta
-                        int result = cmd.ExecuteNonQuery();
-
-                        // Verificar si se insertó correctamente
-                        if (result > 0)
-                        {
-                            MessageBox.Show("Turno creado exitosamente.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Hubo un problema al crear el turno.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
-                }
-                PagoForm pagoform = new PagoForm(usario, turno);
-                pagoform.ShowDialog();
+                MessageBox.Show("Datos vacíos, por favor seleccione algo");
             }
-            this.Close();
+            else
+            {
+                crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
+
+
+                string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
+                       "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
+                if (getDisponibilidad())
+                {
+
+                    using (MySqlConnection connection = new ConexionMysql().GetConnection())
+                    {
+                        try
+                        {
+                            // Crear el comando MySQL con parámetros
+                            MySqlCommand cmd = new MySqlCommand(QUERYCREARTURNO, connection);
+
+                            // Agregar los parámetros a la consulta
+                            cmd.Parameters.AddWithValue("@nombreUsuario", turno.nombre_usuario);
+                            cmd.Parameters.AddWithValue("@servicio", turno.servicio);
+                            cmd.Parameters.AddWithValue("@fecha", turno.fecha);
+                            cmd.Parameters.AddWithValue("@profesional", turno.profesional);
+
+                            // Ejecutar la consulta
+                            int result = cmd.ExecuteNonQuery();
+
+                            // Verificar si se insertó correctamente
+                            if (result > 0)
+                            {
+                                MessageBox.Show("Turno creado exitosamente.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Hubo un problema al crear el turno.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
+
+                    PagoForm pagoform = new PagoForm(usario, turno);
+                    pagoform.ShowDialog();
+                }
+                this.Close();
+            }
         }
 
         private void fecha_button_Click(object sender, EventArgs e)

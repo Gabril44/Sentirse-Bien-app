@@ -17,10 +17,14 @@ namespace SentirseBien
     {
         private Usuario usuario = new Usuario();
         private Turno turno = new Turno();
+        Pago pago = new Pago();
+        private ConexionMysql conexionMysql;
+        Servicio servicio;
         public PagoForm(Usuario usuario, Turno turno)
         {
             this.usuario = usuario;
             this.turno = turno;
+            this.servicio = servicio;
             InitializeComponent();
         }
 
@@ -77,6 +81,11 @@ namespace SentirseBien
 
             DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void Crearpago() 
+        {
+            
         }
 
         private void cancelarBoton_click(object sender, EventArgs e)

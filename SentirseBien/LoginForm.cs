@@ -38,11 +38,18 @@ namespace SentirseBien
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                this.Hide();
                 string username, password;
                 username = user_textbox.Text;
                 password = pass_textbox.Text;
-                login(username, password);
+                if ((username == null || password == null) || (username == "Nombre de usuario" || password == "Contraseña") || (username == "" || password == ""))
+                {
+                    MessageBox.Show("Por favor, escriba su nombre de usuario o contraseña!");
+                }
+                else
+                {
+                    this.Hide();
+                    login(username, password);
+                }
             }
             finally 
             { 
