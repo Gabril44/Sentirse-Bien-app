@@ -164,8 +164,8 @@ namespace SentirseBien
                         }
                     }
 
-                    PagoForm pagoform = new PagoForm(usario, turno);
-                    pagoform.ShowDialog();
+                   /* PagoForm pagoform = new PagoForm(usario, turno);
+                    pagoform.ShowDialog();*/
                 }
                 this.Close();
             }

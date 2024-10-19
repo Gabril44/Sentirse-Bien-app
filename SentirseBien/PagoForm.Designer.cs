@@ -179,7 +179,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(78, 6);
+            label1.Location = new Point(78, 3);
             label1.Margin = new Padding(3);
             label1.Name = "label1";
             label1.Size = new Size(91, 25);

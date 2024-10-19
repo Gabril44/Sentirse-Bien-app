@@ -96,6 +96,7 @@
             agregar_button.TabIndex = 1;
             agregar_button.Text = "Agregar Servicio";
             agregar_button.UseVisualStyleBackColor = true;
+            agregar_button.Click += agregar_button_Click;
             // 
             // ServiciosForm
             // 

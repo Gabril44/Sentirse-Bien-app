@@ -34,7 +34,7 @@ namespace SentirseBien
             }
         }
 
-        private void cargarServicios(string filtro ="")
+        private void cargarServicios(string filtro = "")
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
@@ -49,6 +49,15 @@ namespace SentirseBien
                     servicios[i].precio,
                     servicios[i].num_servicio
                     );
+            }
+        }
+
+        private void agregar_button_Click(object sender, EventArgs e)
+        {
+            AgregarServicioForm frm = new AgregarServicioForm();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                cargarServicios();
             }
         }
     }

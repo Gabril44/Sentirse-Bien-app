@@ -139,7 +139,9 @@ namespace SentirseBien
 
         private void PanelPerfil_Click(object sender, EventArgs e)
         {
-            panelMenuPerfil.Visible = !panelMenuPerfil.Visible;
+            MessageBox.Show("click en perfil");
+            //panelMenuPerfil.Visible = !panelMenuPerfil.Visible;
+            panelMenuPerfil.Visible = true;
         }
 
         private void panelCerrar_Click(object sender, EventArgs e)
@@ -232,5 +234,15 @@ namespace SentirseBien
             AbrirFormularioEnPanel(pagosForm);
         }
 
+        private void panelServicios_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void serviciosClick(object sender, MouseEventArgs e)
+        {
+            ServiciosForm serviciosForm = new ServiciosForm(usuario);
+            AbrirFormularioEnPanel(serviciosForm);
+        }
     }
 }

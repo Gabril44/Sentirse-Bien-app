@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Index));
             PanelMenu = new Panel();
+            panelServicios = new Panel();
+            label_servicios = new Label();
             pictureBox1 = new PictureBox();
             panel5 = new Panel();
             labelcerrar = new Label();
@@ -48,7 +50,11 @@
             labelPerfilCerrar = new Label();
             panelMenuPerfil = new Panel();
             panelContenedor = new Panel();
+            panel_pagar = new Panel();
+            label_pagar = new Label();
+            label_turnosapagar = new Label();
             PanelMenu.SuspendLayout();
+            panelServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel5.SuspendLayout();
             panelPerfil.SuspendLayout();
@@ -59,11 +65,14 @@
             panelPerfilCerrar.SuspendLayout();
             panelMenuPerfil.SuspendLayout();
             panelContenedor.SuspendLayout();
+            panel_pagar.SuspendLayout();
             SuspendLayout();
             // 
             // PanelMenu
             // 
             PanelMenu.BackColor = Color.FromArgb(36, 82, 71);
+            PanelMenu.Controls.Add(panel_pagar);
+            PanelMenu.Controls.Add(panelServicios);
             PanelMenu.Controls.Add(pictureBox1);
             PanelMenu.Controls.Add(panel5);
             PanelMenu.Controls.Add(panelPerfil);
@@ -77,6 +86,29 @@
             PanelMenu.Size = new Size(170, 712);
             PanelMenu.TabIndex = 4;
             PanelMenu.Click += index_Click;
+            // 
+            // panelServicios
+            // 
+            panelServicios.BorderStyle = BorderStyle.FixedSingle;
+            panelServicios.Controls.Add(label_servicios);
+            panelServicios.Cursor = Cursors.Hand;
+            panelServicios.Location = new Point(3, 343);
+            panelServicios.Name = "panelServicios";
+            panelServicios.Size = new Size(164, 60);
+            panelServicios.TabIndex = 9;
+            panelServicios.Paint += panelServicios_Paint;
+            panelServicios.MouseClick += serviciosClick;
+            // 
+            // label_servicios
+            // 
+            label_servicios.AutoSize = true;
+            label_servicios.Font = new Font("Microsoft YaHei UI Light", 13.8F);
+            label_servicios.Location = new Point(31, 12);
+            label_servicios.Name = "label_servicios";
+            label_servicios.Size = new Size(102, 30);
+            label_servicios.TabIndex = 0;
+            label_servicios.Text = "Servicios";
+            label_servicios.MouseClick += serviciosClick;
             // 
             // pictureBox1
             // 
@@ -291,6 +323,37 @@
             panelContenedor.Size = new Size(1088, 712);
             panelContenedor.TabIndex = 10;
             // 
+            // panel_pagar
+            // 
+            panel_pagar.BorderStyle = BorderStyle.FixedSingle;
+            panel_pagar.Controls.Add(label_turnosapagar);
+            panel_pagar.Controls.Add(label_pagar);
+            panel_pagar.Location = new Point(3, 409);
+            panel_pagar.Name = "panel_pagar";
+            panel_pagar.Size = new Size(164, 65);
+            panel_pagar.TabIndex = 10;
+            // 
+            // label_pagar
+            // 
+            label_pagar.AutoSize = true;
+            label_pagar.Font = new Font("Microsoft YaHei UI Light", 13.8F);
+            label_pagar.Location = new Point(39, 17);
+            label_pagar.Name = "label_pagar";
+            label_pagar.Size = new Size(73, 30);
+            label_pagar.TabIndex = 0;
+            label_pagar.Text = "Pagar";
+            // 
+            // label_turnosapagar
+            // 
+            label_turnosapagar.AutoSize = true;
+            label_turnosapagar.Font = new Font("Microsoft YaHei UI Light", 13.8F);
+            label_turnosapagar.Location = new Point(103, 19);
+            label_turnosapagar.Name = "label_turnosapagar";
+            label_turnosapagar.Size = new Size(40, 30);
+            label_turnosapagar.TabIndex = 1;
+            label_turnosapagar.Text = "(0)";
+            label_turnosapagar.Visible = false;
+            // 
             // Index
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -309,6 +372,8 @@
             MouseClick += index_Click;
             PanelMenu.ResumeLayout(false);
             PanelMenu.PerformLayout();
+            panelServicios.ResumeLayout(false);
+            panelServicios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -328,6 +393,8 @@
             panelMenuPerfil.PerformLayout();
             panelContenedor.ResumeLayout(false);
             panelContenedor.PerformLayout();
+            panel_pagar.ResumeLayout(false);
+            panel_pagar.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -352,5 +419,10 @@
         private Label labelPerfilEditar;
         private Panel panelMenuPerfil;
         private Panel panelContenedor;
+        private Panel panelServicios;
+        private Label label_servicios;
+        private Panel panel_pagar;
+        private Label label_pagar;
+        private Label label_turnosapagar;
     }
 }
