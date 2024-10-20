@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualBasic.Devices;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic.Devices;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,19 +16,52 @@ namespace SentirseBien
     public partial class Index : Form
     {
         private Usuario usuario;
+        private ConexionMysql conexionMysql;
+        private List<Pago> pagos;
         public Index(Usuario usuario)
         {
             this.usuario = usuario;
+            conexionMysql = new ConexionMysql();
+            pagos = new List<Pago>();
             InitializeComponent();
             //configurarMenuStrip(usuario);
             //panelContenedor.Visible = true;
             getRol(usuario);
             panelMenuPerfil.Visible = false;
+            ActualizarLabelPagosPendientes();
             BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario, panelMenuPerfil);
             AbrirFormularioEnPanel(bienvenidoForm);
+        }
+
+        private void ActualizarLabelPagosPendientes()
+        {
+            label_turnosapagar.Text = ContarPagosPendientes(usuario).ToString();
 
         }
 
+        private int ContarPagosPendientes(Usuario usuario) 
+        {
+            int pagos_pendientes = 0;
+
+            try
+            {
+                using (MySqlConnection connection = conexionMysql.GetConnection())
+                {
+                    string query = "SELECT COUNT(*) FROM pagos WHERE id_usuario = @usuarioId"; // Cambia 'usuario_id' por el nombre de tu columna foreign key
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@usuarioId", usuario.idusuario);
+                        pagos_pendientes = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+            return pagos_pendientes;
+        }
 
         private void getRol(Usuario usuario)
         {
@@ -140,8 +175,8 @@ namespace SentirseBien
         private void PanelPerfil_Click(object sender, EventArgs e)
         {
             MessageBox.Show("click en perfil");
-            //panelMenuPerfil.Visible = !panelMenuPerfil.Visible;
-            panelMenuPerfil.Visible = true;
+            panelMenuPerfil.Visible = !panelMenuPerfil.Visible;
+            //panelMenuPerfil.Visible = true;
         }
 
         private void panelCerrar_Click(object sender, EventArgs e)

@@ -15,12 +15,15 @@ namespace SentirseBien
     public partial class pedirTurno : Form
     {
         private string fecha;
+        private string fechalimite;
         private ConexionMysql conexionMysql;
         private Turno turno;
         private Usuario usario;
         private Servicio servicio;
+        private Pago pago = new Pago();
         public pedirTurno(Usuario usuario)
         {
+            pago = new Pago();
             servicio = new Servicio();
             this.usario = usuario;
             InitializeComponent();
@@ -126,9 +129,9 @@ namespace SentirseBien
             {
                 crearTurno(usario.nombre, fecha, servicios_combobox.Text, profesional_combobox.Text);
 
-
                 string QUERYCREARTURNO = "INSERT INTO turnos (nombre_usuario, servicio, fecha, profesional) " +
                        "VALUES (@nombreUsuario, @servicio, @fecha, @profesional)";
+
                 if (getDisponibilidad())
                 {
 
@@ -164,11 +167,61 @@ namespace SentirseBien
                         }
                     }
 
-                   /* PagoForm pagoform = new PagoForm(usario, turno);
-                    pagoform.ShowDialog();*/
+                    //-ahora la creación del pago en modo pendiente-
+                    crearPago(servicio.precio, usario.nombre, fecha, usario.idusuario, fechalimite);
+                    string QUERYCREARPAGOPENDIENTE = "INSERT INTO pagos (monto, nombrecliente, fecha, id_usuario, fechalimite) " +
+                           "VALUES (@monto, @nombrecliente, @fecha, @id_usuario, @fechalimite)";
+
+                    using (MySqlConnection connection = new ConexionMysql().GetConnection())
+                    {
+                        try
+                        {
+                            // Crear el comando MySQL con parámetros
+                            MySqlCommand cmd = new MySqlCommand(QUERYCREARPAGOPENDIENTE, connection);
+
+                            // Agregar los parámetros a la consulta
+                            cmd.Parameters.AddWithValue("@monto", pago.monto);
+                            cmd.Parameters.AddWithValue("@nombrecliente", pago.nombre_cliente);
+                            cmd.Parameters.AddWithValue("@fecha", pago.fecha);
+                            cmd.Parameters.AddWithValue("@id_usuario", pago.id_usuario);
+                            cmd.Parameters.AddWithValue("@fechalimite", pago.fechalimite);
+
+                            // Ejecutar la consulta
+                            int result = cmd.ExecuteNonQuery();
+
+                            // Verificar si se insertó correctamente
+                            if (result > 0)
+                            {
+                                MessageBox.Show("Pago pendiente registrado exitosamente.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Hubo un problema al registrar el pago pendiente.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
+
+                    /* PagoForm pagoform = new PagoForm(usario, turno);
+                     pagoform.ShowDialog();*/
                 }
+
+               
+
                 this.Close();
             }
+        }
+
+        private void crearPago(decimal monto, string nombrecliente, string fecha,  int id_usuario, string fechalimite)
+        {
+            this.pago.monto = monto;
+            this.pago.nombre_cliente = nombrecliente; 
+            this.pago.fecha = fecha;
+            this.pago.id_usuario = id_usuario;
+            this.pago.fechalimite = fechalimite;
         }
 
         private void fecha_button_Click(object sender, EventArgs e)
@@ -177,6 +230,7 @@ namespace SentirseBien
             if (calendarioForm.ShowDialog() == DialogResult.OK)
             {
                 this.fecha = calendarioForm.fecha;
+                this.fechalimite = calendarioForm.fechalimite;
                 labelfecha.Text = calendarioForm.fecha;
             }
         }

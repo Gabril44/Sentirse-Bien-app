@@ -13,6 +13,7 @@ namespace SentirseBien
     public partial class CalendarioForm : Form
     {
         public string fecha {  get; set; }
+        public string fechalimite { get; set; }
         public CalendarioForm()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace SentirseBien
         {
             DateTime fechaseleccionada = monthCalendar1.SelectionStart;
             fecha =  fechaseleccionada.ToString("dd/MM/yyyy");
+            fechalimite = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy");
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -35,6 +35,9 @@
             nombre_cliente = new DataGridViewTextBoxColumn();
             fecha = new DataGridViewTextBoxColumn();
             Medio_Pago = new DataGridViewTextBoxColumn();
+            estado = new DataGridViewTextBoxColumn();
+            id_usuario = new DataGridViewTextBoxColumn();
+            fechalimite = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -61,7 +64,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.FromArgb(30, 59, 52);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nro_Pago, monto, nombre_cliente, fecha, Medio_Pago });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nro_Pago, monto, nombre_cliente, fecha, Medio_Pago, estado, id_usuario, fechalimite });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(69, 65);
             dataGridView1.Name = "dataGridView1";
@@ -99,6 +102,24 @@
             Medio_Pago.MinimumWidth = 6;
             Medio_Pago.Name = "Medio_Pago";
             // 
+            // estado
+            // 
+            estado.HeaderText = "Estado";
+            estado.MinimumWidth = 6;
+            estado.Name = "estado";
+            // 
+            // id_usuario
+            // 
+            id_usuario.HeaderText = "Id_usuario";
+            id_usuario.MinimumWidth = 6;
+            id_usuario.Name = "id_usuario";
+            // 
+            // fechalimite
+            // 
+            fechalimite.HeaderText = "Fecha Limite";
+            fechalimite.MinimumWidth = 6;
+            fechalimite.Name = "fechalimite";
+            // 
             // PagosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -122,5 +143,8 @@
         private DataGridViewTextBoxColumn nombre_cliente;
         private DataGridViewTextBoxColumn fecha;
         private DataGridViewTextBoxColumn Medio_Pago;
+        private DataGridViewTextBoxColumn estado;
+        private DataGridViewTextBoxColumn id_usuario;
+        private DataGridViewTextBoxColumn fechalimite;
     }
 }

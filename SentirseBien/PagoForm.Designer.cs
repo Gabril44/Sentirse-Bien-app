@@ -74,17 +74,17 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.6129036F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 263F));
             tableLayoutPanel1.Controls.Add(pictureBox1, 0, 0);
-            tableLayoutPanel1.Controls.Add(textBox1, 1, 1);
             tableLayoutPanel1.Controls.Add(textBox2, 1, 2);
             tableLayoutPanel1.Controls.Add(textBox3, 1, 3);
             tableLayoutPanel1.Controls.Add(label4, 1, 0);
-            tableLayoutPanel1.Controls.Add(PagoForm_Nombre, 0, 1);
             tableLayoutPanel1.Controls.Add(panel1, 0, 2);
             tableLayoutPanel1.Controls.Add(panel2, 0, 3);
             tableLayoutPanel1.Controls.Add(panel3, 1, 5);
-            tableLayoutPanel1.Controls.Add(tarjeta_combox, 1, 4);
-            tableLayoutPanel1.Controls.Add(cuotas_combobox, 2, 4);
-            tableLayoutPanel1.Controls.Add(panel4, 0, 4);
+            tableLayoutPanel1.Controls.Add(panel4, 0, 1);
+            tableLayoutPanel1.Controls.Add(PagoForm_Nombre, 0, 4);
+            tableLayoutPanel1.Controls.Add(tarjeta_combox, 1, 1);
+            tableLayoutPanel1.Controls.Add(cuotas_combobox, 2, 1);
+            tableLayoutPanel1.Controls.Add(textBox1, 1, 4);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -115,7 +115,7 @@
             // textBox1
             // 
             textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(264, 204);
+            textBox1.Location = new Point(264, 341);
             textBox1.Margin = new Padding(5, 13, 3, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(269, 27);
@@ -160,9 +160,9 @@
             PagoForm_Nombre.Controls.Add(label1);
             PagoForm_Nombre.Cursor = Cursors.Hand;
             PagoForm_Nombre.Dock = DockStyle.Fill;
-            PagoForm_Nombre.Location = new Point(3, 194);
+            PagoForm_Nombre.Location = new Point(3, 331);
             PagoForm_Nombre.Name = "PagoForm_Nombre";
-            PagoForm_Nombre.Size = new Size(253, 36);
+            PagoForm_Nombre.Size = new Size(253, 35);
             PagoForm_Nombre.TabIndex = 11;
             // 
             // label7
@@ -290,6 +290,7 @@
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ControlLightLight;
             label5.Location = new Point(12, 5);
             label5.Name = "label5";
             label5.Size = new Size(93, 27);
@@ -334,6 +335,7 @@
             labelAceptarPago.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelAceptarPago.AutoSize = true;
             labelAceptarPago.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelAceptarPago.ForeColor = SystemColors.ControlLightLight;
             labelAceptarPago.Location = new Point(12, 5);
             labelAceptarPago.Name = "labelAceptarPago";
             labelAceptarPago.Size = new Size(86, 27);
@@ -352,11 +354,11 @@
             // 
             // tarjeta_combox
             // 
-            tarjeta_combox.Dock = DockStyle.Bottom;
+            tarjeta_combox.Dock = DockStyle.Fill;
             tarjeta_combox.DropDownStyle = ComboBoxStyle.DropDownList;
             tarjeta_combox.FormattingEnabled = true;
             tarjeta_combox.Items.AddRange(new object[] { "Crédito", "Débito" });
-            tarjeta_combox.Location = new Point(262, 338);
+            tarjeta_combox.Location = new Point(262, 194);
             tarjeta_combox.Name = "tarjeta_combox";
             tarjeta_combox.Size = new Size(271, 28);
             tarjeta_combox.TabIndex = 15;
@@ -364,11 +366,11 @@
             // 
             // cuotas_combobox
             // 
-            cuotas_combobox.Dock = DockStyle.Bottom;
+            cuotas_combobox.Dock = DockStyle.Fill;
             cuotas_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
             cuotas_combobox.FormattingEnabled = true;
             cuotas_combobox.Items.AddRange(new object[] { "Un pago", "3 Cuotas sin interés " });
-            cuotas_combobox.Location = new Point(539, 338);
+            cuotas_combobox.Location = new Point(539, 194);
             cuotas_combobox.Name = "cuotas_combobox";
             cuotas_combobox.Size = new Size(258, 28);
             cuotas_combobox.TabIndex = 16;
@@ -383,9 +385,9 @@
             panel4.Controls.Add(label12);
             panel4.Cursor = Cursors.Hand;
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(3, 331);
+            panel4.Location = new Point(3, 194);
             panel4.Name = "panel4";
-            panel4.Size = new Size(253, 35);
+            panel4.Size = new Size(253, 36);
             panel4.TabIndex = 17;
             // 
             // label11
@@ -405,9 +407,9 @@
             label12.Location = new Point(50, 3);
             label12.Margin = new Padding(3);
             label12.Name = "label12";
-            label12.Size = new Size(173, 25);
+            label12.Size = new Size(157, 25);
             label12.TabIndex = 1;
-            label12.Text = "Tipo de Tarjeta(?)";
+            label12.Text = "Medio de pago";
             label12.Click += label12_Click;
             // 
             // PagoForm

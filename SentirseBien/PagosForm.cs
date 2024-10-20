@@ -49,7 +49,10 @@ namespace SentirseBien
                         pagos[i].monto,
                         pagos[i].nombre_cliente,
                         pagos[i].fecha,
-                        pagos[i].medio_de_pago
+                        pagos[i].medio_de_pago,
+                        pagos[i].estado,
+                        pagos[i].id_usuario,
+                        pagos[i].fechalimite
                         );
             }
 

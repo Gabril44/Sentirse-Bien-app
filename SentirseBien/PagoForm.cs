@@ -20,6 +20,7 @@ namespace SentirseBien
         Pago pago = new Pago();
         private ConexionMysql conexionMysql;
         Servicio servicio;
+        private List<Pago> pagos;
         public PagoForm(Usuario usuario, Turno turno)
         {
             this.usuario = usuario;
