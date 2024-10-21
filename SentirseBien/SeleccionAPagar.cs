@@ -21,6 +21,7 @@ namespace SentirseBien
         List<decimal> montos = new List<decimal>();
         List<Pago> pagos = new List<Pago>();
         List<Pago> pagosSeleccionados = new List<Pago>();
+        public event EventHandler PagoRealizado;
         public SeleccionAPagar(Usuario usuario)
         {
             this.usuario = usuario;
@@ -34,10 +35,13 @@ namespace SentirseBien
         private void RellenarCheckBox()
         {
             checkedListBox1.Items.Clear();
-            string QUERY = "SELECT estado, servicio, profesional FROM pagos";
+            pagos.Clear();  // Limpia la lista de pagos antes de llenarla nuevamente
+
+            string QUERY = "SELECT numeropago, estado, servicio, profesional, monto FROM pagos WHERE estado = 'pendiente' AND id_usuario = @id_usuario";
             using (MySqlConnection connection = conexionMysql.GetConnection())
             {
                 MySqlCommand command = new MySqlCommand(QUERY, connection);
+                command.Parameters.AddWithValue("@id_usuario", usuario.idusuario);  // Filtrar por el usuario actual
 
                 try
                 {
@@ -45,14 +49,20 @@ namespace SentirseBien
                     {
                         while (reader.Read())
                         {
+                            // Crea un nuevo pago para cada fila en la base de datos
+                            Pago pago = new Pago
                             {
-                                if (reader.GetString("estado") == "pendiente") 
-                                {
-
-                                    checkedListBox1.Items.Add(reader.GetString("servicio") + "  por: " + reader.GetString("profesional"));
-                                }
+                                nropago = reader.GetInt32("numeropago"),
+                                servicio = reader.GetString("servicio"),
+                                profesional = reader.GetString("profesional"),
+                                monto = reader.GetDecimal("monto")
                             };
 
+                            // Añade el pago a la lista de pagos
+                            pagos.Add(pago);
+
+                            // Añade el ítem al CheckedListBox (servicio + profesional)
+                            checkedListBox1.Items.Add($"{pago.servicio} por: {pago.profesional}");
                         }
                     }
                 }
@@ -62,6 +72,7 @@ namespace SentirseBien
                 }
             }
         }
+
 
         private void CheckedListBox1Changed(object sender, EventArgs e)
         {
@@ -99,8 +110,6 @@ namespace SentirseBien
                             decimal monto = reader.GetDecimal("monto");
                             montos.Add(monto);
 
-                            // Agrega un ítem al CheckedListBox (aquí asumes que también tienes algún nombre para mostrar)
-                            //checkedListBox1.Items.Add($"Ítem {montos.Count} - {monto}"); // Cambia "Ítem {montos.Count}" según lo que desees mostrar
                         }
                     }
                 }
@@ -120,28 +129,29 @@ namespace SentirseBien
                 int index = e.Index;
 
                 // Asegúrate de que el índice sea válido
-                if (index >= 0 && index < montos.Count)
+                if (index >= 0 && index < pagos.Count)
                 {
-                    // Obtén el monto del ítem correspondiente al índice
-                    montoSeleccionado = montos[index];
+                    // Obtén el pago correspondiente al índice
                     Pago pagoSeleccionado = pagos[index];
+                    montoSeleccionado = pagoSeleccionado.monto;
+
                     // Ajusta el valor del label_precio según el estado del checkbox
                     if (e.NewValue == CheckState.Checked)
                     {
                         pagosSeleccionados.Add(pagoSeleccionado);
-                        MessageBox.Show("se agregó el pago: "+pagoSeleccionado.nropago+" a la list de pagos seleccionados");
+                        MessageBox.Show("Se agregó el pago: " + pagoSeleccionado.nropago + " a la lista de pagos seleccionados");
                         label_precio.Text = (Decimal.Parse(label_precio.Text) + montoSeleccionado).ToString();
                     }
                     else if (e.NewValue == CheckState.Unchecked)
                     {
                         pagosSeleccionados.Remove(pagoSeleccionado);
-                        MessageBox.Show("se quitó el pago: " + pagoSeleccionado.nropago + " de la list de pagos seleccionados");
+                        MessageBox.Show("Se quitó el pago: " + pagoSeleccionado.nropago + " de la lista de pagos seleccionados");
                         label_precio.Text = (Decimal.Parse(label_precio.Text) - montoSeleccionado).ToString();
                     }
                 }
             }
-
         }
+
 
         private void pagar_button_Click(object sender, EventArgs e)
         {
@@ -150,6 +160,7 @@ namespace SentirseBien
             {
                 RellenarCheckBox();
                 CargarDatos();
+                PagoRealizado?.Invoke(this, EventArgs.Empty);
             }
         }
     }

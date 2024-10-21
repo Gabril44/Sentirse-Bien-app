@@ -29,7 +29,6 @@ namespace SentirseBien
             InitializeComponent();
             conexionMysql = new ConexionMysql();
             loadComboBoxItems();
-            test_label.Text = usuario.nombre;
         }
 
         private void loadComboBoxItems()
@@ -263,7 +262,7 @@ namespace SentirseBien
             {
                 this.fecha = calendarioForm.fecha;
                 this.fechalimite = calendarioForm.fechalimite;
-                labelfecha.Text = calendarioForm.fecha;
+                labelfecha.Text = "La fecha que seleccionó es: "+calendarioForm.fecha;
             }
         }
 

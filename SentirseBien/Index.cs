@@ -75,6 +75,9 @@ namespace SentirseBien
                     label2.Visible = false;
                     panelPagos.Visible = false;
                     label5.Visible = false;
+                    panelServicios.Visible = false;
+                    label_servicios.Visible = false;
+
                     break;
                 case 1:
 
@@ -88,6 +91,10 @@ namespace SentirseBien
                         label2.Visible = false;
                         panelPagos.Visible = false;
                         label5.Visible = false;
+                        panelServicios.Visible = false;
+                        label_servicios.Visible = false;
+                        panel_pagar.Visible = false;
+                        label_pagar.Visible = false;
                     }
                     break;
             }
@@ -111,6 +118,7 @@ namespace SentirseBien
             AbrirFormularioEnPanel(turnos);
             //this.Hide();
             //turnos.Show();
+            ActualizarLabelPagosPendientes();
 
         }
 
@@ -121,6 +129,7 @@ namespace SentirseBien
             AbrirFormularioEnPanel(clientes);
             /*this.Hide();
             clientes.ShowDialog();*/
+            ActualizarLabelPagosPendientes();
         }
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -169,6 +178,7 @@ namespace SentirseBien
             MessageBox.Show("click en perfil");
             panelMenuPerfil.Visible = !panelMenuPerfil.Visible;
             //panelMenuPerfil.Visible = true;
+            ActualizarLabelPagosPendientes();
         }
 
         private void panelCerrar_Click(object sender, EventArgs e)
@@ -215,10 +225,11 @@ namespace SentirseBien
                 hijo.CambioRealizado += Hijo_CambioRealizado;
             }
 
+            ActualizarLabelPagosPendientes();
 
-    }
+        }
 
-        private void Hijo_CambioRealizado(object sender, EventArgs e)
+        public void Hijo_CambioRealizado(object sender, EventArgs e)
         {
             // Llamamos al método que necesitamos
             ActualizarLabelPagosPendientes();
@@ -235,6 +246,7 @@ namespace SentirseBien
         {
             BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario);
             AbrirFormularioEnPanel(bienvenidoForm);
+            ActualizarLabelPagosPendientes();
         }
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)
@@ -251,6 +263,7 @@ namespace SentirseBien
         {
             PagosForm pagosForm = new PagosForm(usuario);
             AbrirFormularioEnPanel(pagosForm);
+            ActualizarLabelPagosPendientes();
         }
 
         private void panelServicios_Paint(object sender, PaintEventArgs e)
@@ -262,14 +275,21 @@ namespace SentirseBien
         {
             ServiciosForm serviciosForm = new ServiciosForm(usuario);
             AbrirFormularioEnPanel(serviciosForm);
+            ActualizarLabelPagosPendientes();
         }
 
         private void ClickPagar(object sender, MouseEventArgs e)
         {
+
             SeleccionAPagar seleccionAPagar = new SeleccionAPagar(usuario);
+            seleccionAPagar.PagoRealizado += SeleccionAPagar_PagoRealizado;
             AbrirFormularioEnPanel(seleccionAPagar);
-            /*PagoForm pagoform = new PagoForm(usuario);
-            pagoform.ShowDialog();*/
+            ActualizarLabelPagosPendientes();
+        }
+        private void SeleccionAPagar_PagoRealizado(object sender, EventArgs e)
+        {
+            // Aquí puedes llamar cualquier método del formulario principal
+            ActualizarLabelPagosPendientes();  // Este método se llama cuando se realiza un pago
         }
     }
 }

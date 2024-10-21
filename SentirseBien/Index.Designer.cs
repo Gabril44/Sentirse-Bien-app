@@ -116,6 +116,7 @@
             // 
             label_pagar.AutoSize = true;
             label_pagar.Font = new Font("Microsoft YaHei UI Light", 13.8F);
+            label_pagar.ForeColor = SystemColors.ControlLightLight;
             label_pagar.Location = new Point(39, 17);
             label_pagar.Name = "label_pagar";
             label_pagar.Size = new Size(73, 30);
@@ -139,6 +140,7 @@
             // 
             label_servicios.AutoSize = true;
             label_servicios.Font = new Font("Microsoft YaHei UI Light", 13.8F);
+            label_servicios.ForeColor = SystemColors.ControlLightLight;
             label_servicios.Location = new Point(31, 12);
             label_servicios.Name = "label_servicios";
             label_servicios.Size = new Size(102, 30);
@@ -176,6 +178,7 @@
             // 
             labelcerrar.AutoSize = true;
             labelcerrar.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelcerrar.ForeColor = SystemColors.ControlLightLight;
             labelcerrar.Location = new Point(45, 11);
             labelcerrar.Margin = new Padding(1, 1, 1, 20);
             labelcerrar.Name = "labelcerrar";
@@ -201,6 +204,7 @@
             // 
             labelPerfil.AutoSize = true;
             labelPerfil.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPerfil.ForeColor = SystemColors.ControlLightLight;
             labelPerfil.Location = new Point(45, 9);
             labelPerfil.Name = "labelPerfil";
             labelPerfil.Size = new Size(65, 30);
@@ -224,6 +228,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ControlLightLight;
             label5.Location = new Point(42, 10);
             label5.Name = "label5";
             label5.Size = new Size(77, 30);
@@ -248,6 +253,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ControlLightLight;
             label3.Location = new Point(40, 11);
             label3.Name = "label3";
             label3.Size = new Size(84, 30);
@@ -272,7 +278,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ControlText;
+            label2.ForeColor = SystemColors.ControlLightLight;
             label2.Location = new Point(34, 12);
             label2.Name = "label2";
             label2.Size = new Size(94, 30);
@@ -299,6 +305,7 @@
             // 
             labelPerfilEditar.AutoSize = true;
             labelPerfilEditar.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPerfilEditar.ForeColor = SystemColors.ControlLightLight;
             labelPerfilEditar.Location = new Point(49, 3);
             labelPerfilEditar.Name = "labelPerfilEditar";
             labelPerfilEditar.Size = new Size(71, 30);
@@ -331,6 +338,7 @@
             labelPerfilCerrar.AutoSize = true;
             labelPerfilCerrar.Cursor = Cursors.Hand;
             labelPerfilCerrar.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPerfilCerrar.ForeColor = SystemColors.ControlLightLight;
             labelPerfilCerrar.Location = new Point(7, 3);
             labelPerfilCerrar.Name = "labelPerfilCerrar";
             labelPerfilCerrar.Size = new Size(159, 30);

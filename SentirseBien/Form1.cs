@@ -44,6 +44,10 @@ namespace SentirseBien
             {
                 cancelar_turno_button.Visible = true;
             }
+            else 
+            {
+                pedir_turno_cliente.Visible = false;
+            }
         }
 
         private void CargarTurnosCliente(string filtro = "")

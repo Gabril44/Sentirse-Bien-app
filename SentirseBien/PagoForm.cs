@@ -30,8 +30,6 @@ namespace SentirseBien
             this.monto = monto;
             this.pagos = pagos;
             conexionMysql = new ConexionMysql();
-            //this.turno = turno;
-            //this.servicio = servicio;
             InitializeComponent();
         }
 
@@ -146,14 +144,12 @@ namespace SentirseBien
             using (MySqlConnection connection = conexionMysql.GetConnection())
             {
 
-                //connection.Open();  // Abre la conexión a la base de datos
 
                 using (MySqlTransaction transaction = connection.BeginTransaction())
                 {
                     try
                     {
-                        string QUERY = "UPDATE pagos SET estado = @nuevoEstado WHERE estado = 'pendiente' AND numeropago = @numeropago";
-
+                        string QUERY = "UPDATE pagos SET estado = @nuevoEstado, mediodepago = @nuevoMediodepago WHERE estado = 'pendiente' AND numeropago = @numeropago";
                         foreach (var pago in pagos)
                         {
                            
@@ -162,7 +158,7 @@ namespace SentirseBien
                                 // Parámetros para la consulta SQL
                                 command.Parameters.AddWithValue("@nuevoEstado", "pagado");
                                 command.Parameters.AddWithValue("@numeropago", pago.nropago);
-                                //command.Parameters.AddWithValue("@id_pago", pago.nropago); // Aquí usas el ID del pago que quieres actualizar
+                                command.Parameters.AddWithValue("@nuevoMediodepago", tarjeta_combox.Text); // Actualizar mediodepago
                                 MessageBox.Show("el numero del pago que queres actualizar es: "+ pago.nropago);
 
                                 int filasAfectadas = command.ExecuteNonQuery();  // Ejecuta la consulta de actualización
@@ -186,7 +182,10 @@ namespace SentirseBien
                         MessageBox.Show("Error al actualizar el estado del pago: " + ex.Message);
                     }
                 }
+
+
             }
+            
         }
 
 

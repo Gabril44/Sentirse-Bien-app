@@ -40,6 +40,7 @@
             fechalimite = new DataGridViewTextBoxColumn();
             servicio = new DataGridViewTextBoxColumn();
             profesional = new DataGridViewTextBoxColumn();
+            imprimir_button = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -51,6 +52,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90.52198F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 103F));
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
+            tableLayoutPanel1.Controls.Add(imprimir_button, 1, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -134,6 +136,17 @@
             profesional.MinimumWidth = 6;
             profesional.Name = "profesional";
             // 
+            // imprimir_button
+            // 
+            imprimir_button.Anchor = AnchorStyles.None;
+            imprimir_button.Location = new Point(287, 394);
+            imprimir_button.Name = "imprimir_button";
+            imprimir_button.Size = new Size(187, 45);
+            imprimir_button.TabIndex = 1;
+            imprimir_button.Text = "Descargar Informe";
+            imprimir_button.UseVisualStyleBackColor = true;
+            imprimir_button.Click += imprimir_button_Click;
+            // 
             // PagosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -162,5 +175,6 @@
         private DataGridViewTextBoxColumn fechalimite;
         private DataGridViewTextBoxColumn servicio;
         private DataGridViewTextBoxColumn profesional;
+        private Button imprimir_button;
     }
 }

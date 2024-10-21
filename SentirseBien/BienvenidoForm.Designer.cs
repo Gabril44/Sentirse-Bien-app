@@ -38,12 +38,13 @@
             // 
             // bienvenido_label
             // 
+            bienvenido_label.Anchor = AnchorStyles.None;
             bienvenido_label.AutoSize = true;
             bienvenido_label.Font = new Font("Segoe UI", 25F);
-            bienvenido_label.ForeColor = Color.FromArgb(29, 56, 49);
-            bienvenido_label.Location = new Point(3, 0);
+            bienvenido_label.ForeColor = Color.FromArgb(232, 235, 233);
+            bienvenido_label.Location = new Point(374, 18);
             bienvenido_label.Name = "bienvenido_label";
-            bienvenido_label.Size = new Size(147, 94);
+            bienvenido_label.Size = new Size(231, 57);
             bienvenido_label.TabIndex = 0;
             bienvenido_label.Text = "Bienvenido";
             // 
@@ -53,9 +54,9 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.615202F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78.3847961F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 278F));
-            tableLayoutPanel1.Controls.Add(bienvenido_label, 0, 0);
             tableLayoutPanel1.Controls.Add(carrousel_pb, 1, 1);
             tableLayoutPanel1.Controls.Add(pie_label, 1, 2);
+            tableLayoutPanel1.Controls.Add(bienvenido_label, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -85,7 +86,7 @@
             pie_label.Anchor = AnchorStyles.Top;
             pie_label.AutoSize = true;
             pie_label.Font = new Font("Segoe UI", 18F);
-            pie_label.ForeColor = Color.FromArgb(29, 56, 49);
+            pie_label.ForeColor = Color.FromArgb(232, 235, 233);
             pie_label.Location = new Point(449, 502);
             pie_label.Name = "pie_label";
             pie_label.Size = new Size(81, 41);
