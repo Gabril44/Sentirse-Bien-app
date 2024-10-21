@@ -23,10 +23,13 @@ namespace SentirseBien
         private ConexionMysql conexionMysql;
         Servicio servicio;
         decimal monto;
-        public PagoForm(Usuario usuario, decimal monto)
+        List<Pago> pagos;
+        public PagoForm(Usuario usuario, decimal monto, List<Pago> pagos)
         {
             this.usuario = usuario;
             this.monto = monto;
+            this.pagos = pagos;
+            conexionMysql = new ConexionMysql();
             //this.turno = turno;
             //this.servicio = servicio;
             InitializeComponent();
@@ -34,194 +37,158 @@ namespace SentirseBien
 
         private void aceptar_button_Click(object sender, EventArgs e)
         {
-            Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Title = "Guardar Archivo",
-                Filter = "Archivo PDF (*.pdf)|*.pdf",
-                DefaultExt = "pdf",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-            };
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                FileStream file = null;
-                try
+                Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
+                SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
-                    file = new FileStream(saveFileDialog.FileName, FileMode.Create);
-                    PdfWriter pw = PdfWriter.GetInstance(doc, file);
-                    doc.Open();
-                    doc.AddAuthor("Dra Ana Felicidad");
-                    doc.AddTitle("Comprobante de Turno");
+                    Title = "Guardar Archivo",
+                    Filter = "Archivo PDF (*.pdf)|*.pdf",
+                    DefaultExt = "pdf",
+                    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                };
 
-                    // Agregar imagen embebida
-                    string imagePath = "SentirseBien.Resources.logo.jpg"; // Cambia 'TuNamespace' por el namespace real de tu proyecto
-                    using (var stream = typeof(PagoForm).Assembly.GetManifestResourceStream(imagePath))
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FileStream file = null;
+                    try
                     {
-                        if (stream != null)
+                        file = new FileStream(saveFileDialog.FileName, FileMode.Create);
+                        PdfWriter pw = PdfWriter.GetInstance(doc, file);
+                        doc.Open();
+                        doc.AddAuthor("Dra Ana Felicidad");
+                        doc.AddTitle("Comprobante de Turno");
+
+                        // Agregar imagen embebida
+                        string imagePath = "SentirseBien.Resources.logo.jpg";
+                        using (var stream = typeof(PagoForm).Assembly.GetManifestResourceStream(imagePath))
                         {
-                            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(stream);
-                            image.ScaleToFit(doc.PageSize.Width - doc.LeftMargin - doc.RightMargin, 100); // Escalar la imagen
-                            doc.Add(image); // Agregar la imagen al documento
+                            if (stream != null)
+                            {
+                                iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(stream);
+                                image.ScaleToFit(doc.PageSize.Width - doc.LeftMargin - doc.RightMargin, 100); // Escalar la imagen
+                                image.Alignment = Element.ALIGN_CENTER; // Centrar la imagen
+                                doc.Add(image); // Agregar la imagen al documento
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontró la imagen embebida.");
+                                return; // Salir si no se encuentra la imagen
+                            }
                         }
-                        else
+
+                        // Fuente
+                        iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+                        // Encabezado
+                        doc.Add(new Paragraph("COMPROBANTE DE TURNO", standarFont) { Alignment = Element.ALIGN_CENTER });
+                        doc.Add(Chunk.NEWLINE);
+
+                        // Crear una tabla con 2 columnas
+                        PdfPTable pdfptable = new PdfPTable(3) { WidthPercentage = 100 };
+                        float[] columnWidths = { 0.4f, 0.4f, 0.2f }; // Ajusta el ancho de las columnas
+                        pdfptable.SetWidths(columnWidths);
+
+                        // Agregar espaciado entre celdas
+                        pdfptable.SpacingBefore = 10f; // Espacio antes de la tabla
+                        pdfptable.SpacingAfter = 10f;  // Espacio después de la tabla
+
+                        // Encabezados de la tabla
+                        pdfptable.AddCell(new PdfPCell(new Phrase("Nombre", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
+                        pdfptable.AddCell(new PdfPCell(new Phrase("Servicio", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
+                        pdfptable.AddCell(new PdfPCell(new Phrase($"$Precio", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
+
+                        // Agregar datos a la tabla
+                        int i = 0;
+                        while (i < pagos.Count)
                         {
-                            MessageBox.Show("No se encontró la imagen embebida.");
-                            return; // Salir si no se encuentra la imagen
+                            pdfptable.AddCell(new PdfPCell(new Phrase(usuario.nombre ?? "N/A", standarFont)) { BorderWidth = 0 });
+                            pdfptable.AddCell(new PdfPCell(new Phrase(pagos[i].servicio ?? "N/A", standarFont)) { BorderWidth = 0 });
+                            pdfptable.AddCell(new PdfPCell(new Phrase($"${pagos[i].monto.ToString("N2")}", standarFont)) { BorderWidth = 0 }); // Agregar el precio con el símbolo de pesos
+                            i++;
                         }
+
+                        doc.Add(pdfptable);
+                        doc.Add(Chunk.NEWLINE); // Dejar espacio antes del monto
+
+                        // Posicionar el monto total en la parte inferior derecha
+                        PdfContentByte cb = pw.DirectContent;
+                        cb.BeginText();
+
+                        // Configuración de la fuente para el monto
+                        BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                        cb.SetFontAndSize(bf, 12); // Tamaño de la fuente
+
+                        // Alinear y mostrar el texto en la parte inferior derecha
+                        cb.ShowTextAligned(Element.ALIGN_RIGHT, $"Monto total: ${monto.ToString("N2")}", doc.PageSize.Width - doc.RightMargin, doc.BottomMargin + 20, 0);
+
+                        cb.EndText();
+
+                        MessageBox.Show("Archivo guardado en: " + saveFileDialog.FileName);
                     }
-
-                    // Fuente
-                    iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-
-                    // Encabezado
-                    doc.Add(new Paragraph("COMPROBANTE DE TURNO"));
-                    doc.Add(Chunk.NEWLINE);
-
-                    PdfPTable pdfptable = new PdfPTable(3) { WidthPercentage = 100 };
-
-                    // Encabezados de la tabla
-                    pdfptable.AddCell(new PdfPCell(new Phrase("Nombre", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-                    pdfptable.AddCell(new PdfPCell(new Phrase("Servicio", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-                    pdfptable.AddCell(new PdfPCell(new Phrase("Monto", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-
-                    // Agregar datos
-                    pdfptable.AddCell(new PdfPCell(new Phrase(usuario.nombre ?? "N/A", standarFont))); // Manejar valores nulos
-                    pdfptable.AddCell(new PdfPCell(new Phrase(turno.servicio ?? "N/A", standarFont))); // Manejar valores nulos
-                    pdfptable.AddCell(new PdfPCell(new Phrase(monto.ToString(), standarFont)));
-
-                    doc.Add(pdfptable);
-                    MessageBox.Show("Archivo guardado en: " + saveFileDialog.FileName);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al generar el PDF: " + ex.Message);
+                    }
+                    finally
+                    {
+                        doc.Close(); // Asegúrate de cerrar el documento
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al generar el PDF: " + ex.Message);
-                }
-                finally
-                {
-                    doc.Close(); // Asegúrate de cerrar el documento
-                }
-            }
 
-            DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
-
-
-
-        /* private void aceptar_button_Click(object sender, EventArgs e)
-         {
-             Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
-             SaveFileDialog saveFileDialog = new SaveFileDialog
-             {
-                 Title = "Guardar Archivo",
-                 Filter = "Archivo PDF (*.pdf)|*.pdf",
-                 DefaultExt = "pdf",
-                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-             };
-
-             if (saveFileDialog.ShowDialog() == DialogResult.OK)
-             {
-                 try
-                 {
-                     using (FileStream file = new FileStream(saveFileDialog.FileName, FileMode.Create))
-                     using (PdfWriter pw = PdfWriter.GetInstance(doc, file))
-                     {
-                         doc.Open();
-                         doc.AddAuthor("Dra Ana Felicidad");
-                         doc.AddTitle("Comprobante de Turno");
-
-                         // Fuente
-                         iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-
-                         // Encabezado
-                         doc.Add(new Paragraph("COMPROBANTE DE TURNO"));
-                         doc.Add(Chunk.NEWLINE);
-
-                         PdfPTable pdfptable = new PdfPTable(3) { WidthPercentage = 100 };
-
-                         // Encabezados de la tabla
-                         pdfptable.AddCell(new PdfPCell(new Phrase("Nombre", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-                         pdfptable.AddCell(new PdfPCell(new Phrase("Servicio", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-                         pdfptable.AddCell(new PdfPCell(new Phrase("Monto", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-
-                         // Agregar datos
-                         pdfptable.AddCell(new PdfPCell(new Phrase(usuario.nombre ?? "N/A", standarFont))); // Manejar valores nulos
-                         pdfptable.AddCell(new PdfPCell(new Phrase(turno.servicio ?? "N/A", standarFont))); // Manejar valores nulos
-                         pdfptable.AddCell(new PdfPCell(new Phrase("$1000", standarFont)));
-
-                         doc.Add(pdfptable);
-                         MessageBox.Show("Archivo guardado en: " + saveFileDialog.FileName);
-                     }
-                 }
-                 catch (Exception ex)
-                 {
-                     MessageBox.Show("Error al generar el PDF: " + ex.Message);
-                 }
-                 finally
-                 {
-                     doc.Close(); // Asegúrate de cerrar el documento
-                 }
-             }
-             /*
-             FileStream file = null;
-             Document doc = new Document(PageSize.LETTER, 5, 5, 7, 7);
-             SaveFileDialog saveFileDialog = new SaveFileDialog();
-             saveFileDialog.Title = "Guardar Archivo";
-             saveFileDialog.Filter = "Archivo PDF (*.pdf)|*.pdf";
-             saveFileDialog.DefaultExt = "pdf";
-             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-             if (saveFileDialog.ShowDialog() == DialogResult.OK)
-             {
-                 // Obtener la ruta seleccionada por el usuario
-                 file = new FileStream(saveFileDialog.FileName, FileMode.Create);
-                 PdfWriter pw = PdfWriter.GetInstance(doc, file);
-                 //PDF
-                 doc.Open();
-                 doc.AddAuthor("Dra Ana Felicidad");
-                 doc.AddTitle("Comprobante de Turno");
-                 //fuente
-                 iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-                 //encabezado
-                 doc.Add(new Paragraph("COMPROBANTE DE TURNO"));
-                 doc.Add(Chunk.NEWLINE);
-                 PdfPTable pdfptable = new PdfPTable(3);
-                 pdfptable.WidthPercentage = 100;
-
-                 PdfPCell pdfPCellNombre = new PdfPCell(new Phrase("Nombre", standarFont));
-                 pdfPCellNombre.BorderWidth = 0;
-                 pdfPCellNombre.BorderWidthBottom = 0.75f;
-                 PdfPCell pdfPCellServicio = new PdfPCell(new Phrase("Servicio", standarFont));
-                 pdfPCellServicio.BorderWidth = 0;
-                 pdfPCellServicio.BorderWidthBottom = 0.75f;
-                 PdfPCell pdfPCellMonto = new PdfPCell(new Phrase("Monto", standarFont));
-                 pdfPCellMonto.BorderWidth = 0;
-                 pdfPCellMonto.BorderWidthBottom = 0.75f;
-
-                 //agregar datos
-                 pdfPCellNombre = new PdfPCell(new Phrase(usuario.nombre, standarFont));
-                 pdfPCellServicio = new PdfPCell(new Phrase(turno.servicio));
-                 pdfPCellMonto = new PdfPCell(new Phrase("$1000", standarFont));
-
-                 pdfptable.AddCell(pdfPCellNombre);
-                 pdfptable.AddCell(pdfPCellServicio);
-                 pdfptable.AddCell(pdfPCellMonto);
-
-                 doc.Add(pdfptable);
-                 doc.Close();
-                 pw.Close();
-                 MessageBox.Show("Archivo guardado en: " + saveFileDialog.FileName);
-             }
-
-             DialogResult = DialogResult.OK;
-             this.Close();
-         }*/
-
-        private void Crearpago() 
-        {
+                DialogResult = DialogResult.OK;
+                ReflejarPago();
+                this.Close();
             
         }
+
+        private void ReflejarPago()
+        {
+
+            using (MySqlConnection connection = conexionMysql.GetConnection())
+            {
+
+                //connection.Open();  // Abre la conexión a la base de datos
+
+                using (MySqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        string QUERY = "UPDATE pagos SET estado = @nuevoEstado WHERE estado = 'pendiente' AND numeropago = @numeropago";
+
+                        foreach (var pago in pagos)
+                        {
+                           
+                            using (MySqlCommand command = new MySqlCommand(QUERY, connection, transaction))
+                            {
+                                // Parámetros para la consulta SQL
+                                command.Parameters.AddWithValue("@nuevoEstado", "pagado");
+                                command.Parameters.AddWithValue("@numeropago", pago.nropago);
+                                //command.Parameters.AddWithValue("@id_pago", pago.nropago); // Aquí usas el ID del pago que quieres actualizar
+                                MessageBox.Show("el numero del pago que queres actualizar es: "+ pago.nropago);
+
+                                int filasAfectadas = command.ExecuteNonQuery();  // Ejecuta la consulta de actualización
+
+                                if (filasAfectadas > 0)
+                                {
+                                    MessageBox.Show("El estado del pago '" + pago.nropago + "' ha sido actualizado a 'pagado'.");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se encontró el pago especificado: " + pago.nropago);
+                                }
+                            }
+                        }
+
+                        transaction.Commit();  // Confirma la transacción
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();  // Revierte la transacción en caso de error
+                        MessageBox.Show("Error al actualizar el estado del pago: " + ex.Message);
+                    }
+                }
+            }
+        }
+
 
         private void cancelarBoton_click(object sender, EventArgs e)
         {

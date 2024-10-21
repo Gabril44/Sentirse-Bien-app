@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SentirseBien
 {
@@ -19,12 +20,11 @@ namespace SentirseBien
         private ConexionMysql conexionMysql;
         private Turno turno;
         private Usuario usario;
-        private Servicio servicio;
         private Pago pago = new Pago();
+        private Servicio servicio1;
         public pedirTurno(Usuario usuario)
         {
             pago = new Pago();
-            servicio = new Servicio();
             this.usario = usuario;
             InitializeComponent();
             conexionMysql = new ConexionMysql();
@@ -52,7 +52,6 @@ namespace SentirseBien
                                 nombre = reader.GetString("nombre")
                             };
                             servicios_combobox.Items.Add(item);
-                            CrearServicio((reader.GetString("nombre")), (reader.GetInt32("precio")), (reader.GetInt32("numServicio")));
                         }
                     }
                 }
@@ -110,12 +109,6 @@ namespace SentirseBien
             turno.servicio = servicio;
         }
 
-        private void CrearServicio(string nombre, int precio, int numServicio) 
-        {
-            this.servicio.nombre = nombre;
-            this.servicio.precio = precio;
-            this.servicio.num_servicio = numServicio;
-        }
 
         private void aceptar_button_Click(object sender, EventArgs e)
         {
@@ -167,10 +160,43 @@ namespace SentirseBien
                             MessageBox.Show("Error: " + ex.Message);
                         }
                     }
+                    string QUERYBUSCARSERVICIO = "SELECT nombre, precio, numServicio FROM servicios WHERE nombre = @nombre";
+                    using (MySqlConnection connection = conexionMysql.GetConnection())
+                    {
+                        //connection.Open(); // Asegúrate de abrir la conexión
+                        MySqlCommand command = new MySqlCommand(QUERYBUSCARSERVICIO, connection);
 
-                    decimal montoPago = servicio.precio;
+                        // Agregar el parámetro antes de ejecutar el comando
+                        MessageBox.Show(turno.servicio);
+                        command.Parameters.AddWithValue("@nombre", turno.servicio);
+
+                        try
+                        {
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                // Lee los resultados
+                                while (reader.Read())
+                                {
+                                    // Asegúrate de que servicio1 esté inicializado
+                                    servicio1 = new Servicio(); // Reemplaza 'Servicio' con la clase que estés utilizando
+
+                                    servicio1.nombre = reader.GetString("nombre");
+                                    servicio1.precio = reader.GetInt32("precio");
+                                    servicio1.num_servicio = reader.GetInt32("numServicio");
+
+                                    MessageBox.Show(servicio1.nombre + " " + servicio1.precio + " " + servicio1.num_servicio);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al cargar datos: " + ex.Message);
+                        }
+                    }
+
+
                     //-ahora la creación del pago en modo pendiente-
-                    crearPago(montoPago, usario.nombre, fecha, usario.idusuario, fechalimite);
+                    crearPago(servicio1.precio, usario.nombre, fecha, usario.idusuario, fechalimite);
                     string QUERYCREARPAGOPENDIENTE = "INSERT INTO pagos (monto, nombrecliente, fecha, id_usuario, fechalimite, servicio, profesional) " +
                            "VALUES (@monto, @nombrecliente, @fecha, @id_usuario, @fechalimite, @servicio, @profesional)";
 
@@ -208,6 +234,8 @@ namespace SentirseBien
                             MessageBox.Show("Error: " + ex.Message);
                         }
                     }
+
+
 
                     /* PagoForm pagoform = new PagoForm(usario, turno);
                      pagoform.ShowDialog();*/

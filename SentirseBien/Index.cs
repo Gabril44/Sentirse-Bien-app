@@ -50,7 +50,7 @@ namespace SentirseBien
             {
                 using (MySqlConnection connection = conexionMysql.GetConnection())
                 {
-                    string query = "SELECT COUNT(*) FROM pagos WHERE id_usuario = @usuarioId"; // Cambia 'usuario_id' por el nombre de tu columna foreign key
+                    string query = "SELECT COUNT(*) FROM pagos WHERE id_usuario = @usuarioId AND estado = 'pendiente'"; 
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@usuarioId", usuario.idusuario);
@@ -93,18 +93,7 @@ namespace SentirseBien
             }
         }
 
-        /*private void configurarMenuStrip(Usuario usuario) 
-        {
-            if (usuario.correo == "test@gmail.com") 
-            {
-                menuStrip1.Visible = true;
-            }
-            else 
-            {
-                menuStrip1.Visible = false;
-            }
-        }*/
-
+      
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 

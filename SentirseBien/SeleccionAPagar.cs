@@ -20,6 +20,7 @@ namespace SentirseBien
         //private decimal precio_label;
         List<decimal> montos = new List<decimal>();
         List<Pago> pagos = new List<Pago>();
+        List<Pago> pagosSeleccionados = new List<Pago>();
         public SeleccionAPagar(Usuario usuario)
         {
             this.usuario = usuario;
@@ -33,7 +34,7 @@ namespace SentirseBien
         private void RellenarCheckBox()
         {
             checkedListBox1.Items.Clear();
-            string QUERY = "SELECT servicio, profesional FROM pagos";
+            string QUERY = "SELECT estado, servicio, profesional FROM pagos";
             using (MySqlConnection connection = conexionMysql.GetConnection())
             {
                 MySqlCommand command = new MySqlCommand(QUERY, connection);
@@ -45,7 +46,11 @@ namespace SentirseBien
                         while (reader.Read())
                         {
                             {
-                                checkedListBox1.Items.Add(reader.GetString("servicio") + "  por: " + reader.GetString("profesional"));
+                                if (reader.GetString("estado") == "pendiente") 
+                                {
+
+                                    checkedListBox1.Items.Add(reader.GetString("servicio") + "  por: " + reader.GetString("profesional"));
+                                }
                             };
 
                         }
@@ -119,14 +124,18 @@ namespace SentirseBien
                 {
                     // Obtén el monto del ítem correspondiente al índice
                     montoSeleccionado = montos[index];
-
+                    Pago pagoSeleccionado = pagos[index];
                     // Ajusta el valor del label_precio según el estado del checkbox
                     if (e.NewValue == CheckState.Checked)
                     {
+                        pagosSeleccionados.Add(pagoSeleccionado);
+                        MessageBox.Show("se agregó el pago: "+pagoSeleccionado.nropago+" a la list de pagos seleccionados");
                         label_precio.Text = (Decimal.Parse(label_precio.Text) + montoSeleccionado).ToString();
                     }
                     else if (e.NewValue == CheckState.Unchecked)
                     {
+                        pagosSeleccionados.Remove(pagoSeleccionado);
+                        MessageBox.Show("se quitó el pago: " + pagoSeleccionado.nropago + " de la list de pagos seleccionados");
                         label_precio.Text = (Decimal.Parse(label_precio.Text) - montoSeleccionado).ToString();
                     }
                 }
@@ -136,8 +145,12 @@ namespace SentirseBien
 
         private void pagar_button_Click(object sender, EventArgs e)
         {
-            PagoForm pagoForm = new PagoForm(usuario, Decimal.Parse(label_precio.Text));
-            pagoForm.ShowDialog();
+            PagoForm pagoForm = new PagoForm(usuario, Decimal.Parse(label_precio.Text), pagosSeleccionados);
+            if (pagoForm.ShowDialog() == DialogResult.OK)
+            {
+                RellenarCheckBox();
+                CargarDatos();
+            }
         }
     }
 }
