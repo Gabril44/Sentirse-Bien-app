@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SentirseBien
 {
-    internal class Pago
+    public class Pago
     {
         public int nropago { get; set; }
         public decimal monto { get; set; }

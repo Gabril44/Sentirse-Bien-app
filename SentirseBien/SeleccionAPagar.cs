@@ -19,6 +19,7 @@ namespace SentirseBien
         private ConexionMysql conexionMysql;
         //private decimal precio_label;
         List<decimal> montos = new List<decimal>();
+        List<Pago> pagos = new List<Pago>();
         public SeleccionAPagar(Usuario usuario)
         {
             this.usuario = usuario;
@@ -59,12 +60,12 @@ namespace SentirseBien
 
         private void CheckedListBox1Changed(object sender, EventArgs e)
         {
-            
+
         }
 
         private void CargarDatos()
         {
-            string QUERY = "SELECT monto FROM pagos WHERE id_usuario = @id_usuario";
+            string QUERY = "SELECT numeropago, monto, nombrecliente, fecha, mediodepago, id_usuario, fechalimite, servicio, profesional FROM pagos WHERE id_usuario = @id_usuario";
 
             using (MySqlConnection connection = conexionMysql.GetConnection())
             {
@@ -78,6 +79,17 @@ namespace SentirseBien
                     {
                         while (reader.Read())
                         {
+                            Pago pago = new Pago();
+                            pago.nropago = reader.GetInt32("numeropago");
+                            pago.monto = reader.GetDecimal("monto");
+                            pago.nombre_cliente = reader.GetString("nombrecliente");
+                            pago.fecha = reader.GetString("fecha");
+                            pago.medio_de_pago = reader.GetString("mediodepago");
+                            pago.id_usuario = reader.GetInt32("id_usuario");
+                            pago.fechalimite = reader.GetString("fechalimite");
+                            pago.servicio = reader.GetString("servicio");
+                            pago.profesional = reader.GetString("profesional");
+                            pagos.Add(pago);
                             // Agrega el monto a la lista
                             decimal monto = reader.GetDecimal("monto");
                             montos.Add(monto);
@@ -120,51 +132,12 @@ namespace SentirseBien
                 }
             }
 
-            /* if (e.NewValue == CheckState.Checked || e.NewValue == CheckState.Unchecked)
-             {
-                 decimal totalMonto = 0;
-                 string QUERY = "SELECT monto FROM pagos WHERE id_usuario = @id_usuario";
-
-                 using (MySqlConnection connection = conexionMysql.GetConnection())
-                 {
-                     MySqlCommand command = new MySqlCommand(QUERY, connection);
-                     command.Parameters.AddWithValue("@id_usuario", usuario.idusuario); // Asegúrate de que usuario.idusuario tenga el valor correcto
-
-                     try
-                     {
-                         using (MySqlDataReader reader = command.ExecuteReader())
-                         {
-                             while (reader.Read())
-                             {
-                                 totalMonto += reader.GetDecimal("monto"); // Suma todos los montos
-                             }
-                         }
-                     }
-                     catch (Exception ex)
-                     {
-                         MessageBox.Show("Error al cargar datos: " + ex.Message);
-                     }
-                 }
-
-                 // Ajusta el valor del label_precio según el estado del checkbox
-                 if (e.NewValue == CheckState.Checked)
-                 {
-                     precio_label =+ totalMonto;
-                     //label_precio.Text = (Decimal.Parse(label_precio.Text) + totalMonto).ToString();
-                 }
-                 else if (e.NewValue == CheckState.Unchecked)
-                 {
-                     precio_label =+ totalMonto;
-                     //label_precio.Text = (Decimal.Parse(label_precio.Text) - totalMonto).ToString();
-                 }
-             }
-             ActualizarLabelPrecio();*/
-
         }
 
-       /* private void ActualizarLabelPrecio()
+        private void pagar_button_Click(object sender, EventArgs e)
         {
-            label_precio.Text = precio_label.ToString();
-        }*/
+            PagoForm pagoForm = new PagoForm(usuario, Decimal.Parse(label_precio.Text));
+            pagoForm.ShowDialog();
+        }
     }
 }

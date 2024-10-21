@@ -33,6 +33,7 @@
             label1 = new Label();
             label2 = new Label();
             label_precio = new Label();
+            pagar_button = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Controls.Add(label2, 1, 2);
             tableLayoutPanel1.Controls.Add(label_precio, 2, 2);
+            tableLayoutPanel1.Controls.Add(pagar_button, 2, 3);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -106,6 +108,17 @@
             label_precio.TabIndex = 3;
             label_precio.Text = "00";
             // 
+            // pagar_button
+            // 
+            pagar_button.Anchor = AnchorStyles.None;
+            pagar_button.Location = new Point(656, 394);
+            pagar_button.Name = "pagar_button";
+            pagar_button.Size = new Size(131, 47);
+            pagar_button.TabIndex = 4;
+            pagar_button.Text = "Pagar";
+            pagar_button.UseVisualStyleBackColor = true;
+            pagar_button.Click += pagar_button_Click;
+            // 
             // SeleccionAPagar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -127,5 +140,6 @@
         private Label label1;
         private Label label2;
         private Label label_precio;
+        private Button pagar_button;
     }
 }

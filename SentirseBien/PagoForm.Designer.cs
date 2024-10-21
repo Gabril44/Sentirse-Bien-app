@@ -126,6 +126,7 @@
             textBox3.Dock = DockStyle.Fill;
             textBox3.Location = new Point(262, 294);
             textBox3.Margin = new Padding(3, 13, 3, 3);
+            textBox3.MaxLength = 3;
             textBox3.Name = "textBox3";
             textBox3.PasswordChar = '*';
             textBox3.Size = new Size(271, 27);
