@@ -39,6 +39,7 @@
             id_usuario = new DataGridViewTextBoxColumn();
             fechalimite = new DataGridViewTextBoxColumn();
             servicio = new DataGridViewTextBoxColumn();
+            profesional = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -65,7 +66,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.FromArgb(30, 59, 52);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nro_Pago, monto, nombre_cliente, fecha, Medio_Pago, estado, id_usuario, fechalimite, servicio });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nro_Pago, monto, nombre_cliente, fecha, Medio_Pago, estado, id_usuario, fechalimite, servicio, profesional });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(69, 65);
             dataGridView1.Name = "dataGridView1";
@@ -127,6 +128,12 @@
             servicio.MinimumWidth = 6;
             servicio.Name = "servicio";
             // 
+            // profesional
+            // 
+            profesional.HeaderText = "Profesional";
+            profesional.MinimumWidth = 6;
+            profesional.Name = "profesional";
+            // 
             // PagosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -154,5 +161,6 @@
         private DataGridViewTextBoxColumn id_usuario;
         private DataGridViewTextBoxColumn fechalimite;
         private DataGridViewTextBoxColumn servicio;
+        private DataGridViewTextBoxColumn profesional;
     }
 }

@@ -53,7 +53,8 @@ namespace SentirseBien
                         pagos[i].estado,
                         pagos[i].id_usuario,
                         pagos[i].fechalimite,
-                        pagos[i].servicio
+                        pagos[i].servicio,
+                        pagos[i].profesional
                         );
             }
 

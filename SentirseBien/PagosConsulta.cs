@@ -56,6 +56,7 @@ namespace SentirseBien
                     pago.id_usuario = reader.GetInt16("id_usuario");
                     pago.fechalimite = reader.GetString("fechalimite");
                     pago.servicio = reader.GetString("servicio");
+                    pago.profesional = reader.GetString("profesional");
                     pagos.Add(pago);
                 }
                 reader.Close();

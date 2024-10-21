@@ -17,6 +17,7 @@ namespace SentirseBien
         public int id_usuario { get; set; }
         public string fechalimite { get; set; }
         public string servicio { get; set; }
+        public string profesional { get; set; }
         
     }
 }

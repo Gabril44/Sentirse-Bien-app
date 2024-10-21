@@ -35,7 +35,7 @@ namespace SentirseBien
         private void loadComboBoxItems()
         {
             servicios_combobox.Items.Clear(); //comboBox Servicios
-            string QUERY = "SELECT nombre,numServicio  FROM servicios";
+            string QUERY = "SELECT nombre,numServicio, precio  FROM servicios";
             using (MySqlConnection connection = conexionMysql.GetConnection())
             {
                 MySqlCommand command = new MySqlCommand(QUERY, connection);
@@ -52,6 +52,7 @@ namespace SentirseBien
                                 nombre = reader.GetString("nombre")
                             };
                             servicios_combobox.Items.Add(item);
+                            CrearServicio((reader.GetString("nombre")), (reader.GetInt32("precio")), (reader.GetInt32("numServicio")));
                         }
                     }
                 }
@@ -167,10 +168,11 @@ namespace SentirseBien
                         }
                     }
 
+                    decimal montoPago = servicio.precio;
                     //-ahora la creación del pago en modo pendiente-
-                    crearPago(servicio.precio, usario.nombre, fecha, usario.idusuario, fechalimite);
-                    string QUERYCREARPAGOPENDIENTE = "INSERT INTO pagos (monto, nombrecliente, fecha, id_usuario, fechalimite, servicio) " +
-                           "VALUES (@monto, @nombrecliente, @fecha, @id_usuario, @fechalimite, @servicio)";
+                    crearPago(montoPago, usario.nombre, fecha, usario.idusuario, fechalimite);
+                    string QUERYCREARPAGOPENDIENTE = "INSERT INTO pagos (monto, nombrecliente, fecha, id_usuario, fechalimite, servicio, profesional) " +
+                           "VALUES (@monto, @nombrecliente, @fecha, @id_usuario, @fechalimite, @servicio, @profesional)";
 
                     using (MySqlConnection connection = new ConexionMysql().GetConnection())
                     {
@@ -186,6 +188,7 @@ namespace SentirseBien
                             cmd.Parameters.AddWithValue("@id_usuario", pago.id_usuario);
                             cmd.Parameters.AddWithValue("@fechalimite", pago.fechalimite);
                             cmd.Parameters.AddWithValue("@servicio", turno.servicio);
+                            cmd.Parameters.AddWithValue("@profesional", turno.profesional);
 
                             // Ejecutar la consulta
                             int result = cmd.ExecuteNonQuery();

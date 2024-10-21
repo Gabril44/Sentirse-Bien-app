@@ -277,6 +277,8 @@ namespace SentirseBien
 
         private void ClickPagar(object sender, MouseEventArgs e)
         {
+            SeleccionAPagar seleccionAPagar = new SeleccionAPagar(usuario);
+            AbrirFormularioEnPanel(seleccionAPagar);
             /*PagoForm pagoform = new PagoForm(usuario);
             pagoform.ShowDialog();*/
         }
