@@ -35,7 +35,8 @@ namespace SentirseBien
                         "mediodepago LIKE '%" + filtro + "%' OR " +
                         "estado LIKE '%" + filtro + "%' OR " +
                         "id_usuario LIKE '%" + filtro + "%' OR " +
-                        "fechalimite LIKE '%" + filtro + "%';";
+                        "fechalimite LIKE '%" + filtro + "%' OR " +
+                        "servicio LIKE '%" + filtro + "%';";
                 }
 
                 MySqlCommand comando = new MySqlCommand(QUERY);
@@ -54,6 +55,7 @@ namespace SentirseBien
                     pago.estado = reader.GetString("estado");
                     pago.id_usuario = reader.GetInt16("id_usuario");
                     pago.fechalimite = reader.GetString("fechalimite");
+                    pago.servicio = reader.GetString("servicio");
                     pagos.Add(pago);
                 }
                 reader.Close();

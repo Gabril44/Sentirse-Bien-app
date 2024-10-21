@@ -35,11 +35,14 @@ namespace SentirseBien
 
         private void ActualizarLabelPagosPendientes()
         {
-            label_turnosapagar.Text = ContarPagosPendientes(usuario).ToString();
+            if (ContarPagosPendientes(usuario) > 0)
+            {
+                label_turnosapagar.Visible = true;
+            }
 
         }
 
-        private int ContarPagosPendientes(Usuario usuario) 
+        private int ContarPagosPendientes(Usuario usuario)
         {
             int pagos_pendientes = 0;
 
@@ -218,29 +221,21 @@ namespace SentirseBien
                 panelContenedor.Tag = formularioHijo;
                 formularioHijo.Show();
             }
+            if (formularioHijo is Form1 hijo)
+            {
+                hijo.CambioRealizado += Hijo_CambioRealizado;
+            }
+
+
+    }
+
+        private void Hijo_CambioRealizado(object sender, EventArgs e)
+        {
+            // Llamamos al método que necesitamos
+            ActualizarLabelPagosPendientes();
         }
 
-        /* private void abrirFormHijo(Form formhijo)
-         {
-             try
-             {
-                 if (this.panelContenedor.Controls.Count > 0)
-                 {
-                     this.panelContenedor.Controls.RemoveAt(0);
-                     formhijo.TopLevel = false;
-                     formhijo.Dock = DockStyle.Fill;
-                     this.panelContenedor.Controls.Add(formhijo);
-                     this.panelContenedor.Tag = formhijo;
-                     formhijo.Show();
-                     panelContenedor.Refresh();
-                     MessageBox.Show("Formulario añadido exitosamente");
-                 }
-             }
-             catch (Exception ex) 
-             {
-                 MessageBox.Show("Error :"+ex.Message);
-             }
-         }*/
+        
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
@@ -278,6 +273,12 @@ namespace SentirseBien
         {
             ServiciosForm serviciosForm = new ServiciosForm(usuario);
             AbrirFormularioEnPanel(serviciosForm);
+        }
+
+        private void ClickPagar(object sender, MouseEventArgs e)
+        {
+            /*PagoForm pagoform = new PagoForm(usuario);
+            pagoform.ShowDialog();*/
         }
     }
 }

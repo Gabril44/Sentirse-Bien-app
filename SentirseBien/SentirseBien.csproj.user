@@ -31,6 +31,9 @@
     <Compile Update="pedirTurno.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SeleccionAPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ServiciosForm.cs">
       <SubType>Form</SubType>
     </Compile>

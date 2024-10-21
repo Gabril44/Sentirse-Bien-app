@@ -30,13 +30,9 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             label4 = new Label();
-            PagoForm_Nombre = new Panel();
-            label7 = new Label();
-            label1 = new Label();
             panel1 = new Panel();
             label2 = new Label();
             label8 = new Label();
@@ -51,20 +47,24 @@
             panelAceptarPago = new Panel();
             labelAceptarPago = new Label();
             label6 = new Label();
-            tarjeta_combox = new ComboBox();
-            cuotas_combobox = new ComboBox();
             panel4 = new Panel();
             label11 = new Label();
             label12 = new Label();
+            PagoForm_Nombre = new Panel();
+            label7 = new Label();
+            label1 = new Label();
+            tarjeta_combox = new ComboBox();
+            cuotas_combobox = new ComboBox();
+            textBox1 = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            PagoForm_Nombre.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             panelAceptarPago.SuspendLayout();
             panel4.SuspendLayout();
+            PagoForm_Nombre.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -112,15 +112,6 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(264, 341);
-            textBox1.Margin = new Padding(5, 13, 3, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(269, 27);
-            textBox1.TabIndex = 4;
-            // 
             // textBox2
             // 
             textBox2.Dock = DockStyle.Fill;
@@ -150,41 +141,6 @@
             label4.Size = new Size(271, 20);
             label4.TabIndex = 7;
             label4.Text = "Por favor ingrese los datos de su tarjeta";
-            // 
-            // PagoForm_Nombre
-            // 
-            PagoForm_Nombre.AutoSize = true;
-            PagoForm_Nombre.BackColor = Color.FromArgb(36, 82, 71);
-            PagoForm_Nombre.BorderStyle = BorderStyle.FixedSingle;
-            PagoForm_Nombre.Controls.Add(label7);
-            PagoForm_Nombre.Controls.Add(label1);
-            PagoForm_Nombre.Cursor = Cursors.Hand;
-            PagoForm_Nombre.Dock = DockStyle.Fill;
-            PagoForm_Nombre.Location = new Point(3, 331);
-            PagoForm_Nombre.Name = "PagoForm_Nombre";
-            PagoForm_Nombre.Size = new Size(253, 35);
-            PagoForm_Nombre.TabIndex = 11;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(50, 1);
-            label7.Name = "label7";
-            label7.Size = new Size(0, 30);
-            label7.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(78, 3);
-            label1.Margin = new Padding(3);
-            label1.Name = "label1";
-            label1.Size = new Size(91, 25);
-            label1.TabIndex = 1;
-            label1.Text = "Nombre";
             // 
             // panel1
             // 
@@ -352,30 +308,6 @@
             label6.Size = new Size(0, 30);
             label6.TabIndex = 0;
             // 
-            // tarjeta_combox
-            // 
-            tarjeta_combox.Dock = DockStyle.Fill;
-            tarjeta_combox.DropDownStyle = ComboBoxStyle.DropDownList;
-            tarjeta_combox.FormattingEnabled = true;
-            tarjeta_combox.Items.AddRange(new object[] { "Crédito", "Débito" });
-            tarjeta_combox.Location = new Point(262, 194);
-            tarjeta_combox.Name = "tarjeta_combox";
-            tarjeta_combox.Size = new Size(271, 28);
-            tarjeta_combox.TabIndex = 15;
-            tarjeta_combox.SelectedIndexChanged += tarjeta_combox_SelectedIndexChanged;
-            // 
-            // cuotas_combobox
-            // 
-            cuotas_combobox.Dock = DockStyle.Fill;
-            cuotas_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
-            cuotas_combobox.FormattingEnabled = true;
-            cuotas_combobox.Items.AddRange(new object[] { "Un pago", "3 Cuotas sin interés " });
-            cuotas_combobox.Location = new Point(539, 194);
-            cuotas_combobox.Name = "cuotas_combobox";
-            cuotas_combobox.Size = new Size(258, 28);
-            cuotas_combobox.TabIndex = 16;
-            cuotas_combobox.Visible = false;
-            // 
             // panel4
             // 
             panel4.AutoSize = true;
@@ -412,6 +344,74 @@
             label12.Text = "Medio de pago";
             label12.Click += label12_Click;
             // 
+            // PagoForm_Nombre
+            // 
+            PagoForm_Nombre.AutoSize = true;
+            PagoForm_Nombre.BackColor = Color.FromArgb(36, 82, 71);
+            PagoForm_Nombre.BorderStyle = BorderStyle.FixedSingle;
+            PagoForm_Nombre.Controls.Add(label7);
+            PagoForm_Nombre.Controls.Add(label1);
+            PagoForm_Nombre.Cursor = Cursors.Hand;
+            PagoForm_Nombre.Dock = DockStyle.Fill;
+            PagoForm_Nombre.Location = new Point(3, 331);
+            PagoForm_Nombre.Name = "PagoForm_Nombre";
+            PagoForm_Nombre.Size = new Size(253, 35);
+            PagoForm_Nombre.TabIndex = 11;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft YaHei UI Light", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(50, 1);
+            label7.Name = "label7";
+            label7.Size = new Size(0, 30);
+            label7.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(78, 3);
+            label1.Margin = new Padding(3);
+            label1.Name = "label1";
+            label1.Size = new Size(91, 25);
+            label1.TabIndex = 1;
+            label1.Text = "Nombre";
+            // 
+            // tarjeta_combox
+            // 
+            tarjeta_combox.Dock = DockStyle.Fill;
+            tarjeta_combox.DropDownStyle = ComboBoxStyle.DropDownList;
+            tarjeta_combox.FormattingEnabled = true;
+            tarjeta_combox.Items.AddRange(new object[] { "Crédito", "Débito" });
+            tarjeta_combox.Location = new Point(262, 194);
+            tarjeta_combox.Name = "tarjeta_combox";
+            tarjeta_combox.Size = new Size(271, 28);
+            tarjeta_combox.TabIndex = 15;
+            tarjeta_combox.SelectedIndexChanged += tarjeta_combox_SelectedIndexChanged;
+            // 
+            // cuotas_combobox
+            // 
+            cuotas_combobox.Dock = DockStyle.Fill;
+            cuotas_combobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            cuotas_combobox.FormattingEnabled = true;
+            cuotas_combobox.Items.AddRange(new object[] { "Un pago", "3 Cuotas sin interés " });
+            cuotas_combobox.Location = new Point(539, 194);
+            cuotas_combobox.Name = "cuotas_combobox";
+            cuotas_combobox.Size = new Size(258, 28);
+            cuotas_combobox.TabIndex = 16;
+            cuotas_combobox.Visible = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Dock = DockStyle.Fill;
+            textBox1.Location = new Point(264, 341);
+            textBox1.Margin = new Padding(5, 13, 3, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(269, 27);
+            textBox1.TabIndex = 4;
+            // 
             // PagoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -420,12 +420,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
             Name = "PagoForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PagoForm";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            PagoForm_Nombre.ResumeLayout(false);
-            PagoForm_Nombre.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -438,6 +437,8 @@
             panelAceptarPago.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            PagoForm_Nombre.ResumeLayout(false);
+            PagoForm_Nombre.PerformLayout();
             ResumeLayout(false);
         }
 

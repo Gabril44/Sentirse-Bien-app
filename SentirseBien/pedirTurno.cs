@@ -169,8 +169,8 @@ namespace SentirseBien
 
                     //-ahora la creación del pago en modo pendiente-
                     crearPago(servicio.precio, usario.nombre, fecha, usario.idusuario, fechalimite);
-                    string QUERYCREARPAGOPENDIENTE = "INSERT INTO pagos (monto, nombrecliente, fecha, id_usuario, fechalimite) " +
-                           "VALUES (@monto, @nombrecliente, @fecha, @id_usuario, @fechalimite)";
+                    string QUERYCREARPAGOPENDIENTE = "INSERT INTO pagos (monto, nombrecliente, fecha, id_usuario, fechalimite, servicio) " +
+                           "VALUES (@monto, @nombrecliente, @fecha, @id_usuario, @fechalimite, @servicio)";
 
                     using (MySqlConnection connection = new ConexionMysql().GetConnection())
                     {
@@ -185,6 +185,7 @@ namespace SentirseBien
                             cmd.Parameters.AddWithValue("@fecha", pago.fecha);
                             cmd.Parameters.AddWithValue("@id_usuario", pago.id_usuario);
                             cmd.Parameters.AddWithValue("@fechalimite", pago.fechalimite);
+                            cmd.Parameters.AddWithValue("@servicio", turno.servicio);
 
                             // Ejecutar la consulta
                             int result = cmd.ExecuteNonQuery();
@@ -210,7 +211,7 @@ namespace SentirseBien
                 }
 
                
-
+                
                 this.Close();
             }
         }

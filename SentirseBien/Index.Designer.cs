@@ -92,20 +92,25 @@
             panel_pagar.BorderStyle = BorderStyle.FixedSingle;
             panel_pagar.Controls.Add(label_turnosapagar);
             panel_pagar.Controls.Add(label_pagar);
+            panel_pagar.Cursor = Cursors.Hand;
             panel_pagar.Location = new Point(3, 409);
             panel_pagar.Name = "panel_pagar";
             panel_pagar.Size = new Size(164, 65);
             panel_pagar.TabIndex = 10;
+            panel_pagar.MouseClick += ClickPagar;
             // 
             // label_turnosapagar
             // 
             label_turnosapagar.AutoSize = true;
             label_turnosapagar.Font = new Font("Microsoft YaHei UI Light", 13.8F);
+            label_turnosapagar.ForeColor = Color.Red;
             label_turnosapagar.Location = new Point(103, 19);
             label_turnosapagar.Name = "label_turnosapagar";
-            label_turnosapagar.Size = new Size(26, 30);
+            label_turnosapagar.Size = new Size(23, 30);
             label_turnosapagar.TabIndex = 1;
-            label_turnosapagar.Text = "0";
+            label_turnosapagar.Text = "*";
+            label_turnosapagar.Visible = false;
+            label_turnosapagar.MouseClick += ClickPagar;
             // 
             // label_pagar
             // 
@@ -116,6 +121,7 @@
             label_pagar.Size = new Size(73, 30);
             label_pagar.TabIndex = 0;
             label_pagar.Text = "Pagar";
+            label_pagar.MouseClick += ClickPagar;
             // 
             // panelServicios
             // 

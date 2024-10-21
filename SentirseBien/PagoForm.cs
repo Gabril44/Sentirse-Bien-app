@@ -21,11 +21,11 @@ namespace SentirseBien
         private ConexionMysql conexionMysql;
         Servicio servicio;
         private List<Pago> pagos;
-        public PagoForm(Usuario usuario, Turno turno)
+        public PagoForm(Usuario usuario)
         {
             this.usuario = usuario;
-            this.turno = turno;
-            this.servicio = servicio;
+            //this.turno = turno;
+            //this.servicio = servicio;
             InitializeComponent();
         }
 

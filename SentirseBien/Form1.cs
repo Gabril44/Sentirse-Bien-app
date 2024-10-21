@@ -9,6 +9,7 @@ namespace SentirseBien
         private List<Turno> turnos;
         private TurnoConsultas turnoConsultas;
         private ConexionMysql conexionMysql;
+        public event EventHandler CambioRealizado;
         public Form1(Usuario usuario)
         {
             this.Size = new Size(1077, 712);
@@ -176,6 +177,12 @@ namespace SentirseBien
             pedirTurno.ShowDialog();
             //this.Opacity = 1.0;
             cargarTurnos();
+            ActualizarPago();
+        }
+
+        private void ActualizarPago()
+        {
+            CambioRealizado?.Invoke(this, EventArgs.Empty);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
