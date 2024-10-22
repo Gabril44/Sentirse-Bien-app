@@ -5,8 +5,6 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SentirseBien", "SentirseBien\SentirseBien.csproj", "{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SentirseBienInstaller", "SentirseBienInstaller\SentirseBienInstaller.vdproj", "{994464AF-6AD3-4133-B4A3-CD1D15E141C3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{994464AF-6AD3-4133-B4A3-CD1D15E141C3}.Debug|Any CPU.ActiveCfg = Debug
-		{994464AF-6AD3-4133-B4A3-CD1D15E141C3}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

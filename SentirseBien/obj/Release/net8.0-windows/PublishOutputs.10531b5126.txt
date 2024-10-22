@@ -1,0 +1,9 @@
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\SentirseBien.exe
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\SentirseBien.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\SentirseBien.deps.json
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\SentirseBien.runtimeconfig.json
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\SentirseBien.pdb
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\BouncyCastle.Cryptography.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\Google.Protobuf.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\itextsharp.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\publish\MySql.Data.dll

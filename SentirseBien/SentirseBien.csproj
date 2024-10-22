@@ -6,10 +6,16 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Pictogrammers-Material-Spa.ico</ApplicationIcon>
+    <Description>Pablinka Team Grupo 21</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\logo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pictogrammers-Material-Spa.ico" />
   </ItemGroup>
 
   <ItemGroup>
