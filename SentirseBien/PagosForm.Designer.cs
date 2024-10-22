@@ -41,6 +41,7 @@
             servicio = new DataGridViewTextBoxColumn();
             profesional = new DataGridViewTextBoxColumn();
             imprimir_button = new Button();
+            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -53,6 +54,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 103F));
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
             tableLayoutPanel1.Controls.Add(imprimir_button, 1, 2);
+            tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -147,6 +149,18 @@
             imprimir_button.UseVisualStyleBackColor = true;
             imprimir_button.Click += imprimir_button_Click;
             // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Vladimir Script", 36F);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(305, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(152, 62);
+            label1.TabIndex = 2;
+            label1.Text = "Pagos";
+            // 
             // PagosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -157,6 +171,7 @@
             Name = "PagosForm";
             Text = "PagosForm";
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -176,5 +191,6 @@
         private DataGridViewTextBoxColumn servicio;
         private DataGridViewTextBoxColumn profesional;
         private Button imprimir_button;
+        private Label label1;
     }
 }

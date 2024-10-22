@@ -45,14 +45,15 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F);
+            label1.Font = new Font("Vladimir Script", 36F);
             label1.ForeColor = Color.FromArgb(232, 235, 233);
-            label1.Location = new Point(92, 0);
+            label1.Location = new Point(437, 0);
             label1.Name = "label1";
-            label1.Size = new Size(96, 35);
+            label1.Size = new Size(174, 58);
             label1.TabIndex = 0;
-            label1.Text = "Turnos:";
+            label1.Text = "Turnos";
             label1.Click += label1_Click;
             // 
             // dataGridView1
@@ -63,11 +64,11 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idturno, nombre_usuario, fecha, servicio, profesional });
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(92, 48);
+            dataGridView1.Location = new Point(92, 61);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(865, 483);
+            dataGridView1.Size = new Size(865, 470);
             dataGridView1.TabIndex = 4;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -129,8 +130,8 @@
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 8.457711F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 91.54229F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10.8614235F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 89.13858F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
             tableLayoutPanel1.Size = new Size(1067, 574);
             tableLayoutPanel1.TabIndex = 6;

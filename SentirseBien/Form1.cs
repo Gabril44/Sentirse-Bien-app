@@ -1,4 +1,5 @@
 using MySql.Data.MySqlClient;
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
 
 namespace SentirseBien
@@ -8,7 +9,7 @@ namespace SentirseBien
         private Usuario usuario;
         private List<Turno> turnos;
         private TurnoConsultas turnoConsultas;
-        private ConexionMysql conexionMysql;
+        public ConexionMysql conexionMysql;
         public event EventHandler CambioRealizado;
         public Form1(Usuario usuario)
         {
@@ -35,7 +36,21 @@ namespace SentirseBien
             }
             centerDataGrid();
 
+            this.FormClosed += Form1_FormClosed;
+
             getRol(usuario);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (conexionMysql != null)
+            {
+                MySqlConnection connection = conexionMysql.GetConnection();
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
         }
 
         private void getRol(Usuario usuario)
@@ -255,5 +270,9 @@ namespace SentirseBien
                 }
             }
         }
+
+        
+
+
     }
 }

@@ -62,6 +62,7 @@ namespace SentirseBien
 
         }
 
+
         private void imprimir_button_Click(object sender, EventArgs e)
         {
             // Crear el documento PDF

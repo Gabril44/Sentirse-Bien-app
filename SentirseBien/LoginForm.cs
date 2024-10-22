@@ -71,32 +71,6 @@ namespace SentirseBien
                 comando.Connection = conexionMysql.GetConnection();
                 reader = comando.ExecuteReader();
 
-                /*
-                while (reader.Read())
-                {
-                    comprobar_usuario = reader.GetString("user");
-                    comprobar_contraseña = reader.GetString("password");
-                    MessageBox.Show("usuario: " + comprobar_usuario + " password: " + comprobar_contraseña);
-                    MessageBox.Show("usuario: " + username + " password: " + password);
-                    if(comprobar_contraseña == password && comprobar_usuario == username) 
-                    {
-                        MessageBox.Show("ususario encontrado!");
-                        usuario = new Usuario();
-                        usuario.idusuario=reader.GetInt16("idusuario");
-                        usuario.rol = reader.GetInt16("rol");
-                        usuario.correo = reader.GetString("correo");
-                        usuario.nombre = reader.GetString("nombre");
-                        usuario.password = reader.GetString("password");
-                        gotoIndex(usuario);
-                    }
-                    else 
-                    {
-                        MessageBox.Show("este usuario no existe!");
-                        break;
-                    }
-                 
-                }
-                  */
                 if(reader.Read()) 
                 {
                     usuario = new Usuario();

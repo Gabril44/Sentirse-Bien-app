@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiciosForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
             nombre = new DataGridViewTextBoxColumn();
             precio = new DataGridViewTextBoxColumn();
             numServicio = new DataGridViewTextBoxColumn();
             agregar_button = new Button();
+            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -41,11 +43,12 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.4925365F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78.50746F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.0684929F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 84.9315F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 142F));
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
             tableLayoutPanel1.Controls.Add(agregar_button, 1, 2);
+            tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -63,10 +66,10 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombre, precio, numServicio });
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(144, 65);
+            dataGridView1.Location = new Point(102, 65);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(510, 306);
+            dataGridView1.Size = new Size(552, 306);
             dataGridView1.TabIndex = 0;
             // 
             // nombre
@@ -90,13 +93,25 @@
             // agregar_button
             // 
             agregar_button.Anchor = AnchorStyles.Top;
-            agregar_button.Location = new Point(334, 377);
+            agregar_button.Location = new Point(313, 377);
             agregar_button.Name = "agregar_button";
             agregar_button.Size = new Size(130, 29);
             agregar_button.TabIndex = 1;
             agregar_button.Text = "Agregar Servicio";
             agregar_button.UseVisualStyleBackColor = true;
             agregar_button.Click += agregar_button_Click;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Vladimir Script", 36F);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(271, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(214, 62);
+            label1.TabIndex = 2;
+            label1.Text = "Servicios";
             // 
             // ServiciosForm
             // 
@@ -105,9 +120,11 @@
             BackColor = Color.FromArgb(56, 115, 100);
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ServiciosForm";
             Text = "ServiciosForm";
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -120,5 +137,6 @@
         private DataGridViewTextBoxColumn precio;
         private DataGridViewTextBoxColumn numServicio;
         private Button agregar_button;
+        private Label label1;
     }
 }

@@ -152,7 +152,7 @@ namespace SentirseBien
             }
         }
 
-
+       
         private void pagar_button_Click(object sender, EventArgs e)
         {
             PagoForm pagoForm = new PagoForm(usuario, Decimal.Parse(label_precio.Text), pagosSeleccionados);

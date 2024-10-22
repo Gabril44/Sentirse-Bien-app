@@ -302,6 +302,8 @@ namespace SentirseBien
         {
             this.Close();
         }
+
+
     }
 
     public class ComboBoxItem 

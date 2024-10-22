@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SentirseBien
 {
-    internal class Conexion
+    public class Conexion
     {
         protected string server = "boxb4cfvsxmkcnxhmkbk-mysql.services.clever-cloud.com";
         protected string database = "boxb4cfvsxmkcnxhmkbk";

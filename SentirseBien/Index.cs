@@ -27,9 +27,8 @@ namespace SentirseBien
             //configurarMenuStrip(usuario);
             //panelContenedor.Visible = true;
             getRol(usuario);
-            panelMenuPerfil.Visible = false;
             ActualizarLabelPagosPendientes();
-            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario, panelMenuPerfil);
+            BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario);
             AbrirFormularioEnPanel(bienvenidoForm);
         }
 
@@ -50,7 +49,7 @@ namespace SentirseBien
             {
                 using (MySqlConnection connection = conexionMysql.GetConnection())
                 {
-                    string query = "SELECT COUNT(*) FROM pagos WHERE id_usuario = @usuarioId AND estado = 'pendiente'"; 
+                    string query = "SELECT COUNT(*) FROM pagos WHERE id_usuario = @usuarioId AND estado = 'pendiente'";
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@usuarioId", usuario.idusuario);
@@ -100,7 +99,7 @@ namespace SentirseBien
             }
         }
 
-      
+
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -167,19 +166,9 @@ namespace SentirseBien
         private void index_Click(object sender, EventArgs e)
         {
 
-            if (panelMenuPerfil.Visible)
-            {
-                panelMenuPerfil.Visible = false;
-            }
         }
 
-        private void PanelPerfil_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("click en perfil");
-            panelMenuPerfil.Visible = !panelMenuPerfil.Visible;
-            //panelMenuPerfil.Visible = true;
-            ActualizarLabelPagosPendientes();
-        }
+       
 
         private void panelCerrar_Click(object sender, EventArgs e)
         {
@@ -190,42 +179,51 @@ namespace SentirseBien
 
         private void AbrirFormularioEnPanel(Form formularioHijo)
         {
-            //MessageBox.Show("llegó al metodo");
-            if (panelContenedor.Controls.Count > 0)
+            try
             {
-                //MessageBox.Show("Llegó al if");
-                panelContenedor.Controls[0].Dispose();
+                Cursor.Current = Cursors.WaitCursor;
+                //MessageBox.Show("llegó al metodo");
+                if (panelContenedor.Controls.Count > 0)
+                {
+                    //MessageBox.Show("Llegó al if");
+                    panelContenedor.Controls[0].Dispose();
 
-                formularioHijo.TopLevel = false;
-                formularioHijo.FormBorderStyle = FormBorderStyle.None;
-                formularioHijo.Dock = DockStyle.Fill;
+                    formularioHijo.TopLevel = false;
+                    formularioHijo.FormBorderStyle = FormBorderStyle.None;
+                    formularioHijo.Dock = DockStyle.Fill;
 
-                panelContenedor.Controls.Add(formularioHijo);
-                panelContenedor.Tag = formularioHijo;
-                formularioHijo.Show();
+                    panelContenedor.Controls.Add(formularioHijo);
+                    panelContenedor.Tag = formularioHijo;
+                    formularioHijo.Show();
 
 
+                }
+                else
+                {
+                    //MessageBox.Show("Llegó al Else");
+
+                    panelContenedor.Controls.Clear();
+
+                    formularioHijo.TopLevel = false;
+                    formularioHijo.FormBorderStyle = FormBorderStyle.None;
+                    formularioHijo.Dock = DockStyle.Fill;
+
+                    panelContenedor.Controls.Add(formularioHijo);
+                    panelContenedor.Tag = formularioHijo;
+                    formularioHijo.Show();
+                }
+                if (formularioHijo is Form1 hijo)
+                {
+                    hijo.CambioRealizado += Hijo_CambioRealizado;
+                }
+
+                ActualizarLabelPagosPendientes();
             }
-            else
+            finally
             {
-                //MessageBox.Show("Llegó al Else");
-
-                panelContenedor.Controls.Clear();
-
-                formularioHijo.TopLevel = false;
-                formularioHijo.FormBorderStyle = FormBorderStyle.None;
-                formularioHijo.Dock = DockStyle.Fill;
-
-                panelContenedor.Controls.Add(formularioHijo);
-                panelContenedor.Tag = formularioHijo;
-                formularioHijo.Show();
+                // Asegurarse de restaurar el cursor normal
+                Cursor.Current = Cursors.Default;
             }
-            if (formularioHijo is Form1 hijo)
-            {
-                hijo.CambioRealizado += Hijo_CambioRealizado;
-            }
-
-            ActualizarLabelPagosPendientes();
 
         }
 
@@ -235,7 +233,7 @@ namespace SentirseBien
             ActualizarLabelPagosPendientes();
         }
 
-        
+
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
@@ -291,5 +289,7 @@ namespace SentirseBien
             // Aquí puedes llamar cualquier método del formulario principal
             ActualizarLabelPagosPendientes();  // Este método se llama cuando se realiza un pago
         }
+
+        
     }
 }

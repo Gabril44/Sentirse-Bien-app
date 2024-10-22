@@ -44,11 +44,13 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
+            label1.Font = new Font("Vladimir Script", 36F);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(104, 0);
+            label1.Location = new Point(448, 0);
             label1.Name = "label1";
-            label1.Size = new Size(61, 20);
+            label1.Size = new Size(195, 58);
             label1.TabIndex = 0;
             label1.Text = "Clientes";
             // 
@@ -67,10 +69,10 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(104, 41);
+            dataGridView1.Location = new Point(104, 61);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(884, 571);
+            dataGridView1.Size = new Size(884, 551);
             dataGridView1.TabIndex = 1;
             // 
             // idusuario
@@ -116,8 +118,8 @@
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.30472851F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 93.6952744F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.430894F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90.56911F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.Size = new Size(1077, 656);
             tableLayoutPanel1.TabIndex = 3;

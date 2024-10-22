@@ -46,7 +46,7 @@ namespace SentirseBien
             frases[2] = "Hidroterapia";
             frases[3] = "Terapia y desconexión";
             frases[4] = "Revitalizar cuerpo y mente";
-            frases[5] = "Mimá tu piel con lo mejor";
+            frases[5] = "Cuidá tu piel con lo mejor";
         }
 
         private void BienvenidoForm_Click(object sender, MouseEventArgs e)

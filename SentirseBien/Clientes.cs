@@ -33,7 +33,6 @@ namespace SentirseBien
             }
         }
 
-       
 
         private void cargarClientes(string filtro = "")
         {

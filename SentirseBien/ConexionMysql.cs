@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SentirseBien
 {
-    internal class ConexionMysql : Conexion
+    public class ConexionMysql : Conexion
     {
         private MySqlConnection connection;
         private string cadenaConexion;
@@ -34,6 +34,22 @@ namespace SentirseBien
                 MessageBox.Show(ex.ToString());
             }
             return connection;
+        }
+
+        // Método para cerrar la conexión
+        public void CerrarConexion()
+        {
+            try
+            {
+                if (connection != null && connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar la conexión: " + ex.Message);
+            }
         }
     }
 }
