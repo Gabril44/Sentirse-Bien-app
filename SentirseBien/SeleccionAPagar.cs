@@ -139,13 +139,13 @@ namespace SentirseBien
                     if (e.NewValue == CheckState.Checked)
                     {
                         pagosSeleccionados.Add(pagoSeleccionado);
-                        MessageBox.Show("Se agregó el pago: " + pagoSeleccionado.nropago + " a la lista de pagos seleccionados");
+                        //MessageBox.Show("Se agregó el pago: " + pagoSeleccionado.nropago + " a la lista de pagos seleccionados");
                         label_precio.Text = (Decimal.Parse(label_precio.Text) + montoSeleccionado).ToString();
                     }
                     else if (e.NewValue == CheckState.Unchecked)
                     {
                         pagosSeleccionados.Remove(pagoSeleccionado);
-                        MessageBox.Show("Se quitó el pago: " + pagoSeleccionado.nropago + " de la lista de pagos seleccionados");
+                        //MessageBox.Show("Se quitó el pago: " + pagoSeleccionado.nropago + " de la lista de pagos seleccionados");
                         label_precio.Text = (Decimal.Parse(label_precio.Text) - montoSeleccionado).ToString();
                     }
                 }

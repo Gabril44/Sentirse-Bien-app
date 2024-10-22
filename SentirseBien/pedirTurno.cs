@@ -166,7 +166,7 @@ namespace SentirseBien
                         MySqlCommand command = new MySqlCommand(QUERYBUSCARSERVICIO, connection);
 
                         // Agregar el parámetro antes de ejecutar el comando
-                        MessageBox.Show(turno.servicio);
+                        //MessageBox.Show(turno.servicio);
                         command.Parameters.AddWithValue("@nombre", turno.servicio);
 
                         try
@@ -183,7 +183,7 @@ namespace SentirseBien
                                     servicio1.precio = reader.GetInt32("precio");
                                     servicio1.num_servicio = reader.GetInt32("numServicio");
 
-                                    MessageBox.Show(servicio1.nombre + " " + servicio1.precio + " " + servicio1.num_servicio);
+                                    //MessageBox.Show(servicio1.nombre + " " + servicio1.precio + " " + servicio1.num_servicio);
                                 }
                             }
                         }

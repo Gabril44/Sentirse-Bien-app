@@ -42,11 +42,11 @@
             bienvenido_label.AutoSize = true;
             bienvenido_label.Font = new Font("Vladimir Script", 45F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bienvenido_label.ForeColor = Color.FromArgb(232, 235, 233);
-            bienvenido_label.Location = new Point(329, 2);
+            bienvenido_label.Location = new Point(294, 2);
             bienvenido_label.Name = "bienvenido_label";
-            bienvenido_label.Size = new Size(321, 90);
+            bienvenido_label.Size = new Size(392, 90);
             bienvenido_label.TabIndex = 0;
-            bienvenido_label.Text = "Bienvenido";
+            bienvenido_label.Text = "Bienvenido/a";
             // 
             // tableLayoutPanel1
             // 

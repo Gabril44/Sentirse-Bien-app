@@ -32,12 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientes));
             label1 = new Label();
             dataGridView1 = new DataGridView();
+            tableLayoutPanel1 = new TableLayoutPanel();
             idusuario = new DataGridViewTextBoxColumn();
             nombre = new DataGridViewTextBoxColumn();
             correo = new DataGridViewTextBoxColumn();
-            password = new DataGridViewTextBoxColumn();
             user = new DataGridViewTextBoxColumn();
-            tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -59,7 +58,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.FromArgb(30, 59, 52);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idusuario, nombre, correo, password, user });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idusuario, nombre, correo, user });
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.Snow;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -74,36 +73,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(884, 551);
             dataGridView1.TabIndex = 1;
-            // 
-            // idusuario
-            // 
-            idusuario.HeaderText = "idCliente";
-            idusuario.MinimumWidth = 6;
-            idusuario.Name = "idusuario";
-            // 
-            // nombre
-            // 
-            nombre.HeaderText = "nombre";
-            nombre.MinimumWidth = 6;
-            nombre.Name = "nombre";
-            // 
-            // correo
-            // 
-            correo.HeaderText = "correo";
-            correo.MinimumWidth = 6;
-            correo.Name = "correo";
-            // 
-            // password
-            // 
-            password.HeaderText = "password";
-            password.MinimumWidth = 6;
-            password.Name = "password";
-            // 
-            // user
-            // 
-            user.HeaderText = "user";
-            user.MinimumWidth = 6;
-            user.Name = "user";
             // 
             // tableLayoutPanel1
             // 
@@ -123,6 +92,30 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.Size = new Size(1077, 656);
             tableLayoutPanel1.TabIndex = 3;
+            // 
+            // idusuario
+            // 
+            idusuario.HeaderText = "idCliente";
+            idusuario.MinimumWidth = 6;
+            idusuario.Name = "idusuario";
+            // 
+            // nombre
+            // 
+            nombre.HeaderText = "nombre";
+            nombre.MinimumWidth = 6;
+            nombre.Name = "nombre";
+            // 
+            // correo
+            // 
+            correo.HeaderText = "correo";
+            correo.MinimumWidth = 6;
+            correo.Name = "correo";
+            // 
+            // user
+            // 
+            user.HeaderText = "user";
+            user.MinimumWidth = 6;
+            user.Name = "user";
             // 
             // Clientes
             // 
@@ -147,11 +140,10 @@
 
         private Label label1;
         private DataGridView dataGridView1;
+        private TableLayoutPanel tableLayoutPanel1;
         private DataGridViewTextBoxColumn idusuario;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn correo;
-        private DataGridViewTextBoxColumn password;
         private DataGridViewTextBoxColumn user;
-        private TableLayoutPanel tableLayoutPanel1;
     }
 }

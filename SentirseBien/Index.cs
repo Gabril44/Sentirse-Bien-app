@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,12 +20,14 @@ namespace SentirseBien
         private Usuario usuario;
         private ConexionMysql conexionMysql;
         private List<Pago> pagos;
+        private PrivateFontCollection privateFonts = new PrivateFontCollection();
         public Index(Usuario usuario)
         {
             this.usuario = usuario;
             conexionMysql = new ConexionMysql();
             pagos = new List<Pago>();
             InitializeComponent();
+            //Cargar la fuente desde los recursos incrustados
             //configurarMenuStrip(usuario);
             //panelContenedor.Visible = true;
             getRol(usuario);
@@ -31,6 +35,8 @@ namespace SentirseBien
             BienvenidoForm bienvenidoForm = new BienvenidoForm(usuario);
             AbrirFormularioEnPanel(bienvenidoForm);
         }
+
+
 
         private void ActualizarLabelPagosPendientes()
         {

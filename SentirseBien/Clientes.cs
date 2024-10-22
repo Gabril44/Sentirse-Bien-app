@@ -50,7 +50,6 @@ namespace SentirseBien
                     clientes[i].idusuario,
                     clientes[i].nombre,
                     clientes[i].correo,
-                    clientes[i].password,
                     clientes[i].user
                     );
                 }

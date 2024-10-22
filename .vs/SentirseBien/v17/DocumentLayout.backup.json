@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|c:\\users\\asus\\documents\\github\\sentirse-bien-app\\sentirsebien\\index.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|solutionrelative:sentirsebien\\index.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|c:\\users\\asus\\documents\\github\\sentirse-bien-app\\sentirsebien\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|solutionrelative:sentirsebien\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|c:\\users\\asus\\documents\\github\\sentirse-bien-app\\sentirsebien\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\sentirsebien\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|solutionrelative:sentirsebien\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|c:\\users\\asus\\documents\\github\\sentirse-bien-app\\sentirsebien\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|solutionrelative:sentirsebien\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|c:\\users\\asus\\documents\\github\\sentirse-bien-app\\sentirsebien\\pagosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|solutionrelative:sentirsebien\\pagosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|c:\\users\\asus\\documents\\github\\sentirse-bien-app\\sentirsebien\\serviciosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B747AFCA-36D3-45C8-BC6C-7F61BF8B927E}|SentirseBien\\SentirseBien.csproj|solutionrelative:sentirsebien\\serviciosform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,14 +27,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\Index.cs",
-              "RelativeDocumentMoniker": "SentirseBien\\Index.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\Index.cs [Dise\u00F1o]",
-              "RelativeToolTip": "SentirseBien\\Index.cs [Dise\u00F1o]",
+              "Title": "Clientes.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\Clientes.cs",
+              "RelativeDocumentMoniker": "SentirseBien\\Clientes.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\Clientes.cs",
+              "RelativeToolTip": "SentirseBien\\Clientes.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T03:02:38.287Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2024-10-22T19:13:10.429Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -58,42 +47,6 @@
               "RelativeToolTip": "SentirseBien\\Clientes.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-22T02:54:34.511Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PagosForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\PagosForm.cs",
-              "RelativeDocumentMoniker": "SentirseBien\\PagosForm.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\PagosForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "SentirseBien\\PagosForm.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T02:54:21.388Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\Form1.cs",
-              "RelativeDocumentMoniker": "SentirseBien\\Form1.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "SentirseBien\\Form1.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T02:54:10.38Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ServiciosForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\ServiciosForm.cs",
-              "RelativeDocumentMoniker": "SentirseBien\\ServiciosForm.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Sentirse-Bien-app\\SentirseBien\\ServiciosForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "SentirseBien\\ServiciosForm.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T02:51:37.706Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]

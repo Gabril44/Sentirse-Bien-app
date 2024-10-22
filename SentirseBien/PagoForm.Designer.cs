@@ -120,6 +120,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(271, 27);
             textBox2.TabIndex = 5;
+            textBox2.KeyPress += NumeroTarjeta_KeyPress;
             // 
             // textBox3
             // 
@@ -131,6 +132,7 @@
             textBox3.PasswordChar = '*';
             textBox3.Size = new Size(271, 27);
             textBox3.TabIndex = 6;
+            textBox3.KeyPress += CodSegKeyPress;
             // 
             // label4
             // 
