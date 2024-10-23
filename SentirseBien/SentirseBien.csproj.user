@@ -40,5 +40,8 @@
     <Compile Update="ServiciosForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TextoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

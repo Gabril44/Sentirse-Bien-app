@@ -32,11 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientes));
             label1 = new Label();
             dataGridView1 = new DataGridView();
-            tableLayoutPanel1 = new TableLayoutPanel();
             idusuario = new DataGridViewTextBoxColumn();
             nombre = new DataGridViewTextBoxColumn();
             correo = new DataGridViewTextBoxColumn();
             user = new DataGridViewTextBoxColumn();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            filtro_nombre = new Button();
+            filtro_correo = new Button();
+            filtro_id = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -49,7 +52,7 @@
             label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(448, 0);
             label1.Name = "label1";
-            label1.Size = new Size(195, 58);
+            label1.Size = new Size(195, 48);
             label1.TabIndex = 0;
             label1.Text = "Clientes";
             // 
@@ -68,30 +71,11 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(104, 61);
+            dataGridView1.Location = new Point(104, 51);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(884, 551);
+            dataGridView1.Size = new Size(884, 459);
             dataGridView1.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.BackColor = Color.FromArgb(56, 115, 100);
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.2105265F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 89.7894745F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 85F));
-            tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
-            tableLayoutPanel1.Controls.Add(label1, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.430894F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90.56911F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.Size = new Size(1077, 656);
-            tableLayoutPanel1.TabIndex = 3;
             // 
             // idusuario
             // 
@@ -116,6 +100,60 @@
             user.HeaderText = "user";
             user.MinimumWidth = 6;
             user.Name = "user";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.BackColor = Color.FromArgb(56, 115, 100);
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.2105265F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 89.7894745F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 85F));
+            tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
+            tableLayoutPanel1.Controls.Add(label1, 1, 0);
+            tableLayoutPanel1.Controls.Add(filtro_nombre, 1, 2);
+            tableLayoutPanel1.Controls.Add(filtro_correo, 1, 3);
+            tableLayoutPanel1.Controls.Add(filtro_id, 1, 4);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 5;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.430894F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90.56911F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            tableLayoutPanel1.Size = new Size(1077, 656);
+            tableLayoutPanel1.TabIndex = 3;
+            // 
+            // filtro_nombre
+            // 
+            filtro_nombre.Location = new Point(104, 516);
+            filtro_nombre.Name = "filtro_nombre";
+            filtro_nombre.Size = new Size(166, 29);
+            filtro_nombre.TabIndex = 2;
+            filtro_nombre.Text = "Filtrar por Nombre";
+            filtro_nombre.UseVisualStyleBackColor = true;
+            filtro_nombre.Click += FiltroNombreClick;
+            // 
+            // filtro_correo
+            // 
+            filtro_correo.Location = new Point(104, 566);
+            filtro_correo.Name = "filtro_correo";
+            filtro_correo.Size = new Size(166, 29);
+            filtro_correo.TabIndex = 3;
+            filtro_correo.Text = "Filtrar por correo";
+            filtro_correo.UseVisualStyleBackColor = true;
+            filtro_correo.Click += filtro_correo_Click;
+            // 
+            // filtro_id
+            // 
+            filtro_id.Location = new Point(104, 616);
+            filtro_id.Name = "filtro_id";
+            filtro_id.Size = new Size(166, 29);
+            filtro_id.TabIndex = 4;
+            filtro_id.Text = "Filtrar por Id";
+            filtro_id.UseVisualStyleBackColor = true;
+            filtro_id.Click += filtro_id_Click;
             // 
             // Clientes
             // 
@@ -145,5 +183,8 @@
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn correo;
         private DataGridViewTextBoxColumn user;
+        private Button filtro_nombre;
+        private Button filtro_correo;
+        private Button filtro_id;
     }
 }

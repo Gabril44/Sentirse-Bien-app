@@ -11,6 +11,7 @@ namespace SentirseBien
         private TurnoConsultas turnoConsultas;
         public ConexionMysql conexionMysql;
         public event EventHandler CambioRealizado;
+        private string fechafiltro;
         public Form1(Usuario usuario)
         {
             this.Size = new Size(1077, 712);
@@ -59,9 +60,16 @@ namespace SentirseBien
             {
                 cancelar_turno_button.Visible = true;
             }
-            else 
+            else
             {
-                pedir_turno_cliente.Visible = false;
+                if (usuario.rol == 0)
+                {
+                    pedir_turno_cliente.Visible = true;
+                }
+                else
+                {
+                    pedir_turno_cliente.Visible = false;
+                }
             }
         }
 
@@ -195,7 +203,21 @@ namespace SentirseBien
             pedirTurno pedirTurno = new pedirTurno(usuario);
             pedirTurno.ShowDialog();
             //this.Opacity = 1.0;
-            cargarTurnos();
+            if (usuario.rol != 1)
+            {
+                CargarTurnosCliente();
+            }
+            else
+            {
+                if (usuario.correo == "test@gmail.com")
+                {
+                    cargarTurnos();
+                }
+                else
+                {
+                    CargarTurnosDoctor();
+                }
+            }
             ActualizarPago();
         }
 
@@ -206,7 +228,7 @@ namespace SentirseBien
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void cancelar_turno_button_Click(object sender, EventArgs e)
@@ -224,7 +246,7 @@ namespace SentirseBien
                     EliminarTurno(idSeleccionadoUsuario);
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("Por favor selecciona un turno para eliminar");
             }
@@ -234,16 +256,16 @@ namespace SentirseBien
         {
             string QUERY = "DELETE FROM turnos WHERE idturnos = @idturno";
 
-            using (MySqlConnection connection = conexionMysql.GetConnection()) 
+            using (MySqlConnection connection = conexionMysql.GetConnection())
             {
                 try
                 {
-                    if (connection.State != System.Data.ConnectionState.Open) 
+                    if (connection.State != System.Data.ConnectionState.Open)
                     {
                         connection.Open();
                     }
 
-                    using (MySqlCommand command = new MySqlCommand(QUERY, connection)) 
+                    using (MySqlCommand command = new MySqlCommand(QUERY, connection))
                     {
                         command.Parameters.AddWithValue("@idturno", idSeleccionadoUsuario);
                         int resultado = command.ExecuteNonQuery();
@@ -253,16 +275,16 @@ namespace SentirseBien
                             MessageBox.Show("Turno eliminado correctamente");
                             cargarTurnos();
                         }
-                        else 
+                        else
                         {
                             MessageBox.Show("No se pudo encontrar el id");
                         }
                     }
 
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error al eliminar el turno"+ex.Message);
+                    MessageBox.Show("Error al eliminar el turno" + ex.Message);
                 }
                 finally
                 {
@@ -271,8 +293,117 @@ namespace SentirseBien
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FiltrarFechaClick(object sender, EventArgs e)
+        {
+            CalendarioForm calendarioForm = new CalendarioForm();
+            if (calendarioForm.ShowDialog() == DialogResult.OK)
+            {
+                this.fechafiltro = calendarioForm.fecha;
+                fecha_label.Text = "La fecha que seleccionó es: " + calendarioForm.fecha;
+                try
+                {
+                    string filtro = "";
+                    // Mostrar el cursor de espera
+                    Cursor.Current = Cursors.WaitCursor;
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Refresh();
+                    turnos.Clear();
+                    turnos = turnoConsultas.getTurno(filtro);
+                    if (usuario.rol != 1)
+                    {
+                        for (int i = 0; i < turnos.Count; i++)
+                        {
+                            if ((DateTime.Parse(turnos[i].fecha).Date == DateTime.Parse(this.fechafiltro).Date) && (turnos[i].nombre_usuario == usuario.nombre))
+                            {
+                                dataGridView1.RowTemplate.Height = 50;
+                                dataGridView1.Rows.Add(
+                                    turnos[i].idturnos,
+                                    turnos[i].nombre_usuario,
+                                    turnos[i].fecha,
+                                    turnos[i].servicio,
+                                    turnos[i].profesional
+                                    );
+                            }
+                        }
+                    } else if(usuario.correo == "test@gmail.com") 
+                                {
+                                    try
+                                    {
+                                        // Mostrar el cursor de espera
+                                        Cursor.Current = Cursors.WaitCursor;
+                                        dataGridView1.Rows.Clear();
+                                        dataGridView1.Refresh();
+                                        turnos.Clear();
+                                        turnos = turnoConsultas.getTurno(filtro);
+
+                                        for (int i = 0; i < turnos.Count; i++)
+                                        {
+                                            if (DateTime.Parse(turnos[i].fecha).Date == DateTime.Parse(this.fechafiltro).Date)
+                                            {
+                                                dataGridView1.RowTemplate.Height = 50;
+                                                dataGridView1.Rows.Add(
+                                                    turnos[i].idturnos,
+                                                    turnos[i].nombre_usuario,
+                                                    turnos[i].fecha,
+                                                    turnos[i].servicio,
+                                                    turnos[i].profesional
+                                                    );
+                                            }
+                                        }
+                                    }
+                                    finally
+                                    {
+                                        // Asegurarse de restaurar el cursor normal
+                                        Cursor.Current = Cursors.Default;
+                                    }
+                                }
+                                else 
+                                {
+                                        try
+                                        {
+                                            // Mostrar el cursor de espera
+                                            Cursor.Current = Cursors.WaitCursor;
+                                            dataGridView1.Rows.Clear();
+                                            dataGridView1.Refresh();
+                                            turnos.Clear();
+                                            turnos = turnoConsultas.getTurno(filtro);
+
+                                            for (int i = 0; i < turnos.Count; i++)
+                                            {
+                                                if ((turnos[i].profesional == usuario.nombre)&&(DateTime.Parse(turnos[i].fecha).Date == DateTime.Parse(this.fechafiltro).Date))
+                                                {
+                                                    dataGridView1.RowTemplate.Height = 50;
+                                                    dataGridView1.Rows.Add(
+                                                        turnos[i].idturnos,
+                                                        turnos[i].nombre_usuario,
+                                                        turnos[i].fecha,
+                                                        turnos[i].servicio,
+                                                        turnos[i].profesional
+                                                        );
+                                                }
+                                            }
+                                        }
+                                        finally
+                                        {
+                                            // Asegurarse de restaurar el cursor normal
+                                            Cursor.Current = Cursors.Default;
+                                        }
+                                }
+                            
+                 
+                }
+                finally
+                {
+                    // Asegurarse de restaurar el cursor normal
+                    Cursor.Current = Cursors.Default;
+                }
+            }
         
-
-
+        }
     }
 }
