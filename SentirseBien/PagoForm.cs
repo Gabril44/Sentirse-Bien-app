@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -73,51 +74,63 @@ namespace SentirseBien
                         }
                     }
 
-                    // Fuente
-                    iTextSharp.text.Font standarFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                    // Línea separadora como un Chunk en lugar de una celda de tabla
+                    Paragraph separatorLine = new Paragraph(new Chunk(new LineSeparator(1f, 100f, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2)));
+                    doc.Add(separatorLine);
+
 
                     // Encabezado
-                    doc.Add(new Paragraph("COMPROBANTE DE TURNO", standarFont) { Alignment = Element.ALIGN_CENTER });
+                    iTextSharp.text.Font headerFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                    Paragraph header = new Paragraph("COMPROBANTE DE TURNO", headerFont) { Alignment = Element.ALIGN_CENTER };
+                    doc.Add(header);
                     doc.Add(Chunk.NEWLINE);
 
-                    // Crear una tabla con 2 columnas
+                    // Crear la tabla con estilos en los encabezados
                     PdfPTable pdfptable = new PdfPTable(3) { WidthPercentage = 100 };
-                    float[] columnWidths = { 0.4f, 0.4f, 0.2f }; // Ajusta el ancho de las columnas
+                    float[] columnWidths = { 0.4f, 0.4f, 0.2f };
                     pdfptable.SetWidths(columnWidths);
+                    pdfptable.SpacingBefore = 10f;
+                    pdfptable.SpacingAfter = 10f;
 
-                    // Agregar espaciado entre celdas
-                    pdfptable.SpacingBefore = 10f; // Espacio antes de la tabla
-                    pdfptable.SpacingAfter = 10f;  // Espacio después de la tabla
+                    // Encabezados de la tabla con estilo
+                    iTextSharp.text.Font tableHeaderFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.BOLD, BaseColor.DARK_GRAY);
+                    pdfptable.AddCell(new PdfPCell(new Phrase("Nombre", tableHeaderFont)) { BorderWidthBottom = 0.75f });
+                    pdfptable.AddCell(new PdfPCell(new Phrase("Servicio", tableHeaderFont)) { BorderWidthBottom = 0.75f });
+                    pdfptable.AddCell(new PdfPCell(new Phrase("$Precio", tableHeaderFont)) { BorderWidthBottom = 0.75f });
 
-                    // Encabezados de la tabla
-                    pdfptable.AddCell(new PdfPCell(new Phrase("Nombre", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-                    pdfptable.AddCell(new PdfPCell(new Phrase("Servicio", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-                    pdfptable.AddCell(new PdfPCell(new Phrase($"$Precio", standarFont)) { BorderWidth = 0, BorderWidthBottom = 0.75f });
-
-                    // Agregar datos a la tabla
+                    // Datos de la tabla
+                    iTextSharp.text.Font dataFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
                     int i = 0;
                     while (i < pagos.Count)
                     {
-                        pdfptable.AddCell(new PdfPCell(new Phrase(usuario.nombre ?? "N/A", standarFont)) { BorderWidth = 0 });
-                        pdfptable.AddCell(new PdfPCell(new Phrase(pagos[i].servicio ?? "N/A", standarFont)) { BorderWidth = 0 });
-                        pdfptable.AddCell(new PdfPCell(new Phrase($"${pagos[i].monto.ToString("N2")}", standarFont)) { BorderWidth = 0 }); // Agregar el precio con el símbolo de pesos
+                        pdfptable.AddCell(new PdfPCell(new Phrase(usuario.nombre ?? "N/A", dataFont)) { BorderWidth = 0 });
+                        pdfptable.AddCell(new PdfPCell(new Phrase(pagos[i].servicio ?? "N/A", dataFont)) { BorderWidth = 0 });
+                        pdfptable.AddCell(new PdfPCell(new Phrase($"${pagos[i].monto.ToString("N2")}", dataFont)) { BorderWidth = 0 });
                         i++;
                     }
 
                     doc.Add(pdfptable);
-                    doc.Add(Chunk.NEWLINE); // Dejar espacio antes del monto
+                    doc.Add(Chunk.NEWLINE);
 
-                    // Posicionar el monto total en la parte inferior derecha
+                    // Monto total en negrita y tamaño más grande
                     PdfContentByte cb = pw.DirectContent;
                     cb.BeginText();
-
-                    // Configuración de la fuente para el monto
-                    BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    cb.SetFontAndSize(bf, 12); // Tamaño de la fuente
-
-                    // Alinear y mostrar el texto en la parte inferior derecha
+                    BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                    cb.SetFontAndSize(bf, 12);
+                    cb.SetColorFill(BaseColor.BLACK);
                     cb.ShowTextAligned(Element.ALIGN_RIGHT, $"Monto total: ${monto.ToString("N2")}", doc.PageSize.Width - doc.RightMargin, doc.BottomMargin + 20, 0);
+                    cb.EndText();
 
+                    // Agregar fecha y hora en la parte inferior izquierda
+                    cb.BeginText();
+                    cb.SetFontAndSize(bf, 8);
+                    cb.ShowTextAligned(Element.ALIGN_LEFT, "Fecha de emisión: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), doc.LeftMargin, doc.BottomMargin + 20, 0);
+                    cb.EndText();
+
+                    // Información de contacto en la parte inferior central
+                    cb.BeginText();
+                    cb.SetFontAndSize(bf, 8);
+                    cb.ShowTextAligned(Element.ALIGN_CENTER, "Contacto: (123) 456-7890 | email@empresa.com", doc.PageSize.Width / 2, doc.BottomMargin, 0);
                     cb.EndText();
 
                     MessageBox.Show("Archivo guardado en: " + saveFileDialog.FileName);
@@ -128,15 +141,16 @@ namespace SentirseBien
                 }
                 finally
                 {
-                    doc.Close(); // Asegúrate de cerrar el documento
+                    doc.Close();
                 }
             }
 
             DialogResult = DialogResult.OK;
             ReflejarPago();
             this.Close();
-
         }
+
+
 
         private void ReflejarPago()
         {

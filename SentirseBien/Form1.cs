@@ -59,17 +59,34 @@ namespace SentirseBien
         {
             if (usuario.correo == "test@gmail.com")
             {
-                cancelar_turno_button.Visible = true;
+                cancelar_turno_label.Visible = true;
+                cancelar_turno_panel.Visible=true;
+                pedir_turno_panel.Visible = false;
+                pedir_turno_label.Visible=false;
             }
             else
             {
                 if (usuario.rol == 0)
                 {
-                    pedir_turno_cliente.Visible = true;
+                    pedir_turno_panel.Visible = true;
+                    pedir_turno_label.Visible = true;
+                    filtrar_profesional.Visible = false;
+                    filtrar_profesional_panel.Visible = false;
+                    filtrar_servicio.Visible = false;
+                    filtrar_servicio_panel.Visible = false;
+                    filtrar_fecha.Visible = false;
+                    filtrar_fecha_panel.Visible = false;
                 }
                 else
                 {
-                    pedir_turno_cliente.Visible = false;
+                    pedir_turno_label.Visible = false;
+                    pedir_turno_panel.Visible = false;
+                    filtrar_profesional.Visible = false;
+                    filtrar_profesional_panel.Visible = false;
+                    filtrar_servicio.Visible = false;
+                    filtrar_servicio_panel.Visible = false;
+                    filtrar_fecha.Visible = false;
+                    filtrar_fecha_panel.Visible = false;
                 }
             }
         }
@@ -301,6 +318,7 @@ namespace SentirseBien
 
         private void FiltrarFechaClick(object sender, EventArgs e)
         {
+            filtrar_fecha_panel.Click += panel_Click;
             CalendarioForm calendarioForm = new CalendarioForm();
             if (calendarioForm.ShowDialog() == DialogResult.OK)
             {
@@ -411,7 +429,7 @@ namespace SentirseBien
         private void FiltrarServicioClick(object sender, EventArgs e)
         {
             TextoForm textoForm = new TextoForm();
-            if(textoForm.ShowDialog() == DialogResult.OK) 
+            if (textoForm.ShowDialog() == DialogResult.OK)
             {
                 textofiltro = textoForm.texto;
                 try
@@ -515,5 +533,63 @@ namespace SentirseBien
 
             }
         }
+
+        private void FiltrarProfesionalClick(object sender, EventArgs e)
+        {
+            TextoForm textoForm = new TextoForm();
+            if (textoForm.ShowDialog() == DialogResult.OK)
+            {
+                textofiltro = textoForm.texto;
+                string filtro = "";
+                try
+                {
+                    // Mostrar el cursor de espera
+                    Cursor.Current = Cursors.WaitCursor;
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Refresh();
+                    turnos.Clear();
+                    turnos = turnoConsultas.getTurno(filtro);
+
+                    for (int i = 0; i < turnos.Count; i++)
+                    {
+                        if (turnos[i].profesional == textofiltro)
+                        {
+                            dataGridView1.RowTemplate.Height = 50;
+                            dataGridView1.Rows.Add(
+                                turnos[i].idturnos,
+                                turnos[i].nombre_usuario,
+                                turnos[i].fecha,
+                                turnos[i].servicio,
+                                turnos[i].profesional
+                                );
+                        }
+                    }
+                }
+                finally
+                {
+                    // Asegurarse de restaurar el cursor normal
+                    Cursor.Current = Cursors.Default;
+                }
+
+            }
+        }
+
+        private async void panel_Click(object sender, EventArgs e)
+        {
+            Panel panel = sender as Panel;
+
+            // Guardar el color original
+            Color originalColor = panel.BackColor;
+
+            // Cambiar el color del panel para dar efecto de "click"
+            panel.BackColor = Color.LightGray;
+
+            // Esperar unos milisegundos para simular el "parpadeo"
+            await Task.Delay(100);
+
+            // Volver al color original
+            panel.BackColor = originalColor;
+        }
+
     }
 }
