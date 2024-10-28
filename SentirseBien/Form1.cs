@@ -12,6 +12,7 @@ namespace SentirseBien
         public ConexionMysql conexionMysql;
         public event EventHandler CambioRealizado;
         private string fechafiltro;
+        private string textofiltro;
         public Form1(Usuario usuario)
         {
             this.Size = new Size(1077, 712);
@@ -330,72 +331,73 @@ namespace SentirseBien
                                     );
                             }
                         }
-                    } else if(usuario.correo == "test@gmail.com") 
-                                {
-                                    try
-                                    {
-                                        // Mostrar el cursor de espera
-                                        Cursor.Current = Cursors.WaitCursor;
-                                        dataGridView1.Rows.Clear();
-                                        dataGridView1.Refresh();
-                                        turnos.Clear();
-                                        turnos = turnoConsultas.getTurno(filtro);
+                    }
+                    else if (usuario.correo == "test@gmail.com")
+                    {
+                        try
+                        {
+                            // Mostrar el cursor de espera
+                            Cursor.Current = Cursors.WaitCursor;
+                            dataGridView1.Rows.Clear();
+                            dataGridView1.Refresh();
+                            turnos.Clear();
+                            turnos = turnoConsultas.getTurno(filtro);
 
-                                        for (int i = 0; i < turnos.Count; i++)
-                                        {
-                                            if (DateTime.Parse(turnos[i].fecha).Date == DateTime.Parse(this.fechafiltro).Date)
-                                            {
-                                                dataGridView1.RowTemplate.Height = 50;
-                                                dataGridView1.Rows.Add(
-                                                    turnos[i].idturnos,
-                                                    turnos[i].nombre_usuario,
-                                                    turnos[i].fecha,
-                                                    turnos[i].servicio,
-                                                    turnos[i].profesional
-                                                    );
-                                            }
-                                        }
-                                    }
-                                    finally
-                                    {
-                                        // Asegurarse de restaurar el cursor normal
-                                        Cursor.Current = Cursors.Default;
-                                    }
-                                }
-                                else 
+                            for (int i = 0; i < turnos.Count; i++)
+                            {
+                                if (DateTime.Parse(turnos[i].fecha).Date == DateTime.Parse(this.fechafiltro).Date)
                                 {
-                                        try
-                                        {
-                                            // Mostrar el cursor de espera
-                                            Cursor.Current = Cursors.WaitCursor;
-                                            dataGridView1.Rows.Clear();
-                                            dataGridView1.Refresh();
-                                            turnos.Clear();
-                                            turnos = turnoConsultas.getTurno(filtro);
-
-                                            for (int i = 0; i < turnos.Count; i++)
-                                            {
-                                                if ((turnos[i].profesional == usuario.nombre)&&(DateTime.Parse(turnos[i].fecha).Date == DateTime.Parse(this.fechafiltro).Date))
-                                                {
-                                                    dataGridView1.RowTemplate.Height = 50;
-                                                    dataGridView1.Rows.Add(
-                                                        turnos[i].idturnos,
-                                                        turnos[i].nombre_usuario,
-                                                        turnos[i].fecha,
-                                                        turnos[i].servicio,
-                                                        turnos[i].profesional
-                                                        );
-                                                }
-                                            }
-                                        }
-                                        finally
-                                        {
-                                            // Asegurarse de restaurar el cursor normal
-                                            Cursor.Current = Cursors.Default;
-                                        }
+                                    dataGridView1.RowTemplate.Height = 50;
+                                    dataGridView1.Rows.Add(
+                                        turnos[i].idturnos,
+                                        turnos[i].nombre_usuario,
+                                        turnos[i].fecha,
+                                        turnos[i].servicio,
+                                        turnos[i].profesional
+                                        );
                                 }
-                            
-                 
+                            }
+                        }
+                        finally
+                        {
+                            // Asegurarse de restaurar el cursor normal
+                            Cursor.Current = Cursors.Default;
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            // Mostrar el cursor de espera
+                            Cursor.Current = Cursors.WaitCursor;
+                            dataGridView1.Rows.Clear();
+                            dataGridView1.Refresh();
+                            turnos.Clear();
+                            turnos = turnoConsultas.getTurno(filtro);
+
+                            for (int i = 0; i < turnos.Count; i++)
+                            {
+                                if ((turnos[i].profesional == usuario.nombre) && (DateTime.Parse(turnos[i].fecha).Date == DateTime.Parse(this.fechafiltro).Date))
+                                {
+                                    dataGridView1.RowTemplate.Height = 50;
+                                    dataGridView1.Rows.Add(
+                                        turnos[i].idturnos,
+                                        turnos[i].nombre_usuario,
+                                        turnos[i].fecha,
+                                        turnos[i].servicio,
+                                        turnos[i].profesional
+                                        );
+                                }
+                            }
+                        }
+                        finally
+                        {
+                            // Asegurarse de restaurar el cursor normal
+                            Cursor.Current = Cursors.Default;
+                        }
+                    }
+
+
                 }
                 finally
                 {
@@ -403,7 +405,115 @@ namespace SentirseBien
                     Cursor.Current = Cursors.Default;
                 }
             }
-        
+
+        }
+
+        private void FiltrarServicioClick(object sender, EventArgs e)
+        {
+            TextoForm textoForm = new TextoForm();
+            if(textoForm.ShowDialog() == DialogResult.OK) 
+            {
+                textofiltro = textoForm.texto;
+                try
+                {
+                    string filtro = "";
+                    // Mostrar el cursor de espera
+                    Cursor.Current = Cursors.WaitCursor;
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Refresh();
+                    turnos.Clear();
+                    turnos = turnoConsultas.getTurno(filtro);
+                    if (usuario.rol != 1)
+                    {
+                        for (int i = 0; i < turnos.Count; i++)
+                        {
+                            if ((turnos[i].servicio == textofiltro) && (turnos[i].nombre_usuario == usuario.nombre))
+                            {
+                                dataGridView1.RowTemplate.Height = 50;
+                                dataGridView1.Rows.Add(
+                                    turnos[i].idturnos,
+                                    turnos[i].nombre_usuario,
+                                    turnos[i].fecha,
+                                    turnos[i].servicio,
+                                    turnos[i].profesional
+                                    );
+                            }
+                        }
+                    }
+                    else if (usuario.correo == "test@gmail.com")
+                    {
+                        try
+                        {
+                            // Mostrar el cursor de espera
+                            Cursor.Current = Cursors.WaitCursor;
+                            dataGridView1.Rows.Clear();
+                            dataGridView1.Refresh();
+                            turnos.Clear();
+                            turnos = turnoConsultas.getTurno(filtro);
+
+                            for (int i = 0; i < turnos.Count; i++)
+                            {
+                                if (turnos[i].servicio == textofiltro)
+                                {
+                                    dataGridView1.RowTemplate.Height = 50;
+                                    dataGridView1.Rows.Add(
+                                        turnos[i].idturnos,
+                                        turnos[i].nombre_usuario,
+                                        turnos[i].fecha,
+                                        turnos[i].servicio,
+                                        turnos[i].profesional
+                                        );
+                                }
+                            }
+                        }
+                        finally
+                        {
+                            // Asegurarse de restaurar el cursor normal
+                            Cursor.Current = Cursors.Default;
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            // Mostrar el cursor de espera
+                            Cursor.Current = Cursors.WaitCursor;
+                            dataGridView1.Rows.Clear();
+                            dataGridView1.Refresh();
+                            turnos.Clear();
+                            turnos = turnoConsultas.getTurno(filtro);
+
+                            for (int i = 0; i < turnos.Count; i++)
+                            {
+                                if ((turnos[i].profesional == usuario.nombre) && (turnos[i].servicio == textofiltro))
+                                {
+                                    dataGridView1.RowTemplate.Height = 50;
+                                    dataGridView1.Rows.Add(
+                                        turnos[i].idturnos,
+                                        turnos[i].nombre_usuario,
+                                        turnos[i].fecha,
+                                        turnos[i].servicio,
+                                        turnos[i].profesional
+                                        );
+                                }
+                            }
+                        }
+                        finally
+                        {
+                            // Asegurarse de restaurar el cursor normal
+                            Cursor.Current = Cursors.Default;
+                        }
+                    }
+
+
+                }
+                finally
+                {
+                    // Asegurarse de restaurar el cursor normal
+                    Cursor.Current = Cursors.Default;
+                }
+
+            }
         }
     }
 }

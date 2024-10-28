@@ -174,7 +174,7 @@
             filtrar_servicio_button.TabIndex = 8;
             filtrar_servicio_button.Text = "Filtrar por servicio";
             filtrar_servicio_button.UseVisualStyleBackColor = true;
-            filtrar_servicio_button.Click += button2_Click;
+            filtrar_servicio_button.Click += FiltrarServicioClick;
             // 
             // fecha_label
             // 
