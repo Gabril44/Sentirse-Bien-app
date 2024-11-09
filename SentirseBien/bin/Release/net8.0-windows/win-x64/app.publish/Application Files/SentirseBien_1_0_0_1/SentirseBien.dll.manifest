@@ -54,6 +54,42 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="BouncyCastle.Cryptography.dll" size="7072536">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>qWlpx5ZGSMJKuieVWH7kSNB7UMpSEunY6t4CHrDwzvY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Google.Protobuf.dll" size="294912">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ddW488HHwg64bLHGRcPkdPewQDtAXNd0Ll4KSVVqPH8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="itextsharp.dll" size="2592768">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>K31q/P+F9Sm5aL/s2KHzVhIoG5E8m0UEaTMe3SBRwQk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="MySql.Data.dll" size="681984">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>OriHh8qiqySJWWknmNznDyxRV8DUdwNeBVr03/0suDI=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Pictogrammers-Material-Spa.ico" size="177389">
     <hash>
       <dsig:Transforms>
@@ -63,13 +99,40 @@
       <dsig:DigestValue>POPEUtDScC6vVgHx5TAtUBoVgrR06wfwt/QbqgIPffg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SentirseBien.exe" size="14730978">
+  <file name="SentirseBien.deps.json" size="76685">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KgdaoCuQYnZNEn9OwQX1qcyj/wJaBl9t0BwD3xZFGvM=</dsig:DigestValue>
+      <dsig:DigestValue>l+O/sie1XSdoblKmM/2rvPpoNiFPhmNU315BhnN4okk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SentirseBien.dll" size="3880960">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>asXIkREol3bMNlOBN7yihjPxZneLp3aKjLphmmn1pVI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SentirseBien.exe" size="316416">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>oIn2a4vvY7Cffw34rjzmaDBoqadaGcA/+079vY4ODqE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="SentirseBien.runtimeconfig.json" size="458">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xxFSvyXkDWR7JEDFs5vhV6PTVhBr6dW2eKuXu4e054I=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -21,6 +21,7 @@ C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\SentirseBien.Properties.Resources.resources
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\SentirseBien.SeleccionAPagar.resources
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\SentirseBien.ServiciosForm.resources
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\SentirseBien.TextoForm.resources
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\SentirseBien.csproj.GenerateResource.cache
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\SentirseBien.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\SentirseBien.AssemblyInfoInputs.cache

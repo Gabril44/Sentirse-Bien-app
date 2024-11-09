@@ -30,7 +30,6 @@ C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.csproj.CoreCompileInputs.cache
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.sourcelink.json
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.genruntimeconfig.cache
-C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.genpublishdeps.cache
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.dll.manifest
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.application
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\Sentirse.25E5CBFB.Up2Date
@@ -38,3 +37,4 @@ C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\refint\SentirseBien.dll
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.pdb
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\ref\SentirseBien.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\obj\Release\net8.0-windows\win-x64\SentirseBien.TextoForm.resources

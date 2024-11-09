@@ -260,7 +260,6 @@
             pedir_turno_panel.Name = "pedir_turno_panel";
             pedir_turno_panel.Size = new Size(250, 36);
             pedir_turno_panel.TabIndex = 1;
-            pedir_turno_panel.Visible = false;
             pedir_turno_panel.Click += pedir_turno_cliente_Click;
             // 
             // pedir_turno_label
@@ -272,7 +271,6 @@
             pedir_turno_label.Size = new Size(84, 20);
             pedir_turno_label.TabIndex = 0;
             pedir_turno_label.Text = "Pedir Turno";
-            pedir_turno_label.Visible = false;
             pedir_turno_label.Click += pedir_turno_cliente_Click;
             // 
             // cancelar_turno_panel

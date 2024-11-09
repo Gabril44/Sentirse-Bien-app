@@ -61,8 +61,8 @@ namespace SentirseBien
             {
                 cancelar_turno_label.Visible = true;
                 cancelar_turno_panel.Visible=true;
-                pedir_turno_panel.Visible = false;
-                pedir_turno_label.Visible=false;
+                //pedir_turno_panel.Visible = false;
+                //pedir_turno_label.Visible=false;
             }
             else
             {
@@ -83,10 +83,10 @@ namespace SentirseBien
                     pedir_turno_panel.Visible = false;
                     filtrar_profesional.Visible = false;
                     filtrar_profesional_panel.Visible = false;
-                    filtrar_servicio.Visible = false;
-                    filtrar_servicio_panel.Visible = false;
-                    filtrar_fecha.Visible = false;
-                    filtrar_fecha_panel.Visible = false;
+                    filtrar_servicio.Visible = true;
+                    filtrar_servicio_panel.Visible = true;
+                    filtrar_fecha.Visible = true;
+                    filtrar_fecha_panel.Visible = true;
                 }
             }
         }

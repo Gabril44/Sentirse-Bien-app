@@ -1,2 +1,9 @@
-C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\SentirseBien.pdb
 C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\SentirseBien.exe
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\SentirseBien.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\SentirseBien.deps.json
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\SentirseBien.runtimeconfig.json
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\SentirseBien.pdb
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\BouncyCastle.Cryptography.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\Google.Protobuf.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\itextsharp.dll
+C:\Users\ASUS\Documents\GitHub\Sentirse-Bien-app\SentirseBien\bin\Release\net8.0-windows\win-x64\app.publish\MySql.Data.dll
